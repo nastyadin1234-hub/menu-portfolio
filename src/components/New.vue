@@ -750,4 +750,24 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
     backdrop-filter: blur(4px);
   }
 }
+  .product-card .image-wrapper img,
+.product-card img:first-of-type {
+  width: 100% !important;
+  height: 250px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.product-card .image-wrapper {
+  width: 100% !important;
+  height: 250px !important;
+  overflow: hidden !important;
+}
+.product-card img,
+.product-image {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+}
+
 </style>
