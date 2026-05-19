@@ -80,7 +80,7 @@
         <div class="contact-section">
           <h3>Для обсуждения заказа и индивидуального декора:</h3>
           <div class="links-box">
-            <a :href="maxUrl" rel="noopener noreferrer" class="link-btn">MAX</a>
+            <a :href="maxUrl" rel="noopener noreferrer" class="w-40 text-center link-btn">MAX</a>       
              <a :href="telegramUrl" target="_blank" rel="noopener noreferrer" class="link-btn">TELEGRAM</a>
 
           </div>
@@ -125,18 +125,18 @@ const showScrollBtn = ref(false)
 const allProducts = ref([
   { 
     id: 1, 
-    title: 'Французский мильфей', 
+    title: 'Французский Мильфей', 
     price: 600, 
     category: 'desserts', 
     images: [milfierImg], 
     currentImgIndex: 0,
     badge: 'Фирменный рецепт',
     weight: '12*8 см',
-    desc: 'Хрустящие коржи из слоеного теста, сливочный крем «Diplomat»'
+    desc: 'Хрустящие коржи из слоеного теста, сливочный крем «Diplomat»' 
   },
   { 
     id: 2, 
-    title: 'Карамельные макарон', 
+    title: 'Карамельные Макаронс', 
     price: 600, 
     category: 'desserts', 
     images: [macaronImg, macaroncutImg], 
@@ -154,7 +154,7 @@ const allProducts = ref([
     currentImgIndex: 0,
     badge: 'Премиум',
     weight: 'от 1 кг',
-    desc: 'Бисквит Савоярди, карамелизованные груши, крем “Bavarois”'
+    desc: 'Бисквит Савоярди, карамелизованные груши, крем “Bavarois”' 
   },
   { 
     id: 4, 
@@ -165,7 +165,7 @@ const allProducts = ref([
     currentImgIndex: 0,
     badge: 'Спецпредложение',
     weight: 'набор из 3 шт.',
-    desc: 'Безглютеновое тесто, творожно-сливочный крем, клубничное желе'
+    desc: 'Безглютеновое ... тесто, творожно-сливочный крем, клубничное желе'
   },
   { 
     id: 5, 
@@ -175,7 +175,7 @@ const allProducts = ref([
     images: [zaherImg, zaherCutImg], 
     currentImgIndex: 0,
     weight: 'от 1 кг',
-    desc: 'Шоколадный бисквит, прослойка из абрикосового и мандаринового конфитюра в сочетании с «бобами тонка», chocolate мусс'
+    desc: 'Шоколадный бисквит, прослойка из абрикосового и мандаринового конфитюра в сочетании с бобами тонка, шоколадный мусс' 
   },
   { 
     id: 6, 
@@ -185,7 +185,7 @@ const allProducts = ref([
     images: [tartImg, tartCutImg], 
     currentImgIndex: 0,
     weight: '1 шт.',
-    desc: 'Песочное тесто, ванильный ганаш, ягодное желе, свежие ягоды'
+    desc: 'Песочное ... тесто, ванильный ганаш, ягодное желе, свежие ягоды'
   },
   { 
     id: 7, 
@@ -254,11 +254,12 @@ const allProducts = ref([
     category: 'desserts', 
     images: [blackforestnewImg, blackforestcutnewImg], 
     currentImgIndex: 0,
-    badge: 'Авторский взгляд',
+    badge: 'Авторский взгляд', 
     weight: 'от 1 кг',
     desc: 'Шоколадный бисквит, вишневое желе, нежный сливочный мусс'
   }
 ])
+
 
 const filteredProducts = computed(() => {
   return allProducts.value.filter(p => p.category === currentCategory.value)
