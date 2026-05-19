@@ -132,11 +132,11 @@ const allProducts = ref([
     currentImgIndex: 0,
     badge: 'Фирменный рецепт',
     weight: '12*8 см',
-    desc: 'Хрустящие коржи из слоеного теста, сливочный крем «Diplomat»' 
+    desc: 'Хрустящие коржи из слоеного теста, сливочный крем «Diplomat»'
   },
   { 
     id: 2, 
-    title: 'Карамельные Макаронс', 
+    title: 'Карамельные Макароны', 
     price: 600, 
     category: 'desserts', 
     images: [macaronImg, macaroncutImg], 
@@ -154,18 +154,18 @@ const allProducts = ref([
     currentImgIndex: 0,
     badge: 'Премиум',
     weight: 'от 1 кг',
-    desc: 'Бисквит Савоярди, карамелизованные груши, крем “Bavarois”' 
+    desc: 'Бисквит Савоярди, карамелизованные груши, крем «Bavarois»'
   },
   { 
     id: 4, 
-    title: 'Эклеры “New York Cheesecake”', 
+    title: 'Эклеры «New York Cheesecake»', 
     price: 700, 
     category: 'desserts', 
     images: [eclairsImg], 
     currentImgIndex: 0,
     badge: 'Спецпредложение',
     weight: 'набор из 3 шт.',
-    desc: 'Безглютеновое ... тесто, творожно-сливочный крем, клубничное желе'
+    desc: 'Безглютеновое тесто, творожно-сливочный крем, clubничное желе'
   },
   { 
     id: 5, 
@@ -175,7 +175,7 @@ const allProducts = ref([
     images: [zaherImg, zaherCutImg], 
     currentImgIndex: 0,
     weight: 'от 1 кг',
-    desc: 'Шоколадный бисквит, прослойка из абрикосового и мандаринового конфитюра в сочетании с бобами тонка, шоколадный мусс' 
+    desc: 'Шоколадный бисквит, прослойка из абрикосового и мандаринового конфитюра в сочетании с «бобами тонка», шоколадный мусс'
   },
   { 
     id: 6, 
@@ -185,7 +185,7 @@ const allProducts = ref([
     images: [tartImg, tartCutImg], 
     currentImgIndex: 0,
     weight: '1 шт.',
-    desc: 'Песочное ... тесто, ванильный ганаш, ягодное желе, свежие ягоды'
+    desc: 'Песочное тесто, ванильный ганаш, ягодное желе, свежие ягоды'
   },
   { 
     id: 7, 
@@ -249,16 +249,17 @@ const allProducts = ref([
   },
   { 
     id: 13, 
-    title: 'Черный лес “Modern”', 
+    title: 'Черный лес «Modern»', 
     price: 2000, 
     category: 'desserts', 
     images: [blackforestnewImg, blackforestcutnewImg], 
     currentImgIndex: 0,
-    badge: 'Авторский взгляд', 
+    badge: 'Авторский взгляд',
     weight: 'от 1 кг',
     desc: 'Шоколадный бисквит, вишневое желе, нежный сливочный мусс'
   }
 ])
+
 
 
 const filteredProducts = computed(() => {
