@@ -125,7 +125,7 @@ const showScrollBtn = ref(false)
 const allProducts = ref([
   { 
     id: 1, 
-    title: 'Французский Мильфей', 
+    title: 'Французский «Мильфей»', 
     price: 'По запросу', 
     category: 'desserts', 
     images: [milfierImg], 
@@ -767,23 +767,29 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
     backdrop-filter: blur(4px);
   }
 
+.product-card img,
+.product-image {
+  width: 100% !important;
+  height: 250px !important;
+  object-fit: cover !important;
+}
 
 .product-card h3,
 .product-title {
-  font-size: 1.1rem !important;
+  font-size: 1.25rem !important; /* Увеличили заголовок тортиков, теперь они заметные */
   font-weight: 600 !important;
   color: #1a1a1a !important;
-  margin-top: 10px !important;
+  margin-top: 15px !important;
   margin-bottom: 4px !important;
   text-align: center !important;
 }
 
 .product-price,
 .price-tag {
-  font-size: 0.85rem !important;
-  color: #1a1a1a !important;
-  font-weight: 600 !important;
-  margin-top: 6px !important;
+  font-size: 0.95rem !important;
+  color: #8c8c8c !important; /* Изменили цвет на мягкий серый, чтобы надпись не кричала */
+  font-weight: 500 !important;
+  margin-top: 8px !important;
   text-align: center !important;
 }
 
@@ -794,6 +800,9 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
   line-height: 1.4 !important;
   text-align: center !important;
   margin: 6px 10px !important;
+  white-space: normal !important; /* Побеждаем троеточия */
+  text-overflow: clip !important;   /* Защита от обрезки состава */
+  height: auto !important;          /* Текст раскрывается полностью */
 }
 
 .footer-buttons,
@@ -814,6 +823,7 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
   font-size: 0.85rem !important;
   letter-spacing: 1px !important;
 }
+
 
 
 
