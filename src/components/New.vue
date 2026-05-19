@@ -749,23 +749,23 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
   }
 
   .divider {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .main-title { font-size: 32px; }
-  .manifesto { margin: 0 auto; }
-  .catalog-list-leave-active { position: static; }
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  .btn-up {
-    bottom: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    font-size: 14px;
-    background-color: rgba(253, 251, 247, 0.9);
-    backdrop-filter: blur(4px);
-  }
+.main-title { font-size: 32px; }
+.manifesto { margin: 0 auto; }
+.catalog-list-leave-active { position: static; }
+
+.btn-up {
+  bottom: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  font-size: 14px;
+  background-color: rgba(253, 251, 247, 0.9);
+  backdrop-filter: blur(4px);
+}
 
 .product-card img,
 .product-image {
@@ -776,7 +776,7 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
 
 .product-card h3,
 .product-title {
-  font-size: 1.25rem !important; /* Увеличили заголовок тортиков, теперь они заметные */
+  font-size: 1.25rem !important;
   font-weight: 600 !important;
   color: #1a1a1a !important;
   margin-top: 15px !important;
@@ -787,7 +787,7 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
 .product-price,
 .price-tag {
   font-size: 0.95rem !important;
-  color: #8c8c8c !important; /* Изменили цвет на мягкий серый, чтобы надпись не кричала */
+  color: #8c8c8c !important;
   font-weight: 500 !important;
   margin-top: 8px !important;
   text-align: center !important;
@@ -800,9 +800,9 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
   line-height: 1.4 !important;
   text-align: center !important;
   margin: 6px 10px !important;
-  white-space: normal !important; /* Побеждаем троеточия */
-  text-overflow: clip !important;   /* Защита от обрезки состава */
-  height: auto !important;          /* Текст раскрывается полностью */
+  white-space: normal !important;
+  text-overflow: clip !important;
+  height: auto !important;
 }
 
 .footer-buttons,
