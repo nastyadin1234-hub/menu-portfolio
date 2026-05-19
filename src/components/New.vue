@@ -126,7 +126,7 @@ const allProducts = ref([
   { 
     id: 1, 
     title: 'Французский Мильфей', 
-    price: 600, 
+    price: 'По запросу', 
     category: 'desserts', 
     images: [milfierImg], 
     currentImgIndex: 0,
@@ -137,7 +137,7 @@ const allProducts = ref([
   { 
     id: 2, 
     title: 'Карамельные Макароны', 
-    price: 600, 
+    price: 'По запросу', 
     category: 'desserts', 
     images: [macaronImg, macaroncutImg], 
     currentImgIndex: 0,
@@ -148,7 +148,7 @@ const allProducts = ref([
   { 
     id: 3, 
     title: 'Грушевая «Шарлотт»', 
-    price: 2000, 
+    price: 'По запросу', 
     category: 'desserts', 
     images: [cakeImg], 
     currentImgIndex: 0,
@@ -159,18 +159,18 @@ const allProducts = ref([
   { 
     id: 4, 
     title: 'Эклеры «New York Cheesecake»', 
-    price: 700, 
+    price: 'По запросу', 
     category: 'desserts', 
     images: [eclairsImg], 
     currentImgIndex: 0,
     badge: 'Спецпредложение',
     weight: 'набор из 3 шт.',
-    desc: 'Безглютеновое тесто, творожно-сливочный крем, clubничное желе'
+    desc: 'Безглютеновое ... тесто, творожно-сливочный крем, клубничное желе'
   },
   { 
     id: 5, 
     title: 'Муссовый торт «Захер»', 
-    price: 2800, 
+    price: 'По запросу', 
     category: 'desserts', 
     images: [zaherImg, zaherCutImg], 
     currentImgIndex: 0,
@@ -180,17 +180,17 @@ const allProducts = ref([
   { 
     id: 6, 
     title: 'Тарталетка с ягодами', 
-    price: 150, 
+    price: 'По запросу', 
     category: 'desserts', 
     images: [tartImg, tartCutImg], 
     currentImgIndex: 0,
     weight: '1 шт.',
-    desc: 'Песочное тесто, ванильный ганаш, ягодное желе, свежие ягоды'
+    desc: 'Песочное ... тесто, ванильный ганаш, ягодное желе, свежие ягоды'
   },
   { 
     id: 7, 
     title: 'Имбирные пряники', 
-    price: 350, 
+    price: 'По запросу', 
     category: 'bakery', 
     images: [pryanikSetImg, pryanikCircleImg, pryanikHouseImg], 
     currentImgIndex: 0,
@@ -200,7 +200,7 @@ const allProducts = ref([
   { 
     id: 8, 
     title: 'Печатный пряник с начинкой', 
-    price: 400, 
+    price: 'По запросу', 
     category: 'bakery', 
     images: [pryanikBigImg, pryanikCutImg], 
     currentImgIndex: 0,
@@ -210,7 +210,7 @@ const allProducts = ref([
   { 
     id: 9, 
     title: 'Десерт «Ирландская бомба»', 
-    price: 400, 
+    price: 'По запросу', 
     category: 'desserts', 
     images: [bombaImg], 
     currentImgIndex: 0,
@@ -220,7 +220,7 @@ const allProducts = ref([
   { 
     id: 10, 
     title: 'Ванильные профитроли с шоколадным ганашем', 
-    price: 700, 
+    price: 'По запросу', 
     category: 'desserts', 
     images: [zyzhikImg, zyzhikcutImg], 
     currentImgIndex: 0,
@@ -230,7 +230,7 @@ const allProducts = ref([
   { 
     id: 11, 
     title: 'Классический «Черный лес»', 
-    price: 1200, 
+    price: 'По запросу', 
     category: 'desserts', 
     images: [blackforestImg, blackforestcutImg], 
     currentImgIndex: 0,
@@ -240,7 +240,7 @@ const allProducts = ref([
   { 
     id: 12, 
     title: 'Рождественский штоллен', 
-    price: 3000, 
+    price: 'По запросу', 
     category: 'bakery', 
     images: [schtollenImg], 
     currentImgIndex: 0,
@@ -250,7 +250,7 @@ const allProducts = ref([
   { 
     id: 13, 
     title: 'Черный лес «Modern»', 
-    price: 2000, 
+    price: 'По запросу', 
     category: 'desserts', 
     images: [blackforestnewImg, blackforestcutnewImg], 
     currentImgIndex: 0,
@@ -292,8 +292,8 @@ const handleScroll = () => {
 
 onMounted(() => { window.addEventListener('scroll', handleScroll) })
 onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
-const telegramUrl = ref('https://t.me/Nadezhda0_5') 
-const maxUrl = ref('https://max.ru/u/f9LHodD0cOIEtj3A7gK1Xar36b79Zftm5ejei8I3JIojnUqzGQsy-4DrzD8') 
+//const telegramUrl = ref('https://t.me/Nadezhda0_5') 
+//const maxUrl = ref('https://max.ru/u/f9LHodD0cOIEtj3A7gK1Xar36b79Zftm5ejei8I3JIojnUqzGQsy-4DrzD8') 
 
 </script>
 
@@ -722,6 +722,12 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOIEtj3A7gK1Xar36b79Zftm5ejei8I3JIo
 
 .catalog-list-leave-active {
   position: absolute;
+}
+.product-price, 
+.price, 
+.btn-order, 
+.order-button {
+  display: none !important;
 }
 
 /* СТИЛИ АДАПТАЦИИ */
