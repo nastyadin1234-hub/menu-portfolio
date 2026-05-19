@@ -767,51 +767,57 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
     backdrop-filter: blur(4px);
   }
 }
-  .product-card img,
-.product-image {
+  .product-card .image-wrapper img,
+.product-card img:first-of-type {
   width: 100% !important;
-  height: 220px !important;
-  object-fit: contain !important;
+  height: 250px !important;
+  object-fit: cover !important;
   object-position: center !important;
-  background-color: #ffffff;
   transition: transform 0.3s ease;
 }
 
-.product-card:hover img {
+.product-card .image-wrapper {
+  width: 100% !important;
+  height: 250px !important;
+  overflow: hidden !important;
+}
+
+.product-card:hover img:first-of-type {
   transform: scale(1.03);
 }
 
 .product-card h3,
 .product-title {
-  font-size: 1.45rem !important;
+  font-size: 1.25rem !important;
   font-weight: 600 !important;
   color: #1a1a1a !important;
-  margin-top: 15px !important;
-  margin-bottom: 6px !important;
+  margin-top: 12px !important;
+  margin-bottom: 4px !important;
   text-align: center !important;
 }
 
 .product-price,
 .price-tag {
-  font-size: 0.9rem !important;
+  font-size: 0.85rem !important;
   color: #8c8c8c !important;
   font-weight: 400 !important;
-  font-style: italic !important;
-  margin-top: 12px !important;
+  margin-top: 8px !important;
   text-align: center !important;
-  letter-spacing: 0.5px !important;
 }
 
 .product-desc,
 .product-card p {
-  font-size: 0.95rem !important;
+  font-size: 0.85rem !important;
   color: #555555 !important;
-  line-height: 1.5 !important;
+  line-height: 1.4 !important;
   text-align: center !important;
   white-space: normal !important;
   text-overflow: clip !important;
+  height: auto !important;
   max-height: none !important;
-  margin: 8px 15px !important;
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  margin: 6px 10px !important;
 }
 
 .footer-buttons,
@@ -832,5 +838,6 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
   font-size: 0.85rem !important;
   letter-spacing: 1px !important;
 }
+
 
 </style>
