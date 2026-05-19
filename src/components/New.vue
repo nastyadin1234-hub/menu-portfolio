@@ -28,15 +28,15 @@
           class="filter-btn" 
           :class="{ active: currentCategory === 'bakery' }"
           @click="currentCategory = 'bakery'">
-          Хлеб и выпечка
+         Хлеб и выпечка
         </button>
         <button 
           class="filter-btn" 
           :class="{ active: currentCategory === 'desserts' }"
           @click="currentCategory = 'desserts'"
         >
-          Наши десерты
-        </button>
+         Десерты и пирожные
+          </button>
       </nav>
 
       <main class="catalog-grid">
@@ -80,7 +80,7 @@
         <div class="contact-section">
           <h3>Для обсуждения заказа и индивидуального декора:</h3>
           <div class="links-box">
-            <a :href="maxUrl" rel="noopener noreferrer" class="link-btn">МАКС</a>
+            <a :href="maxUrl" rel="noopener noreferrer" class="link-btn">MAX</a>
              <a :href="telegramUrl" target="_blank" rel="noopener noreferrer" class="link-btn">TELEGRAM</a>
 
           </div>
@@ -132,11 +132,11 @@ const allProducts = ref([
     currentImgIndex: 0,
     badge: 'Фирменный рецепт',
     weight: '12*8 см',
-    desc: 'Хрустящие коржи из слоеного теста, сливочный крем Дипломат'
+    desc: 'Хрустящие коржи из слоеного теста, сливочный крем «Diplomat»'
   },
   { 
     id: 2, 
-    title: 'Карамельный макарон', 
+    title: 'Карамельные макарон', 
     price: 600, 
     category: 'desserts', 
     images: [macaronImg, macaroncutImg], 
@@ -147,18 +147,18 @@ const allProducts = ref([
   },
   { 
     id: 3, 
-    title: 'Грушевая Шарлотт', 
+    title: 'Грушевая «Шарлотт»', 
     price: 2000, 
     category: 'desserts', 
     images: [cakeImg], 
     currentImgIndex: 0,
     badge: 'Премиум',
     weight: 'от 1 кг',
-    desc: 'Бисквит Савоярди, карамелизованные груши, крем баваруаз'
+    desc: 'Бисквит Савоярди, карамелизованные груши, крем “Bavarois”'
   },
   { 
     id: 4, 
-    title: 'Эклеры New York Cheesecake', 
+    title: 'Эклеры “New York Cheesecake”', 
     price: 700, 
     category: 'desserts', 
     images: [eclairsImg], 
@@ -175,7 +175,7 @@ const allProducts = ref([
     images: [zaherImg, zaherCutImg], 
     currentImgIndex: 0,
     weight: 'от 1 кг',
-    desc: 'Шоколадный бисквит, прослойка из абрикосового и мандаринового конфитюра в сочетании с бобом тонка, шоколадный мусс'
+    desc: 'Шоколадный бисквит, прослойка из абрикосового и мандаринового конфитюра в сочетании с «бобами тонка», chocolate мусс'
   },
   { 
     id: 6, 
@@ -249,7 +249,7 @@ const allProducts = ref([
   },
   { 
     id: 13, 
-    title: 'Черный лес Modern', 
+    title: 'Черный лес “Modern”', 
     price: 2000, 
     category: 'desserts', 
     images: [blackforestnewImg, blackforestcutnewImg], 
@@ -259,6 +259,7 @@ const allProducts = ref([
     desc: 'Шоколадный бисквит, вишневое желе, нежный сливочный мусс'
   }
 ])
+
 const filteredProducts = computed(() => {
   return allProducts.value.filter(p => p.category === currentCategory.value)
 })
@@ -555,7 +556,18 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOIEtj3A7gK1Xar36b79Zftm5ejei8I3JIo
   letter-spacing: 1px;
   text-transform: uppercase;
 }
-
+.footer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+.premium-btn {
+  width: 150px; 
+  text-align: center;
+  padding: 10px 0;
+  display: inline-block;
+}
 .link-btn:hover { opacity: 0.8; }
 
 .copyright {
