@@ -766,8 +766,18 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
 .product-card img,
 .product-image {
   width: 100% !important;
-  height: auto !important;
+  height: 320px !important;
   object-fit: cover !important;
+  display: block !important;
 }
+
+.product-card .slider-dots img,
+.product-card [class*="dot"] img,
+.product-card [class*="arrow"] img {
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
 
 </style>
