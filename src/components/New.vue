@@ -132,18 +132,18 @@ const allProducts = ref([
     currentImgIndex: 0,
     badge: 'Фирменный рецепт',
     weight: '12*8 см',
-    desc: 'Хрустящие коржи из слоеного теста, сливочный крем Дипломат.'
+    desc: 'Хрустящие коржи из слоеного теста, сливочный крем Дипломат'
   },
   { 
     id: 2, 
-    title: 'Карамельный макаронс', 
+    title: 'Карамельный макарон', 
     price: 600, 
     category: 'desserts', 
     images: [macaronImg, macaroncutImg], 
     currentImgIndex: 0,
     badge: 'Новинка',
     weight: 'набор из 4 шт.',
-    desc: 'Выполнен на итальянской меренге, ганаш из карамельного шоколада со сливками, мягкая солёная карамель.'
+    desc: 'Выполнен на итальянской меренге, ганаш из карамельного шоколада со сливками, мягкая соленая карамель'
   },
   { 
     id: 3, 
@@ -154,18 +154,18 @@ const allProducts = ref([
     currentImgIndex: 0,
     badge: 'Премиум',
     weight: 'от 1 кг',
-    desc: 'Бисквит савоярди, карамелизированные груши, крем баваруаз.'
+    desc: 'Бисквит Савоярди, карамелизованные груши, крем баваруаз'
   },
   { 
     id: 4, 
-    title: 'Эклеры "Cheese-Cake New York"', 
+    title: 'Эклеры New York Cheesecake', 
     price: 700, 
     category: 'desserts', 
     images: [eclairsImg], 
     currentImgIndex: 0,
     badge: 'Спецпредложение',
     weight: 'набор из 3 шт.',
-    desc: 'Безглютеновое тесто, творожно-сливочный крем, клубничное желе.'
+    desc: 'Безглютеновое тесто, творожно-сливочный крем, клубничное желе'
   },
   { 
     id: 5, 
@@ -175,7 +175,7 @@ const allProducts = ref([
     images: [zaherImg, zaherCutImg], 
     currentImgIndex: 0,
     weight: 'от 1 кг',
-    desc: 'Шоколадный бисквит, прослойка из абрикосового и мандаринового конфитюра в сочетании с бобом тонка, шоколадный мусс.'
+    desc: 'Шоколадный бисквит, прослойка из абрикосового и мандаринового конфитюра в сочетании с бобом тонка, шоколадный мусс'
   },
   { 
     id: 6, 
@@ -184,8 +184,8 @@ const allProducts = ref([
     category: 'desserts', 
     images: [tartImg, tartCutImg], 
     currentImgIndex: 0,
-    weight: '1 шт',
-    desc: 'Песочное тесто, ванильный ганаш, ягодное желе, ягоды.'
+    weight: '1 шт.',
+    desc: 'Песочное тесто, ванильный ганаш, ягодное желе, свежие ягоды'
   },
   { 
     id: 7, 
@@ -194,8 +194,8 @@ const allProducts = ref([
     category: 'bakery', 
     images: [pryanikSetImg, pryanikCircleImg, pryanikHouseImg], 
     currentImgIndex: 0,
-    weight: '1 шт',
-    desc: 'Ароматное медовое тесто с имбирем и корицей, ручная художественная роспись сахарной глазурью.'
+    weight: '1 шт.',
+    desc: 'Ароматное медовое тесто с имбирем и корицей, ручная художественная роспись сахарной глазурью'
   },
   { 
     id: 8, 
@@ -204,8 +204,8 @@ const allProducts = ref([
     category: 'bakery', 
     images: [pryanikBigImg, pryanikCutImg], 
     currentImgIndex: 0,
-    weight: '1 шт',
-    desc: 'Традиционное медовое тесто с пряностями и густая начинка из протертой домашней смородины и яблок.'
+    weight: '1 шт.',
+    desc: 'Традиционное медовое тесто с пряностями, густая начинка из протертой домашней смородины и яблок'
   },
   { 
     id: 9, 
@@ -215,7 +215,7 @@ const allProducts = ref([
     images: [bombaImg], 
     currentImgIndex: 0,
     weight: 'от 300 г',
-    desc: 'Брауни на пиве Stout с грецким орехом, ванильный ганаш, карамель.'  
+    desc: 'Брауни на пиве Stout с грецким орехом, ванильный ганаш, карамель'  
   },
   { 
     id: 10, 
@@ -224,8 +224,8 @@ const allProducts = ref([
     category: 'desserts', 
     images: [zyzhikImg, zyzhikcutImg], 
     currentImgIndex: 0,
-    weight: 'набор 5 шт',
-    desc: 'Сливочный крем с натуральной ванилью.'
+    weight: 'набор из 5 шт.',
+    desc: 'Сливочный крем с натуральной ванилью и насыщенный шоколадный ганаш'
   },
   { 
     id: 11, 
@@ -235,7 +235,7 @@ const allProducts = ref([
     images: [blackforestImg, blackforestcutImg], 
     currentImgIndex: 0,
     weight: 'от 1 кг',
-    desc: 'Шоколадный бисквит, сливочный и шоколадный ганаш, вишневое желе.'
+    desc: 'Шоколадный бисквит, сливочный и шоколадный ганаш, вишневое желе'
   },
   { 
     id: 12, 
@@ -245,7 +245,7 @@ const allProducts = ref([
     images: [schtollenImg], 
     currentImgIndex: 0,
     weight: '500 г',
-    desc: 'Творожное тесто, цукаты (ром Barcello), масло Нуазетт.'
+    desc: 'Творожное тесто, цукаты на роме Barceló, масло Нуазетт'
   },
   { 
     id: 13, 
@@ -256,11 +256,9 @@ const allProducts = ref([
     currentImgIndex: 0,
     badge: 'Авторский взгляд',
     weight: 'от 1 кг',
-    desc: 'Шоколадный бисквит, вишневое желе, сливочный мусс.'
+    desc: 'Шоколадный бисквит, вишневое желе, нежный сливочный мусс'
   }
 ])
-
-
 const filteredProducts = computed(() => {
   return allProducts.value.filter(p => p.category === currentCategory.value)
 })
