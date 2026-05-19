@@ -69,7 +69,7 @@
               <h3 class="product-title">{{ product.title }}</h3>
               <div class="product-weight">{{ product.weight }}</div>
               <p class="product-desc">{{ product.desc }}</p>
-              <div class="price-tag">от {{ product.price }} ₽</div>
+              <div class="price-tag">{{ product.price }}</div>
             </div>
           </div>
         </TransitionGroup>
@@ -165,7 +165,7 @@ const allProducts = ref([
     currentImgIndex: 0,
     badge: 'Спецпредложение',
     weight: 'набор из 3 шт.',
-    desc: 'Безглютеновое ... тесто, творожно-сливочный крем, клубничное желе'
+    desc: 'Безглютеновое тесто, творожно-сливочный крем, клубничное желе'
   },
   { 
     id: 5, 
@@ -185,7 +185,7 @@ const allProducts = ref([
     images: [tartImg, tartCutImg], 
     currentImgIndex: 0,
     weight: '1 шт.',
-    desc: 'Песочное ... тесто, ванильный ганаш, ягодное желе, свежие ягоды'
+    desc: 'Песочное тесто, ванильный ганаш, ягодное желе, свежие ягоды'
   },
   { 
     id: 7, 
@@ -767,4 +767,70 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
     backdrop-filter: blur(4px);
   }
 }
+  .product-card img,
+.product-image {
+  width: 100% !important;
+  height: 220px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background-color: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.03);
+}
+
+.product-card h3,
+.product-title {
+  font-size: 1.45rem !important;
+  font-weight: 600 !important;
+  color: #1a1a1a !important;
+  margin-top: 15px !important;
+  margin-bottom: 6px !important;
+  text-align: center !important;
+}
+
+.product-price,
+.price-tag {
+  font-size: 0.9rem !important;
+  color: #8c8c8c !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+  margin-top: 12px !important;
+  text-align: center !important;
+  letter-spacing: 0.5px !important;
+}
+
+.product-desc,
+.product-card p {
+  font-size: 0.95rem !important;
+  color: #555555 !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+  white-space: normal !important;
+  text-overflow: clip !important;
+  max-height: none !important;
+  margin: 8px 15px !important;
+}
+
+.footer-buttons,
+.buttons-container {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 15px !important;
+  margin-top: 15px !important;
+}
+
+.btn-premium,
+.premium-btn {
+  width: 150px !important;
+  text-align: center !important;
+  padding: 10px 0 !important;
+  display: inline-block !important;
+  text-transform: uppercase !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 1px !important;
+}
+
 </style>
