@@ -766,12 +766,7 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
     background-color: rgba(253, 251, 247, 0.9);
     backdrop-filter: blur(4px);
   }
-.product-card img,
-.product-image {
-  width: 100% !important;
-  height: auto !important;
-  object-fit: cover !important;
-}
+
 
 .product-card h3,
 .product-title {
