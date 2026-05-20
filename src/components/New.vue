@@ -296,42 +296,7 @@ onMounted(() => { window.addEventListener('scroll', handleScroll) })
 onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
 const telegramUrl = ref('https://t.me/Ndeserts') 
 const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLmeibZDGYM8iJq-Pa2k') 
-// Функция, которая находит карточки и вешает на них слежку скролла
-const initScrollAnimation = () => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible')
-        observer.unobserve(entry.target)
-      }
-    })
-  }, {
-    threshold: 0.05,
-    rootMargin: '0px 0px -30px 0px'
-  })
 
-  const cards = document.querySelectorAll('.product-card.fade-in')
-  cards.forEach(card => {
-    card.classList.remove('visible') 
-    observer.observe(card)
-  })
-}
-
-// ОБЪЕДИНЕННЫЙ ONMOUNTED (Твой старый код + новый)
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll) // Твой старый слушатель для кнопки "Вверх"
-  initScrollAnimation() // Наша новая анимация карточек
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
-
-// СЛЕДИМ ЗА СМЕНОЙ КАТЕГОРИЙ
-watch(() => currentCategory.value, async () => {
-  await nextTick() 
-  initScrollAnimation() 
-})
 
 </script>
 
@@ -865,7 +830,7 @@ watch(() => currentCategory.value, async () => {
   margin-top: auto !important; /* Выталкивает цену строго на нижнюю границу */
 }
 
-/* Базовое скругление карточки (10px со всех сторон) */
+/* КАРТОЧКА: Безупречное скругление 10px + магия появления от скролла */
 .product-card {
   background-color: #ffffff;
   border-radius: 10px !important; 
@@ -876,8 +841,13 @@ watch(() => currentCategory.value, async () => {
   overflow: hidden !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
   
-  /* Плавность для ховера */
+  /* Эффект парения при наведении */
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
+
+  /* Современная CSS-анимация скролла: работает во всех новых браузерах */
+  animation: scrollReveal linear both;
+  animation-timeline: view();
+  animation-range: entry 5% cover 25%; /* Карточка плавно проявится, пройдя четверть экрана */
 }
 
 /* Ховер-эффект */
@@ -886,30 +856,28 @@ watch(() => currentCategory.value, async () => {
   box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04);
 }
 
-/* Скругление для картинок со всех четырех сторон */
+/* Скругление для картинок и слайдера со всех четырех сторон */
 .product-card .slider-area,
 .product-card .card-img {
   width: 100% !important;
   height: 380px !important; 
   object-fit: cover !important; 
   display: block !important;
-  border-radius: 10px !important; /* Намертво скругляем и верх, и низ картинки */
+  border-radius: 10px !important; /* Углы идеально скруглены со всех сторон */
 }
 
-/* КЛАССЫ ДЛЯ СКРОЛЛ-АНИМАЦИИ НА JS */
-.product-card.fade-in {
-  opacity: 0;
-  transform: translateY(40px);
-  /* Задаем плавность анимации выплывания */
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+/* КАДРЫ АНИМАЦИИ: Из прозрачного и приспущенного состояния в нормальное */
+@keyframes scrollReveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Момент, когда карточка докрутилась и должна стать видимой */
-.product-card.fade-in.visible {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
 
 
 </style>
