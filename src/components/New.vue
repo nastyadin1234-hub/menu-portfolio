@@ -116,7 +116,7 @@ import zyzhikImg from '../assets/IMG_20260504_154103.webp'
 import zyzhikcutImg from '../assets/Screenshot 2026-05-12 190038.jpg'
 import bombaImg from '../assets/IMG_20260504_153904.webp'
 import schtollenImg from '../assets/IMG_20260504_154230.webp'
-import macaronImg from './IMG_20260519_1105121.webp'
+import macaronImg from '../IMG_20260519_1105121.webp'
 import macaroncutImg from '../assets/IMG_20260519_110510.webp'
 
 const currentCategory = ref('desserts')
