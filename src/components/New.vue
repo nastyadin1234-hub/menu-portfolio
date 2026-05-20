@@ -826,6 +826,26 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   text-align: center !important;
   margin-top: auto !important; /* Выталкивает цену строго на нижнюю границу */
 }
+/* Контейнер слайдера */
+.product-card .slider-area {
+  width: 100% !important;
+  height: 380px !important; 
+  overflow: hidden !important;
+  position: relative !important;
+  background-color: transparent !important;
+  /* Добавляем скругление для контейнера */
+  border-radius: 6px !important; 
+}
+
+/* Сама картинка внутри слайдера */
+.product-card .card-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; 
+  display: block !important;
+  /* Добавляем такое же скругление для картинки, чтобы углы не вылезали */
+  border-radius: 6px !important; 
+}
 
 
 
