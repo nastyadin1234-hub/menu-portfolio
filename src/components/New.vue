@@ -825,7 +825,8 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   color: #1a1a1a !important;
   text-align: center !important;
   margin-top: auto !important; /* Выталкивает цену строго на нижнюю границу */
-}/* 1. НАСТРОЙКА КАРТОЧКИ (Скругление 10px со всех сторон + появление) */
+}
+/* 1. НАСТРОЙКА КАРТОЧКИ (Скругление + триггер скролла) */
 .product-card {
   background-color: #ffffff;
   border-radius: 10px !important; 
@@ -836,11 +837,13 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   overflow: hidden !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
   
-  /* Чистая CSS-анимация: карточки сами плавно выплывут */
-  animation: fadeInCard 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  
-  /* Плавность для ховера */
+  /* Эффект ховера */
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
+
+  /* Скролл-анимация: привязываем появление к области видимости (view) */
+  animation: revealCard linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%; /* Начинает проявляться при входе на экран и заканчивется на 30% высоты окна */
 }
 
 /* Ховер-эффект */
@@ -849,34 +852,33 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04);
 }
 
-/* 2. НАСТРОЙКА КОНТЕЙНЕРА ФОТО (Скругление 10px со всех сторон) */
+/* 2. НАСТРОЙКА КАРТИНКИ И СЛАЙДЕРА (Идеальное скругление со всех сторон) */
 .product-card .slider-area {
   width: 100% !important;
   height: 380px !important; 
   overflow: hidden !important;
   position: relative !important;
   background-color: transparent !important;
-  border-radius: 10px !important; /* Круглые углы со всех сторон */
+  border-radius: 10px !important; /* Скругляем картинку со всех четырех сторон */
 }
 
-/* 3. НАСТРОЙКА КАРТИНКИ (Скругление 10px со всех сторон) */
 .product-card .card-img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important; 
   display: block !important;
-  border-radius: 10px !important; /* Круглые углы со всех сторон */
+  border-radius: 10px !important; /* Скругляем картинку со всех четырех сторон */
 }
 
-/* 4. САМА АНИМАЦИЯ ПОЯВЛЕНИЯ */
-@keyframes fadeInCard {
+/* 3. КАДРЫ ДЛЯ СКРОЛЛ-АНИМАЦИИ */
+@keyframes revealCard {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(50px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
