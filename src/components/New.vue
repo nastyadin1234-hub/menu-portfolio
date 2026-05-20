@@ -5,7 +5,7 @@
       <header class="editorial-banner">
         <div class="editorial-grid">
           <div class="text-block">
-            <div class="meta-info">ISSUE NO. 01 / 2026</div>
+            <div class="meta-info"> Noble Desserts </div>
             <h1 class="main-title">
               <span class="word-wrap" v-for="(word, i) in 'Безупречный подход к созданию чистого вкуса'.split(' ')" :key="i">
                 <span class="anim-word" :style="{ animationDelay: i * 0.05 + 's' }">{{ word }}&nbsp;</span>
@@ -142,7 +142,7 @@ const allProducts = ref([
     images: [macaronImg, macaroncutImg], 
     currentImgIndex: 0,
     badge: 'Новинка',
-    weight: 'набор из 4 шт.',
+    weight: 'набор из 5 шт.',
     desc: 'Выполнен на итальянской меренге, ганаш из карамельного шоколада со сливками, мягкая соленая карамель'
   },
   { 
@@ -209,7 +209,7 @@ const allProducts = ref([
   },
   { 
     id: 9, 
-    title: 'Десерт «Ирландская бомба»', 
+    title: 'Брауни «Irish Stout»', 
     price: 'По запросу', 
     category: 'desserts', 
     images: [bombaImg], 
@@ -292,7 +292,7 @@ const handleScroll = () => {
 
 onMounted(() => { window.addEventListener('scroll', handleScroll) })
 onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
-//const telegramUrl = ref('https://t.me/Nadezhda0_5') 
+const telegramUrl = ref('https://t.me/Ndeserts') 
 const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLmeibZDGYM8iJq-Pa2k') 
 
 </script>
