@@ -28,7 +28,7 @@
           class="filter-btn" 
           :class="{ active: currentCategory === 'bakery' }"
           @click="currentCategory = 'bakery'">
-         Хлеб и выпечка
+         Выпечка 
         </button>
         <button 
           class="filter-btn" 
@@ -110,7 +110,7 @@ import pryanikCircleImg from '../assets/Screenshot 2026-05-04 175121.jpg'
 import pryanikHouseImg from '../assets/Screenshot 2026-05-04 175155.jpg'
 import pryanikBigImg from '../assets/Screenshot 2026-05-04 175208.jpg'
 import pryanikCutImg from '../assets/Screenshot 2026-05-04 175138.jpg'
-import zaherImg from '../assets/IMG_20260509_120359 (1).webp'
+import zaherImg from '../../assets/IMG_20260509_120359 (1) 1.webp'
 import zaherCutImg from '../assets/IMG_20260504_154047.webp'
 import zyzhikImg from '../assets/IMG_20260504_154103.webp'
 import zyzhikcutImg from '../assets/Screenshot 2026-05-12 190038.jpg'
@@ -169,7 +169,7 @@ const allProducts = ref([
   },
   { 
     id: 5, 
-    title: 'Муссовый торт «Захер»', 
+    title: 'Муссовый торт «Sachertorte»', 
     price: 'По запросу', 
     category: 'desserts', 
     images: [zaherImg, zaherCutImg], 
