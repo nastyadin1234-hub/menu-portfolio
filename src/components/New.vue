@@ -95,7 +95,8 @@
   </div>
 </template>
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
+
 import bannerImg from '../assets/banner.jpg'
 import eclairsImg from '../assets/eclairs.webp'
 import milfierImg from '../assets/IMG_20260503_153550.webp'
@@ -295,10 +296,7 @@ onMounted(() => { window.addEventListener('scroll', handleScroll) })
 onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
 const telegramUrl = ref('https://t.me/Ndeserts') 
 const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLmeibZDGYM8iJq-Pa2k') 
-
-
-import { onMounted, watch, nextTick } from 'vue'
-
+// Функция, которая находит карточки и вешает на них слежку скролла
 const initScrollAnimation = () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -312,28 +310,28 @@ const initScrollAnimation = () => {
     rootMargin: '0px 0px -30px 0px'
   })
 
-  // Находим все карточки
   const cards = document.querySelectorAll('.product-card.fade-in')
-  
   cards.forEach(card => {
-    // Безопасный сброс: если карточка новая после фильтрации, убираем прошлый visible
     card.classList.remove('visible') 
     observer.observe(card)
   })
 }
 
-// 1. Запуск при первой загрузке сайта
+// ОБЪЕДИНЕННЫЙ ONMOUNTED (Твой старый код + новый)
 onMounted(() => {
-  initScrollAnimation()
+  window.addEventListener('scroll', handleScroll) // Твой старый слушатель для кнопки "Вверх"
+  initScrollAnimation() // Наша новая анимация карточек
 })
 
-// 2. ИСПРАВЛЕННЫЙ WATCH: следим за изменением категории через функцию-геттер
-// Замени 'currentCategory' на точное имя твоей переменной, если она называется чуть иначе
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
+
+// СЛЕДИМ ЗА СМЕНОЙ КАТЕГОРИЙ
 watch(() => currentCategory.value, async () => {
-  await nextTick() // Ждем, пока Vue перерисует карточки новой категории
-  initScrollAnimation() // Перезапускаем слежку за скроллом
+  await nextTick() 
+  initScrollAnimation() 
 })
-
 
 </script>
 
