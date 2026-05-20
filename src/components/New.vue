@@ -736,15 +736,9 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
     backdrop-filter: blur(4px);
   }
 }
- .products-grid {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
-  align-items: stretch !important; /* Делает все карточки в ряду строго одной высоты */
-  gap: 30px !important;
- }
 .product-card {
   background-color: #ffffff;
-  border-radius: 8px; 
+  border-radius: 0px; 
   display: flex !important;
   flex-direction: column !important;
   justify-content: flex-start !important; 
@@ -759,20 +753,28 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04);
 }
 
-.product-card img:first-of-type,
-.product-image,
-.slider-area img {
+.product-card .slider-area {
   width: 100% !important;
-  height: auto !important;     
-  object-fit: contain !important; 
+  height: 380px !important; /* Увеличили высоту для сочного журнального кадра */
+  overflow: hidden !important;
+  position: relative !important;
+  background-color: transparent !important;
+}
+
+.product-card .card-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* Картинка полностью заполняет блок без серых ушей */
   display: block !important;
 }
-.card-info {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1 !important; 
-  justify-content: space-between; 
+
+.product-card .card-info {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important; /* Выравнивает все карточки по высоте */
+  justify-content: space-between !important; /* Прижимает цену и кнопку вниз */
 }
+
 .product-card .slider-dots img,
 .product-card [class*="dot"] img {
   width: auto !important;
@@ -780,5 +782,12 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   object-fit: contain !important;
   display: inline-block !important;
 }
+
+@media (max-width: 768px) {
+  .product-card .slider-area {
+    height: 280px !important; 
+  }
+}
+
 
 </style>
