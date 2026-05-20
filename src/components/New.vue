@@ -833,18 +833,18 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   overflow: hidden !important;
   position: relative !important;
   background-color: transparent !important;
-  /* Добавляем скругление для контейнера */
-  border-radius: 6px !important; 
+  /* Скругляем только верхние углы контейнера: 16px слева, 16px справа, 0 снизу */
+  border-radius: 16px 16px 0 0 !important; 
 }
 
-/* Сама картинка внутри слайдера */
+/* Сама картинка внутри */
 .product-card .card-img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important; 
   display: block !important;
-  /* Добавляем такое же скругление для картинки, чтобы углы не вылезали */
-  border-radius: 6px !important; 
+  /* Дублируем скругление для самой картинки, чтобы код её не обрезал криво */
+  border-radius: 25px 25px 0 0 !important; 
 }
 
 
