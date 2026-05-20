@@ -295,9 +295,10 @@ onMounted(() => { window.addEventListener('scroll', handleScroll) })
 onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
 const telegramUrl = ref('https://t.me/Ndeserts') 
 const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLmeibZDGYM8iJq-Pa2k') 
+
+
 import { onMounted, watch, nextTick } from 'vue'
 
-// Функция, которая находит карточки и вешает на них слежку скролла
 const initScrollAnimation = () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -307,24 +308,30 @@ const initScrollAnimation = () => {
       }
     })
   }, {
-    threshold: 0.05, // Срабатывает чуть раньше для плавности
+    threshold: 0.05,
     rootMargin: '0px 0px -30px 0px'
   })
 
-  document.querySelectorAll('.product-card.fade-in').forEach(card => {
+  // Находим все карточки
+  const cards = document.querySelectorAll('.product-card.fade-in')
+  
+  cards.forEach(card => {
+    // Безопасный сброс: если карточка новая после фильтрации, убираем прошлый visible
+    card.classList.remove('visible') 
     observer.observe(card)
   })
 }
 
-// Запускаем при первой загрузке страницы
+// 1. Запуск при первой загрузке сайта
 onMounted(() => {
   initScrollAnimation()
 })
 
-// Перезапускаем каждый раз, когда меняется категория товаров
-watch(() => currentCategory, async () => {
-  await nextTick() // Ждем, пока Vue обновит карточки на экране
-  initScrollAnimation()
+// 2. ИСПРАВЛЕННЫЙ WATCH: следим за изменением категории через функцию-геттер
+// Замени 'currentCategory' на точное имя твоей переменной, если она называется чуть иначе
+watch(() => currentCategory.value, async () => {
+  await nextTick() // Ждем, пока Vue перерисует карточки новой категории
+  initScrollAnimation() // Перезапускаем слежку за скроллом
 })
 
 
