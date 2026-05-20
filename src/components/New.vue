@@ -866,5 +866,22 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   }
 }
 
+/* ЖЕЛЕЗОБЕТОННЫЙ ВОЗВРАТ КАРТОЧЕК НА ЭКРАН */
+.product-card {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: flex !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+.product-card .slider-area,
+.product-card .card-img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  transform: none !important;
+  animation: none !important;
+}
 
 </style>
