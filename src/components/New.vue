@@ -41,7 +41,8 @@
 
       <main class="catalog-grid">
         <TransitionGroup name="catalog-list">
-          <div v-for="product in filteredProducts" :key="product.id" class="product-card fade-in">
+         <!-- ИСПРАВЛЕННЫЙ ВАРИАНТ -->
+<div v-for="product in filteredProducts" :key="product.id" class="product-card">
 
             <div class="slider-area">
               <div v-if="product.badge" class="card-badge">{{ product.badge }}</div>
