@@ -829,55 +829,41 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   text-align: center !important;
   margin-top: auto !important; /* Выталкивает цену строго на нижнюю границу */
 }
-
-/* КАРТОЧКА: Безупречное скругление 10px + магия появления от скролла */
+/* ИДЕАЛЬНО РОЯ СЕТКА КАРТОЧЕК */
 .product-card {
   background-color: #ffffff;
-  border-radius: 10px !important; 
+  border-radius: 10px !important; /* Ровные круглые углы карточки */
   display: flex !important;
   flex-direction: column !important;
-  justify-content: space-between !important;
+  justify-content: space-between !important; 
   height: 100% !important; 
   overflow: hidden !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
-  
-  /* Эффект парения при наведении */
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
-
-  /* Современная CSS-анимация скролла: работает во всех новых браузерах */
-  animation: scrollReveal linear both;
-  animation-timeline: view();
-  animation-range: entry 5% cover 25%; /* Карточка плавно проявится, пройдя четверть экрана */
 }
 
-/* Ховер-эффект */
+/* Эффект парения при наведении */
 .product-card:hover {
   transform: translateY(-6px) !important;
   box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04);
 }
 
-/* Скругление для картинок и слайдера со всех четырех сторон */
+/* КАРТИНКА И СЛАЙДЕР: Скругление 10px со всех 4-х сторон БЕЗ ПОЛЕЙ */
 .product-card .slider-area,
 .product-card .card-img {
   width: 100% !important;
-  height: 380px !important; 
-  object-fit: cover !important; 
+  height: 380px !important; /* Одинаковая журнальная высота картинок */
+  object-fit: cover !important; /* Фото сочные, на всю ширину, без серых полос */
   display: block !important;
-  border-radius: 10px !important; /* Углы идеально скруглены со всех сторон */
+  border-radius: 10px !important; /* Картинки идеально скруглены со всех сторон */
 }
 
-/* КАДРЫ АНИМАЦИИ: Из прозрачного и приспущенного состояния в нормальное */
-@keyframes scrollReveal {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@media (max-width: 768px) {
+  .product-card .slider-area,
+  .product-card .card-img {
+    height: 260px !important; /* Аккуратная высота для экранов телефонов */
   }
 }
-
 
 
 </style>
