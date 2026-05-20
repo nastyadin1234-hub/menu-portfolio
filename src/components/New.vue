@@ -293,7 +293,7 @@ const handleScroll = () => {
 onMounted(() => { window.addEventListener('scroll', handleScroll) })
 onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
 //const telegramUrl = ref('https://t.me/Nadezhda0_5') 
-//const maxUrl = ref('https://max.ru/u/f9LHodD0cOIEtj3A7gK1Xar36b79Zftm5ejei8I3JIojnUqzGQsy-4DrzD8') 
+const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLmeibZDGYM8iJq-Pa2k') 
 
 </script>
 
@@ -369,21 +369,7 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
   position: relative;
 }
 
-.product-card {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  border-radius: 0px;
-  overflow: hidden;
-  height: 100%;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
-}
 
-.product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04);
-}
 
 .slider-area {
   position: relative;
@@ -755,28 +741,38 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
   align-items: stretch !important; /* Делает все карточки в ряду строго одной высоты */
   gap: 30px !important;
-}
-
+ }
 .product-card {
   background-color: #ffffff;
-  border-radius: 8px;
+  border-radius: 8px; 
   display: flex !important;
   flex-direction: column !important;
-  justify-content: space-between !important; /* Выравнивает текст «По запросу» по нижней линии */
+  justify-content: flex-start !important; 
   height: 100% !important; 
   overflow: hidden !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
 }
 
-/* Картинка десерта: занимает ВСЮ ширину карточки без полей */
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04);
+}
+
 .product-card img:first-of-type,
-.product-image {
+.product-image,
+.slider-area img {
   width: 100% !important;
-  height: 280px !important; /* Идеальная высота для сочного крупного кадра */
-  object-fit: cover !important; /* Растягивает фото во всю ширину без искажений */
+  height: auto !important;     
+  object-fit: contain !important; 
   display: block !important;
 }
-
-/* Защита круглых точек слайдера, чтобы они не растягивались */
+.card-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1 !important; 
+  justify-content: space-between; 
+}
 .product-card .slider-dots img,
 .product-card [class*="dot"] img {
   width: auto !important;
@@ -784,6 +780,5 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
   object-fit: contain !important;
   display: inline-block !important;
 }
-
 
 </style>
