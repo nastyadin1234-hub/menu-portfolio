@@ -736,58 +736,97 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
     backdrop-filter: blur(4px);
   }
 }
+/* ИДЕАЛЬНО РОВНАЯ КАРТОЧКА */
 .product-card {
   background-color: #ffffff;
   border-radius: 0px; 
   display: flex !important;
   flex-direction: column !important;
-  justify-content: flex-start !important; 
-  height: 100% !important; 
+  justify-content: space-between !important; /* Намертво прижимает кнопку к низу */
+  height: 100% !important; /* Выравнивает все карточки в ряду по одной линии */
   overflow: hidden !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04);
+  transform: translateY(-4px);
 }
 
+/* ФИКСИРОВАННАЯ ЗОНА ДЛЯ ФОТО */
 .product-card .slider-area {
   width: 100% !important;
-  height: 380px !important; /* Увеличили высоту для сочного журнального кадра */
+  height: 350px !important; /* Одинаковый крупный журнальный формат */
   overflow: hidden !important;
   position: relative !important;
-  background-color: transparent !important;
+  background-color: #ffffff !important;
 }
 
+/* КАРТИНКА БЕЗ СЕРЫХ ПОЛЕЙ */
 .product-card .card-img {
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important; /* Картинка полностью заполняет блок без серых ушей */
+  object-fit: cover !important; /* Намертво убирает любые полосы */
+  object-position: center !important; /* Фокус строго по центру десерта */
   display: block !important;
 }
 
+/* ВЫРАВНИВАНИЕ ТЕКСТА И КНОПОК */
 .product-card .card-info {
   display: flex !important;
   flex-direction: column !important;
-  flex-grow: 1 !important; /* Выравнивает все карточки по высоте */
-  justify-content: space-between !important; /* Прижимает цену и кнопку вниз */
+  flex-grow: 1 !important;
+  justify-content: space-between !important;
+  padding: 30px 24px !important; /* Просторные премиальные отступы */
+}
+/* НАЗВАНИЕ ДЕСЕРТА */
+.product-card .product-title, 
+.product-card h3 {
+  font-family: "Playfair Display", "Didot", "Bodoni MT", serif !important; /* Элегантный засечечный шрифт */
+  font-weight: 400 !important;
+  font-size: 20px !important;
+  letter-spacing: 0.04em !important; /* Легкое премиальное разрежение */
+  color: #1a1a1a !important;
+  margin-bottom: 12px !important;
+  text-align: center !important;
 }
 
-.product-card .slider-dots img,
-.product-card [class*="dot"] img {
-  width: auto !important;
-  height: auto !important;
-  object-fit: contain !important;
-  display: inline-block !important;
+/* ВЕС / РАЗМЕР */
+.product-card .product-meta {
+  font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important; /* Мелкий строгий апперкейс */
+  letter-spacing: 0.15em !important; /* Широкий отступ между буквами */
+  color: #8c8c8c !important;
+  margin-bottom: 16px !important;
+  text-align: center !important;
 }
 
-@media (max-width: 768px) {
-  .product-card .slider-area {
-    height: 280px !important; 
-  }
+/* ОПИСАНИЕ СОСТАВА */
+.product-card .product-desc,
+.product-card p {
+  font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important; /* Просторный интерлиньяж, чтобы текст «дышал» */
+  color: #555555 !important;
+  text-align: center !important;
+  margin-bottom: 24px !important;
 }
+
+/* СТОИМОСТЬ И КНОПКА */
+.product-card .product-price {
+  font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  color: #1a1a1a !important;
+  text-align: center !important;
+  margin-top: auto !important; /* Выталкивает цену строго на нижнюю границу */
+}
+
 
 
 </style>
