@@ -22,7 +22,7 @@
           </div>
         </div>
       </header>
-
+      
       <nav class="action-bars">
         <button 
           class="filter-btn" 
@@ -41,7 +41,8 @@
 
       <main class="catalog-grid">
         <TransitionGroup name="catalog-list">
-          <div v-for="product in filteredProducts" :key="product.id" class="product-card">
+          <div v-for="product in filteredProducts" :key="product.id" class="product-card fade-in">
+
             <div class="slider-area">
               <div v-if="product.badge" class="card-badge">{{ product.badge }}</div>
               
@@ -294,6 +295,38 @@ onMounted(() => { window.addEventListener('scroll', handleScroll) })
 onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
 const telegramUrl = ref('https://t.me/Ndeserts') 
 const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLmeibZDGYM8iJq-Pa2k') 
+import { onMounted, watch, nextTick } from 'vue'
+
+// Функция, которая находит карточки и вешает на них слежку скролла
+const initScrollAnimation = () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible')
+        observer.unobserve(entry.target)
+      }
+    })
+  }, {
+    threshold: 0.05, // Срабатывает чуть раньше для плавности
+    rootMargin: '0px 0px -30px 0px'
+  })
+
+  document.querySelectorAll('.product-card.fade-in').forEach(card => {
+    observer.observe(card)
+  })
+}
+
+// Запускаем при первой загрузке страницы
+onMounted(() => {
+  initScrollAnimation()
+})
+
+// Перезапускаем каждый раз, когда меняется категория товаров
+watch(() => currentCategory, async () => {
+  await nextTick() // Ждем, пока Vue обновит карточки на экране
+  initScrollAnimation()
+})
+
 
 </script>
 
@@ -826,7 +859,8 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   text-align: center !important;
   margin-top: auto !important; /* Выталкивает цену строго на нижнюю границу */
 }
-/* 1. НАСТРОЙКА КАРТОЧКИ (Скругление + триггер скролла) */
+
+/* Базовое скругление карточки (10px со всех сторон) */
 .product-card {
   background-color: #ffffff;
   border-radius: 10px !important; 
@@ -837,13 +871,8 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   overflow: hidden !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
   
-  /* Эффект ховера */
+  /* Плавность для ховера */
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
-
-  /* Скролл-анимация: привязываем появление к области видимости (view) */
-  animation: revealCard linear both;
-  animation-timeline: view();
-  animation-range: entry 0% cover 30%; /* Начинает проявляться при входе на экран и заканчивется на 30% высоты окна */
 }
 
 /* Ховер-эффект */
@@ -852,36 +881,30 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04);
 }
 
-/* 2. НАСТРОЙКА КАРТИНКИ И СЛАЙДЕРА (Идеальное скругление со всех сторон) */
-.product-card .slider-area {
-  width: 100% !important;
-  height: 380px !important; 
-  overflow: hidden !important;
-  position: relative !important;
-  background-color: transparent !important;
-  border-radius: 10px !important; /* Скругляем картинку со всех четырех сторон */
-}
-
+/* Скругление для картинок со всех четырех сторон */
+.product-card .slider-area,
 .product-card .card-img {
   width: 100% !important;
-  height: 100% !important;
+  height: 380px !important; 
   object-fit: cover !important; 
   display: block !important;
-  border-radius: 10px !important; /* Скругляем картинку со всех четырех сторон */
+  border-radius: 10px !important; /* Намертво скругляем и верх, и низ картинки */
 }
 
-/* 3. КАДРЫ ДЛЯ СКРОЛЛ-АНИМАЦИИ */
-@keyframes revealCard {
-  from {
-    opacity: 0;
-    transform: translateY(50px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+/* КЛАССЫ ДЛЯ СКРОЛЛ-АНИМАЦИИ НА JS */
+.product-card.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  /* Задаем плавность анимации выплывания */
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
+/* Момент, когда карточка докрутилась и должна стать видимой */
+.product-card.fade-in.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
 
 
 </style>
