@@ -825,12 +825,9 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   color: #1a1a1a !important;
   text-align: center !important;
   margin-top: auto !important; /* Выталкивает цену строго на нижнюю границу */
-}
-/* Контейнер слайдера */
-/* КАРТОЧКА С НАСТРОЙКОЙ СКРУГЛЕНИЯ 10PX */
+}/* 1. НАСТРОЙКА КАРТОЧКИ (Скругление 10px со всех сторон + появление) */
 .product-card {
   background-color: #ffffff;
-  /* Твои идеальные 10 пикселей со всех сторон */
   border-radius: 10px !important; 
   display: flex !important;
   flex-direction: column !important;
@@ -839,46 +836,48 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   overflow: hidden !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
   
-  /* Объединяем анимацию наведения и анимацию появления */
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-              box-shadow 0.6s ease, 
-              opacity 0.8s ease-out, 
-              letter-spacing 0.8s ease-out !important;
-
-  /* Стартовое состояние для анимации скролла: карточка прозрачная и чуть смещена вниз */
-  opacity: 0;
-  transform: translateY(40px);
+  /* Чистая CSS-анимация: карточки сами плавно выплывут */
+  animation: fadeInCard 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  
+  /* Плавность для ховера */
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
 }
 
+/* Ховер-эффект */
 .product-card:hover {
-  /* Эффект парения при наведении (трансформ перепишется со скролла) */
   transform: translateY(-6px) !important;
   box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04);
 }
 
+/* 2. НАСТРОЙКА КОНТЕЙНЕРА ФОТО (Скругление 10px со всех сторон) */
 .product-card .slider-area {
   width: 100% !important;
   height: 380px !important; 
   overflow: hidden !important;
   position: relative !important;
   background-color: transparent !important;
-  /* Контейнер тоже скругляем на 10px */
-  border-radius: 10px 10px 10px 10px !important; 
+  border-radius: 10px !important; /* Круглые углы со всех сторон */
 }
 
+/* 3. НАСТРОЙКА КАРТИНКИ (Скругление 10px со всех сторон) */
 .product-card .card-img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important; 
   display: block !important;
-  /* Картинку скругляем сверху */
-  border-radius: 10px 10px 10px 10px !important; 
+  border-radius: 10px !important; /* Круглые углы со всех сторон */
 }
 
-/* КЛАСС ДЛЯ МАГИИ СКРОЛЛА (Сработает, когда карточка появится на экране) */
-.product-card.visible {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
+/* 4. САМА АНИМАЦИЯ ПОЯВЛЕНИЯ */
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
