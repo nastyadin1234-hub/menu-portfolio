@@ -302,11 +302,6 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
 </script>
 
 <style scoped>
-:host, :root, .site-wrapper {
-  background-color: #FDFBF7 !important;
-  color: #1a1a1a !important;
-  color-scheme: light !important;
-}
 
 .site-wrapper {
   width: 100%;
