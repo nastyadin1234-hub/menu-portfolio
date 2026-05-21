@@ -295,7 +295,7 @@ const handleScroll = () => {
 
 onMounted(() => { window.addEventListener('scroll', handleScroll) })
 onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
-const telegramUrl = ref('https://t.me/Ndeserts') 
+const telegramUrl = ref('https://t.me/Ndesserts') 
 const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLmeibZDGYM8iJq-Pa2k') 
 
 
