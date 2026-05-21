@@ -848,5 +848,12 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   gap: 40px;
   width: 100%;
   position: relative;
+}/
+@media (max-width: 768px) {
+  .catalog-grid { 
+    grid-template-columns: 1fr !important; 
+    gap: 20px !important;
+  }
 }
+
 </style>
