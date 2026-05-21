@@ -741,9 +741,10 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
     backdrop-filter: blur(4px);
   }
 }
+
+  
+/* ОРИГИНАЛЬНАЯ КАРТОЧКА С МЯГКИМ И СИНХРОННЫМ ВЗЛЕТОМ */
 .product-card {
-  opacity: 1 !important;
-  visibility: visible !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
@@ -752,16 +753,31 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   border-radius: 10px !important;
   overflow: hidden !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01) !important;
-  transform: none;
-  animation: none;
+  
+  /* Плавная премиальная анимация появления, как у надписи */
+  animation: revealCard 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
 }
 
+/* Эффект парения при наведении */
 .product-card:hover {
   transform: translateY(-6px) !important;
   box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04) !important;
 }
 
+/* Анимация взлета */
+@keyframes revealCard {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ФИКСИРОВАННАЯ ЗОНА ДЛЯ ФОТО */
 .product-card .slider-area {
   width: 100% !important;
   height: 380px !important;
@@ -770,8 +786,6 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   background-color: #ffffff !important;
   border-top-left-radius: 10px !important;
   border-top-right-radius: 10px !important;
-  opacity: 1 !important;
-  visibility: visible !important;
   display: block !important;
 }
 
@@ -781,8 +795,6 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   object-fit: cover !important;
   object-position: center !important;
   display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
 }
 
 @media (max-width: 768px) {
@@ -790,6 +802,8 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
     height: 260px !important;
   }
 }
+
+/* ОФОРМЛЕНИЕ ТЕКСТА */
 .product-card .card-info {
   display: flex !important;
   flex-direction: column !important;
@@ -844,8 +858,7 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   margin-top: auto !important;
 }
 
-
-
+/* СЕТКА КАТАЛОГА (СТРОГО 2 КОЛОНКИ / 1 НА МОБИЛЬНЫХ) */
 .catalog-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr) !important;
@@ -860,6 +873,8 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
     gap: 20px !important;
   }
 }
+
+/* ПЛАВНОСТЬ СМЕНЫ КАТЕГОРИЙ */
 .catalog-list-leave-active {
   position: absolute !important;
   opacity: 0;
@@ -869,49 +884,6 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
 .catalog-list-move,
 .catalog-list-enter-active {
   transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-
-  
-.product-card {
-  opacity: 0 !important;
-  transform: translateY(40px) !important;
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
-}
-
-.product-card.visible {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-.product-card.visible:hover {
-  transform: translateY(-6px) !important;
-  box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04) !important;
-}
-/* ОТРИВОК 11: Премиальное появление карточек без JS */
-.product-card {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  height: 100% !important;
-  background-color: #ffffff !important;
-  border-radius: 10px !important;
-  overflow: hidden !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01) !important;
-  
-  /* Плавный взлет при рендере */
-  animation: revealCard 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
-}
-
-@keyframes revealCard {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 </style>
