@@ -262,7 +262,6 @@ const allProducts = ref([
     category: 'desserts', 
     images: [blackforestnewImg, blackforestcutnewImg], 
     currentImgIndex: 0,
-    badge: 'Авторский взгляд',
     weight: 'от 1 кг',
     desc: 'Шоколадный бисквит, вишневое желе, нежный сливочный мусс'
   }
@@ -884,6 +883,18 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
 .catalog-list-move,
 .catalog-list-enter-active {
   transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+<!-- ОТРИВОК 13: Добавляем ленивую загрузку для картинки -->
+<img 
+  :src="product.images[product.currentImgIndex]" 
+  :alt="product.title" 
+  class="card-img" 
+  :class="{ 'img-fade': animCardId === product.id }"
+  loading="lazy"
+/>
+/* ОТРИВОК 14: Каскадный взлет карточек по очереди */
+.product-card:nth-child(even) {
+  animation-delay: 0.15s !important; /* Вторая карточка в ряду взлетает чуть позже первой */
 }
 
 </style>
