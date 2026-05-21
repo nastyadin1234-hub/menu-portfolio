@@ -96,7 +96,8 @@
   </div>
 </template>
 <script setup>
-import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted, watch, nextTick, computed } from 'vue'
+
 
 import bannerImg from '../assets/banner.jpg'
 import eclairsImg from '../assets/eclairs.webp'
