@@ -43,42 +43,51 @@
 
       <!-- СЕТКА КАТАЛОГА -->
       <main class="catalog-grid">
-        <TransitionGroup name="catalog-list">
-          <!-- ЧИСТЫЙ ТЕГ КАРТОЧКИ (Анимация перенесена в CSS) -->
-          <div v-for="product in filteredProducts" :key="product.id" class="product-card">
+  <TransitionGroup name="catalog-list">
 
-            <div class="slider-area">
-              <div v-if="product.badge" class="card-badge">{{ product.badge }}</div>
-              
-              <button v-if="product.images.length > 1" class="arrow left" @click="prevImage(product)">‹</button>
-              
-              <img 
-                :src="product.images[product.currentImgIndex]" 
-                :alt="product.title" 
-                class="card-img" 
-                :class="{ 'img-fade': animCardId === product.id }"
-              />
-              
-              <button v-if="product.images.length > 1" class="arrow right" @click="nextImage(product)">›</button>
-              <div v-if="product.images.length > 1" class="slider-dots">
-                <span 
-                  v-for="(img, index) in product.images" 
-                  :key="index"
-                  class="dot"
-                  :class="{ active: index === product.currentImgIndex }"
-                ></span>
-              </div>
-            </div>
-            
-            <div class="card-info">
-              <h3 class="product-title">{{ product.title }}</h3>
-              <div class="product-weight">{{ product.weight }}</div>
-              <p class="product-desc">{{ product.desc }}</p>
-              <div class="price-tag">{{ product.price }}</div>
-            </div>
-          </div>
-        </TransitionGroup>
-      </main>
+    <!-- ВСТАВЛЯТЬ СТРОГО СЮДА: -->
+    <div 
+      v-for="product in filteredProducts" 
+      :key="product.id" 
+      class="product-card"
+      v-scroll-reveal
+    >
+
+      <div class="slider-area">
+        <div v-if="product.badge" class="card-badge">{{ product.badge }}</div>
+        
+        <button v-if="product.images.length > 1" class="arrow left" @click="prevImage(product)">‹</button>
+        
+        <img 
+          :src="product.images[product.currentImgIndex]" 
+          :alt="product.title" 
+          class="card-img" 
+          :class="{ 'img-fade': animCardId === product.id }"
+          loading="lazy"
+        />
+        
+        <button v-if="product.images.length > 1" class="arrow right" @click="nextImage(product)">›</button>
+        <div v-if="product.images.length > 1" class="slider-dots">
+          <span 
+            v-for="(img, index) in product.images" 
+            :key="index"
+            class="dot"
+            :class="{ active: index === product.currentImgIndex }"
+          ></span>
+        </div>
+      </div>
+      
+      <div class="card-info">
+        <h3 class="product-title">{{ product.title }}</h3>
+        <div class="product-weight">{{ product.weight }}</div>
+        <p class="product-desc">{{ product.desc }}</p>
+        <div class="price-tag">{{ product.price }}</div>
+      </div>
+
+    </div> <!-- Закрывающий тег карточки -->
+
+  </TransitionGroup>
+</main>
 
       <!-- ПОДВАЛ -->
       <footer class="footer">
@@ -302,6 +311,25 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
 const telegramUrl = ref('https://t.me/Ndesserts26') 
 const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLmeibZDGYM8iJq-Pa2k') 
 
+const vScrollReveal = {
+  mounted(el) {
+    el.style.opacity = "0"
+    el.style.transform = "translateY(40px)"
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          el.style.transition = "opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)"
+          el.style.opacity = "1"
+          el.style.transform = "translateY(0)"
+          observer.unobserve(el.target)
+        }
+      })
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" })
+    
+    observer.observe(el)
+  }
+}
 
 </script>
 <style scoped>
@@ -872,29 +900,36 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
     gap: 20px !important;
   }
 }
+.product-card {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+  background-color: #ffffff !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01) !important;
+  /* Убрали анимацию отсюда, теперь за нее отвечает скрипт скролла */
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
+}
 
-/* ПЛАВНОСТЬ СМЕНЫ КАТЕГОРИЙ */
+/* Ховер работает только тогда, когда карточка уже встала на место */
+.product-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04) !important;
+}
+
+/* Идеально плавная и быстрая смена категорий по клику на кнопки */
 .catalog-list-leave-active {
   position: absolute !important;
   opacity: 0;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: opacity 0.25s ease, transform 0.25s ease !important;
 }
 
 .catalog-list-move,
 .catalog-list-enter-active {
-  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
-<!-- ОТРИВОК 13: Добавляем ленивую загрузку для картинки -->
-<img 
-  :src="product.images[product.currentImgIndex]" 
-  :alt="product.title" 
-  class="card-img" 
-  :class="{ 'img-fade': animCardId === product.id }"
-  loading="lazy"
-/>
-/* ОТРИВОК 14: Каскадный взлет карточек по очереди */
-.product-card:nth-child(even) {
-  animation-delay: 0.15s !important; /* Вторая карточка в ряду взлетает чуть позже первой */
-}
+
 
 </style>
