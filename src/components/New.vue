@@ -848,12 +848,24 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   gap: 40px;
   width: 100%;
   position: relative;
-}/
+}
+
 @media (max-width: 768px) {
   .catalog-grid { 
-    grid-template-columns: 1fr !important; 
+    grid-template-columns: 1fr !important;
     gap: 20px !important;
   }
 }
+.catalog-list-leave-active {
+  position: absolute !important;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.catalog-list-move,
+.catalog-list-enter-active {
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
 
 </style>
