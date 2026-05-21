@@ -935,6 +935,10 @@ const vScrollReveal = {
   transform: translateY(-6px) !important;
   box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04) !important;
 }
+/* Каждая чётная карточка (правая в ряду) появится на 0.2 секунды позже левой */
+.product-card:nth-child(even) {
+  transition-delay: 0.2s !important;
+}
 
 
 </style>
