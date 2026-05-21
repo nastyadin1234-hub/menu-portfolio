@@ -840,11 +840,13 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   margin-top: auto !important;
 }
 
+
+
 .catalog-grid {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
-  gap: 30px !important;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 40px;
+  width: 100%;
+  position: relative;
 }
-
-
 </style>
