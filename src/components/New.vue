@@ -295,7 +295,7 @@ const handleScroll = () => {
 
 onMounted(() => { window.addEventListener('scroll', handleScroll) })
 onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
-const telegramUrl = ref('https://t.me/Ndesserts') 
+const telegramUrl = ref('https://t.me/Ndesserts26') 
 const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLmeibZDGYM8iJq-Pa2k') 
 
 
@@ -740,86 +740,97 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
     backdrop-filter: blur(4px);
   }
 }
-/* ИДЕАЛЬНО РОВНАЯ КАРТОЧКА */
 .product-card {
-  background-color: #ffffff;
-  border-radius: 0px; 
+  opacity: 1 !important;
+  visibility: visible !important;
   display: flex !important;
   flex-direction: column !important;
-  justify-content: space-between !important; /* Намертво прижимает кнопку к низу */
-  height: 100% !important; /* Выравнивает все карточки в ряду по одной линии */
+  justify-content: space-between !important;
+  height: 100% !important;
+  background-color: #ffffff !important;
+  border-radius: 10px !important;
   overflow: hidden !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01) !important;
+  transform: none;
+  animation: none;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
 }
 
 .product-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04) !important;
 }
 
-/* ФИКСИРОВАННАЯ ЗОНА ДЛЯ ФОТО */
 .product-card .slider-area {
   width: 100% !important;
-  height: 350px !important; /* Одинаковый крупный журнальный формат */
+  height: 380px !important;
   overflow: hidden !important;
   position: relative !important;
   background-color: #ffffff !important;
-}
-
-/* КАРТИНКА БЕЗ СЕРЫХ ПОЛЕЙ */
-.product-card .card-img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important; /* Намертво убирает любые полосы */
-  object-position: center !important; /* Фокус строго по центру десерта */
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
   display: block !important;
 }
 
-/* ВЫРАВНИВАНИЕ ТЕКСТА И КНОПОК */
+.product-card .card-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+@media (max-width: 768px) {
+  .product-card .slider-area {
+    height: 260px !important;
+  }
+}
+
 .product-card .card-info {
   display: flex !important;
   flex-direction: column !important;
   flex-grow: 1 !important;
   justify-content: space-between !important;
-  padding: 30px 24px !important; /* Просторные премиальные отступы */
+  padding: 30px 24px !important;
 }
-/* НАЗВАНИЕ ДЕСЕРТА */
+
 .product-card .product-title, 
 .product-card h3 {
-  font-family: "Playfair Display", "Didot", "Bodoni MT", serif !important; /* Элегантный засечечный шрифт */
+  font-family: "Playfair Display", "Didot", "Bodoni MT", serif !important;
   font-weight: 400 !important;
   font-size: 20px !important;
-  letter-spacing: 0.04em !important; /* Легкое премиальное разрежение */
+  letter-spacing: 0.04em !important;
   color: #1a1a1a !important;
   margin-bottom: 12px !important;
   text-align: center !important;
 }
 
-/* ВЕС / РАЗМЕР */
 .product-card .product-meta {
   font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
   font-weight: 300 !important;
   font-size: 11px !important;
-  text-transform: uppercase !important; /* Мелкий строгий апперкейс */
-  letter-spacing: 0.15em !important; /* Широкий отступ между буквами */
+  text-transform: uppercase !important;
+  letter-spacing: 0.15em !important;
   color: #8c8c8c !important;
   margin-bottom: 16px !important;
   text-align: center !important;
 }
 
-/* ОПИСАНИЕ СОСТАВА */
 .product-card .product-desc,
 .product-card p {
   font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
   font-weight: 300 !important;
   font-size: 13px !important;
-  line-height: 1.6 !important; /* Просторный интерлиньяж, чтобы текст «дышал» */
+  line-height: 1.6 !important;
   color: #555555 !important;
   text-align: center !important;
   margin-bottom: 24px !important;
 }
 
-/* СТОИМОСТЬ И КНОПКА */
 .product-card .product-price {
   font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
   font-weight: 500 !important;
@@ -828,60 +839,7 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   letter-spacing: 0.1em !important;
   color: #1a1a1a !important;
   text-align: center !important;
-  margin-top: auto !important; /* Выталкивает цену строго на нижнюю границу */
-}
-/* ИДЕАЛЬНО РОЯ СЕТКА КАРТОЧЕК */
-.product-card {
-  background-color: #ffffff;
-  border-radius: 10px !important; /* Ровные круглые углы карточки */
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important; 
-  height: 100% !important; 
-  overflow: hidden !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
-}
-
-/* Эффект парения при наведении */
-.product-card:hover {
-  transform: translateY(-6px) !important;
-  box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04);
-}
-
-/* КАРТИНКА И СЛАЙДЕР: Скругление 10px со всех 4-х сторон БЕЗ ПОЛЕЙ */
-.product-card .slider-area,
-.product-card .card-img {
-  width: 100% !important;
-  height: 380px !important; /* Одинаковая журнальная высота картинок */
-  object-fit: cover !important; /* Фото сочные, на всю ширину, без серых полос */
-  display: block !important;
-  border-radius: 10px !important; /* Картинки идеально скруглены со всех сторон */
-}
-
-@media (max-width: 768px) {
-  .product-card .slider-area,
-  .product-card .card-img {
-    height: 260px !important; /* Аккуратная высота для экранов телефонов */
-  }
-}
-
-/* ЖЕЛЕЗОБЕТОННЫЙ ВОЗВРАТ КАРТОЧЕК НА ЭКРАН */
-.product-card {
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: flex !important;
-  transform: none !important;
-  animation: none !important;
-}
-
-.product-card .slider-area,
-.product-card .card-img {
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: block !important;
-  transform: none !important;
-  animation: none !important;
+  margin-top: auto !important;
 }
 
 </style>
