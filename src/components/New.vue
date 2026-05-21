@@ -41,8 +41,8 @@
 
       <main class="catalog-grid">
         <TransitionGroup name="catalog-list">
-         <!-- ИСПРАВЛЕННЫЙ ВАРИАНТ -->
 <div v-for="product in filteredProducts" :key="product.id" class="product-card">
+
 
             <div class="slider-area">
               <div v-if="product.badge" class="card-badge">{{ product.badge }}</div>
@@ -301,8 +301,12 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
 
 
 </script>
-
 <style scoped>
+:host, :root, .site-wrapper {
+  background-color: #FDFBF7 !important;
+  color: #1a1a1a !important;
+  color-scheme: light !important;
+}
 
 .site-wrapper {
   width: 100%;
@@ -445,8 +449,7 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   color: #FDFBF7;
   border-color: #1a1a1a;
 }
-
-.slider-dots {
+  .slider-dots {
   position: absolute;
   bottom: 15px;
   display: flex;
@@ -598,8 +601,7 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   flex-direction: column;
   justify-content: space-between; 
 }
-
-.meta-info {
+  .meta-info {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
   font-weight: bold;
@@ -682,8 +684,7 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   object-fit: cover; 
   filter: grayscale(0.2) contrast(1.05); 
 }
-
-.catalog-list-move,
+  .catalog-list-move,
 .catalog-list-enter-active,
 .catalog-list-leave-active {
   transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
@@ -785,7 +786,6 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
     height: 260px !important;
   }
 }
-
 .product-card .card-info {
   display: flex !important;
   flex-direction: column !important;
