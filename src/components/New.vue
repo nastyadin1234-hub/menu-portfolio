@@ -313,23 +313,30 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
 
 const vScrollReveal = {
   mounted(el) {
-    el.style.opacity = "0"
-    el.style.transform = "translateY(40px)"
-    
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          el.style.transition = "opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)"
-          el.style.opacity = "1"
-          el.style.transform = "translateY(0)"
+          el.classList.add('visible')
           observer.unobserve(el.target)
         }
       })
-    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" })
-    
+    }, { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }) // -100px заставит карточку вылезать чуть позже, когда вы её точно увидите
+    observer.observe(el)
+  },
+  updated(el) {
+    el.classList.remove('visible') // Сбрасываем видимость при смене категории
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          el.classList.add('visible')
+          observer.unobserve(el.target)
+        }
+      })
+    }, { threshold: 0.1, rootMargin: "0px 0px -100px 0px" })
     observer.observe(el)
   }
 }
+
 
 </script>
 <style scoped>
@@ -909,26 +916,24 @@ const vScrollReveal = {
   border-radius: 10px !important;
   overflow: hidden !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01) !important;
-  /* Убрали анимацию отсюда, теперь за нее отвечает скрипт скролла */
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
+
+  /* ЖЕЛЕЗОБЕТОННО СКРЫВАЕМ ПРИ ЗАГРУЗКЕ: */
+  opacity: 0 !important;
+  transform: translateY(60px) !important;
+  transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/* Ховер работает только тогда, когда карточка уже встала на место */
-.product-card:hover {
+/* КЛАСС КОТОРЫЙ ВКЛЮЧИТ СКРИПТ ПРИ СКРОЛЛЕ: */
+.product-card.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Эффект парения работает только для уже появившихся карточек */
+.product-card.visible:hover {
   transform: translateY(-6px) !important;
   box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04) !important;
-}
-
-/* Идеально плавная и быстрая смена категорий по клику на кнопки */
-.catalog-list-leave-active {
-  position: absolute !important;
-  opacity: 0;
-  transition: opacity 0.25s ease, transform 0.25s ease !important;
-}
-
-.catalog-list-move,
-.catalog-list-enter-active {
-  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 
