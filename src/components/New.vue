@@ -2,6 +2,7 @@
   <div class="site-wrapper">
     <div class="main-content-area">
 
+      <!-- ГЛАВНЫЙ ЖУРНАЛЬНЫЙ БАННЕР -->
       <header class="editorial-banner">
         <div class="editorial-grid">
           <div class="text-block">
@@ -23,6 +24,7 @@
         </div>
       </header>
       
+      <!-- НАВИГАЦИЯ И ФИЛЬТРЫ -->
       <nav class="action-bars">
         <button 
           class="filter-btn" 
@@ -36,69 +38,66 @@
           @click="currentCategory = 'desserts'"
         >
          Десерты и пирожные
-          </button>
+        </button>
       </nav>
 
-<main class="catalog-grid">
-  <TransitionGroup name="catalog-list">
-    <!-- ДОБАВЛЕНО: v-mounted автоматически включает плавное появление карточки -->
-    <div 
-      v-for="product in filteredProducts" 
-      :key="product.id" 
-      class="product-card"
-      v-mounted="(el) => el.el.classList.add('visible')"
-    >
+      <!-- СЕТКА КАТАЛОГА -->
+      <main class="catalog-grid">
+        <TransitionGroup name="catalog-list">
+          <!-- ЧИСТЫЙ ТЕГ КАРТОЧКИ (Анимация перенесена в CSS) -->
+          <div v-for="product in filteredProducts" :key="product.id" class="product-card">
 
-      <div class="slider-area">
-        <div v-if="product.badge" class="card-badge">{{ product.badge }}</div>
-        
-        <button v-if="product.images.length > 1" class="arrow left" @click="prevImage(product)">‹</button>
-        
-        <img 
-          :src="product.images[product.currentImgIndex]" 
-          :alt="product.title" 
-          class="card-img" 
-          :class="{ 'img-fade': animCardId === product.id }"
-        />
-        
-        <button v-if="product.images.length > 1" class="arrow right" @click="nextImage(product)">›</button>
-        <div v-if="product.images.length > 1" class="slider-dots">
-          <span 
-            v-for="(img, index) in product.images" 
-            :key="index"
-            class="dot"
-            :class="{ active: index === product.currentImgIndex }"
-          ></span>
+            <div class="slider-area">
+              <div v-if="product.badge" class="card-badge">{{ product.badge }}</div>
+              
+              <button v-if="product.images.length > 1" class="arrow left" @click="prevImage(product)">‹</button>
+              
+              <img 
+                :src="product.images[product.currentImgIndex]" 
+                :alt="product.title" 
+                class="card-img" 
+                :class="{ 'img-fade': animCardId === product.id }"
+              />
+              
+              <button v-if="product.images.length > 1" class="arrow right" @click="nextImage(product)">›</button>
+              <div v-if="product.images.length > 1" class="slider-dots">
+                <span 
+                  v-for="(img, index) in product.images" 
+                  :key="index"
+                  class="dot"
+                  :class="{ active: index === product.currentImgIndex }"
+                ></span>
+              </div>
+            </div>
+            
+            <div class="card-info">
+              <h3 class="product-title">{{ product.title }}</h3>
+              <div class="product-weight">{{ product.weight }}</div>
+              <p class="product-desc">{{ product.desc }}</p>
+              <div class="price-tag">{{ product.price }}</div>
+            </div>
+          </div>
+        </TransitionGroup>
+      </main>
+
+      <!-- ПОДВАЛ -->
+      <footer class="footer">
+        <div class="contact-section">
+          <h3>Для обсуждения заказа и индивидуального декора:</h3>
+          <div class="links-box">
+            <a :href="maxUrl" rel="noopener noreferrer" class="w-40 text-center link-btn">MAX</a>       
+            <a :href="telegramUrl" target="_blank" rel="noopener noreferrer" class="link-btn">TELEGRAM</a>
+          </div>
         </div>
-      </div>
-      
-      <div class="card-info">
-        <h3 class="product-title">{{ product.title }}</h3>
-        <div class="product-weight">{{ product.weight }}</div>
-        <p class="product-desc">{{ product.desc }}</p>
-        <div class="price-tag">{{ product.price }}</div>
-      </div>
-    </div>
-  </TransitionGroup>
-</main>
+        <p class="copyright">© 2026 Dinchenko. Все права защищены.</p>
+      </footer>
 
-<!-- ПОДВАЛ -->
-<footer class="footer">
-  <div class="contact-section">
-    <h3>Для обсуждения заказа и индивидуального декора:</h3>
-    <div class="links-box">
-      <a :href="maxUrl" rel="noopener noreferrer" class="w-40 text-center link-btn">MAX</a>       
-       <a :href="telegramUrl" target="_blank" rel="noopener noreferrer" class="link-btn">TELEGRAM</a>
+      <button v-if="showScrollBtn" class="btn-up" @click="scrollToTop">↑</button>
+
     </div>
   </div>
-  <p class="copyright">© 2026 Dinchenko. Все права защищены.</p>
-</footer>
-
-<button v-if="showScrollBtn" class="btn-up" @click="scrollToTop">↑</button>
-
-</div>
-</div>
 </template>
+
 
 <script setup>
 import { ref, onMounted, onUnmounted, watch, nextTick, computed } from 'vue'
@@ -887,6 +886,32 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
 .product-card.visible:hover {
   transform: translateY(-6px) !important;
   box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04) !important;
+}
+/* ОТРИВОК 11: Премиальное появление карточек без JS */
+.product-card {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+  background-color: #ffffff !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01) !important;
+  
+  /* Плавный взлет при рендере */
+  animation: revealCard 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
+}
+
+@keyframes revealCard {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 </style>
