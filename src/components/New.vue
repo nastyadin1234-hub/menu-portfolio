@@ -809,6 +809,7 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   text-align: center !important;
 }
 
+.product-card .product-weight,
 .product-card .product-meta {
   font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
   font-weight: 300 !important;
@@ -831,6 +832,7 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   margin-bottom: 24px !important;
 }
 
+.product-card .price-tag,
 .product-card .product-price {
   font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
   font-weight: 500 !important;
@@ -841,5 +843,12 @@ const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLme
   text-align: center !important;
   margin-top: auto !important;
 }
+
+.catalog-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+  gap: 30px !important;
+}
+
 
 </style>
