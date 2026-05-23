@@ -447,12 +447,15 @@ const vScrollReveal = {
   position: absolute;
   top: 15px;
   left: 15px;
-  background-color: transparent !important; /* Убираем серый фон */
+  /* Возвращаем благородный чистый белый/светло-серый фон с легкой прозрачностью */
+  background-color: rgba(253, 251, 247, 0.95) !important; 
   color: #1a1a1a !important; 
-  padding: 0 0 3px 0 !important; /* Убираем рамки */
-  border: none !important; 
-  border-bottom: 1px solid #1a1a1a !important; /* Оставляем только изящную линию снизу */
-  border-radius: 0 !important;
+  border: 1px solid #1a1a1a !important; /* Тонкая строгая рамка */
+  border-radius: 2px !important;
+  
+  /* ХИТРОСТЬ ТУТ: добавляем внутренние отступы, чтобы тексту было просторно */
+  padding: 6px 12px !important; 
+  
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -633,63 +636,70 @@ const vScrollReveal = {
   border-bottom: 1px solid #1a1a1a; 
   margin-bottom: 60px;
 }
-
-/* РОДИТЕЛЬСКИЙ БЛОК ТЕКСТА В ШАПКЕ */
-.editorial-grid .text-block {
-  padding: 60px 80px 60px 0; 
-  display: flex !important;
-  flex-direction: column !important;
-  /* Принудительно выравниваем все блоки строго по левому краю */
-  align-items: flex-start !important; 
-  text-align: left !important;
-}
-
-/* ЗАГОЛОВОК */
-.editorial-grid .main-title {
-  text-align: left !important;
-  margin: 30px 0 20px 0 !important;
-}
-
-/* ЛИНЕЙКА-РАЗДЕЛИТЕЛЬ */
-.editorial-grid .divider {
-  align-self: flex-start !important; /* Удерживает линию слева */
-  margin: 0 0 30px 0 !important;
-}
-
-/* МАНИФЕСТ */
-.editorial-grid .manifesto {
-  text-align: left !important;
-  align-self: flex-start !important;
-  margin: 0 0 40px 0 !important;
-}
-
-/* ФИНАЛЬНАЯ ПОДПИСЬ (Убираем случайное центрирование) */
-.editorial-grid .signature {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 15px;
-  color: #1a1a1a;
-  text-align: left !important;
-  align-self: flex-start !important; /* Намертво прижимает подпись к левой оси */
-  margin-top: auto !important; /* Оставляет её в самом низу блока */
-}
-
+.editorial-grid .text-block, 
 .text-block {
-  padding: 60px 80px 60px 0; 
+  padding: 60px 40px 60px 0 !important; 
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important; 
-  align-items: flex-start !important; /* Выравнивает блоки по левому краю */
-  text-align: left !important; /* Переводит выравнивание текста влево */
+  align-items: center !important; /* Мягко центрирует элементы по горизонтали */
+  text-align: center !important; /* Центрирует строчки текста внутри блоков */
 }
 
-  .meta-info {
+/* МЕТА-ИНФОРМАЦИЯ (Noble Desserts над заголовком) */
+.meta-info {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
   font-weight: bold;
   letter-spacing: 3px;
   color: #838091; 
+  text-align: center !important;
+  margin-bottom: 10px;
 }
+
+/* ГЛАВНЫЙ ЗАГОЛОВОК */
+.editorial-grid .main-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px; 
+  font-weight: 400; 
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin: 30px 0 20px 0 !important;
+  text-align: center !important; /* Возвращаем красивое центрирование */
+}
+
+/* ЛИНЕЙКА-РАЗДЕЛИТЕЛЬ */
+.editorial-grid .divider {
+  width: 60px;
+  height: 1px;
+  background-color: #1a1a1a;
+  margin: 0 auto 30px auto !important; /* Линия встает строго по центру */
+  align-self: center !important;
+}
+
+/* МАНИФЕСТ КОНДИТЕРА */
+.editorial-grid .manifesto {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 2.1 !important; /* Воздушный журнальный шаг строк */
+  color: #333333;
+  max-width: 450px;
+  text-align: center !important;
+  align-self: center !important;
+  margin: 0 auto 40px auto !important;
+}
+
+/* ФИНАЛЬНАЯ ПОДПИСЬ НАДЕЖДЫ */
+.editorial-grid .signature {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: #1a1a1a;
+  text-align: center !important;
+  align-self: center !important; /* Выравниваем по центру */
+  margin-top: auto !important; 
+}
+
 
 .word-wrap {
   display: inline-block;
@@ -702,10 +712,10 @@ const vScrollReveal = {
   transform: translateY(110%);
   animation: revealWord 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-
 @keyframes revealWord {
   to { transform: translateY(0); }
 }
+
 .main-title {
   font-family: 'Playfair Display', serif;
   font-size: 42px; 
@@ -713,23 +723,25 @@ const vScrollReveal = {
   line-height: 1.2;
   color: #1a1a1a;
   margin: 30px 0;
-  text-align: left !important; /* Убираем центрирование заголовка */
+  text-align: center !important; /* Вернули уютное центрирование заголовка */
 }
 
 .divider {
   width: 60px;
   height: 1px;
   background-color: #1a1a1a;
-  margin-bottom: 30px;
-  align-self: flex-start !important; /* Удерживает линию строго слева */
+  margin: 0 auto 30px auto !important; /* Линейка встает строго по центру */
+  align-self: center !important; 
 }
+
 .manifesto {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  line-height: 1.9; 
+  line-height: 2.1 !important; /* Сделали строчки чуть воздушнее, как в журнале */
   color: #333333;
   max-width: 450px;
-  text-align: left !important; /* Убираем центрирование манифеста */
+  text-align: center !important; /* Текст манифеста теперь центрирован */
+  margin: 0 auto 40px auto !important; /* Сам блок манифеста выровнен по центру */
 }
 
 .signature {
@@ -738,8 +750,8 @@ const vScrollReveal = {
   font-size: 15px;
   color: #1a1a1a;
   margin-top: 40px;
-  text-align: left !important; /* Убираем центрирование подписи */
-  align-self: flex-start !important;
+  text-align: center !important; /* Убрали левое выравнивание подписи */
+  align-self: center !important; /* Подпись встает строго по центру */
 }
 
 .image-block {
