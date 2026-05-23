@@ -524,6 +524,11 @@ const vScrollReveal = {
   justify-content: space-between;
   height: 100%;
   background-color: #ffffff;
+  
+  /* ДОБАВЛЕНО: Тонкий контур (цвет подобран под благородный стиль сайта) */
+  border: 1px solid #e3dec9; 
+  box-sizing: border-box; /* Чтобы рамка не увеличивала физический размер карточки */
+  
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
@@ -545,6 +550,8 @@ const vScrollReveal = {
 /* Эффект парения при наведении */
 .catalog-grid .product-card.visible:hover,
 .product-card.visible:hover { 
+  /* При наведении карточка приподнимается, а рамку можно сделать чуть темнее для акцента */
+  border-color: #d1cbb4 !important;
   transform: translateY(-6px) !important; 
   box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04) !important; 
   transition-delay: 0s !important; 
@@ -804,17 +811,114 @@ const vScrollReveal = {
   width: calc(50% - 20px) !important;
   z-index: 0;
 }
-
 /* ======================================================= */
 /* 7. МОБИЛЬНАЯ АДАПТИВНОСТЬ (ЭКРАНЫ ДО 768px)            */
 /* ======================================================= */
 @media (max-width: 768px) { 
-  /* Каталог в одну колонку */
+  /* Каталог в ДВЕ колонки для удобного скролла на телефоне */
   .catalog-grid { 
-    grid-template-columns: 1fr !important; 
-    gap: 20px !important;
+    grid-template-columns: repeat(2, 1fr) !important; 
+    gap: 12px !important; /* Уменьшили зазор, чтобы карточки помещались */
+    padding: 0 10px !important; /* Отступы сетки по бокам экрана */
   } 
   
-.product-card {transition-delay: 0s !important;transform: translateY(30px) !important;}/* Высота области фото карточки на телефоне */.slider-area {height: 260px !important;}.catalog-list-leave-active {position: absolute !important;width: 100% !important;}.links-box {flex-direction: column;align-items: center;gap: 10px;}/* Скрываем боковую картинку баннера */.image-block {display: none !important;}/* Разворачиваем баннер в один столбец */.editorial-grid {grid-template-columns: 1fr !important;min-height: auto !important;}/* Безопасные внутренние отступы для текста на мобильном */.text-block {padding: 40px 16px !important;align-items: center !important;text-align: center !important;width: 100% !important;box-sizing: border-box !important;}/* ИСПРАВЛЕНИЕ: Мягкий размер и центрирование заголовка */.main-title {font-size: 26px !important;line-height: 1.3 !important;text-align: center !important;width: 100% !important;margin: 15px 0 !important;}/* ИСПРАВЛЕНИЕ: Склеиваем разбитые скриптом анимации буквы обратно в слова */.main-title .word-wrap,.word-wrap {display: inline !important;overflow: visible !important;}.main-title .anim-word,.anim-word {display: inline !important;transform: none !important;animation: none !important;}/* Центрируем декоративную полоску, манифест и подпись шефа */.divider {margin: 0 auto 25px auto !important;}.manifesto {margin: 0 auto !important;text-align: center !important;max-width: 100% !important;}.signature {text-align: center !important;margin-top: 25px !important;}/* Мобильные габариты для кнопки "Наверх" */.btn-up {bottom: 20px;right: 20px;width: 44px;height: 44px;font-size: 14px;background-color: rgba(253, 251, 247, 0.9);backdrop-filter: blur(4px);}}
-</style>
+  /* Маленький аккуратный контур для карточек товаров */
+  .product-card {
+    border: 1px solid #e3dec9 !important; /* Тонкая рамка (цвет подобран под благородный стиль) */
+    border-radius: 8px !important;        /* Мягкое скругление углов */
+    padding: 8px !important;              /* Внутренний отступ от рамки */
+    background-color: #fff !important;    /* Белый фон карточки */
+    box-sizing: border-box !important;
+    
+    /* Сохраняем ваши исходные свойства анимации */
+    transition-delay: 0s !important;
+    transform: translateY(30px) !important;
+  }
 
+  /* Высота области фото карточки на телефоне (уменьшена под 2 колонки) */
+  .slider-area {
+    height: 180px !important; /* 260px было много для двух колонок */
+  }
+
+  .catalog-list-leave-active {
+    position: absolute !important;
+    width: 100% !important;
+  }
+
+  .links-box {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Скрываем боковую картинку баннера */
+  .image-block {
+    display: none !important;
+  }
+
+  /* Разворачиваем баннер в один столбец */
+  .editorial-grid {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+
+  /* Безопасные внутренние отступы для текста на мобильном */
+  .text-block {
+    padding: 40px 16px !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ИСПРАВЛЕНИЕ: Мягкий размер и центрирование заголовка */
+  .main-title {
+    font-size: 26px !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin: 15px 0 !important;
+  }
+
+  /* ИСПРАВЛЕНИЕ: Склеиваем разбитые скриптом анимации буквы обратно в слова */
+  .main-title .word-wrap,
+  .word-wrap {
+    display: inline !important;
+    overflow: visible !important;
+  }
+
+  .main-title .anim-word,
+  .anim-word {
+    display: inline !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  /* Центрируем декоративную полоску, манифест и подпись шефа */
+  .divider {
+    margin: 0 auto 25px auto !important;
+  }
+
+  .manifesto {
+    margin: 0 auto !important;
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+
+  .signature {
+    text-align: center !important;
+    margin-top: 25px !important;
+  }
+
+  /* Мобильные габариты для кнопки "Наверх" */
+  .btn-up {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    font-size: 14px;
+    background-color: rgba(253, 251, 247, 0.9);
+    backdrop-filter: blur(4px);
+  }
+}
+</style>
