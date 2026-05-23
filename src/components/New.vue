@@ -447,11 +447,11 @@ const vScrollReveal = {
   position: absolute;
   top: 15px;
   left: 15px;
-  background-color: transparent !important; /* Убираем тяжелый серый/белый фон */
-  color: #1a1a1a !important; /* Строгий черный цвет текста */
-  padding: 0 0 3px 0 !important; /* Полностью убираем рамки вокруг */
+  background-color: transparent !important; /* Убираем серый фон */
+  color: #1a1a1a !important; 
+  padding: 0 0 3px 0 !important; /* Убираем рамки */
   border: none !important; 
-  border-bottom: 1px solid #1a1a1a !important; /* Оставляем только тонкую элегантную линию снизу */
+  border-bottom: 1px solid #1a1a1a !important; /* Оставляем только изящную линию снизу */
   border-radius: 0 !important;
   font-size: 10px;
   text-transform: uppercase;
@@ -459,6 +459,7 @@ const vScrollReveal = {
   font-weight: bold;
   z-index: 1;
 }
+
 
 
 .arrow {
