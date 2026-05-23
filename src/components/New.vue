@@ -1034,104 +1034,6 @@ const vScrollReveal = {
   z-index: 0;
 }
 
-@media (max-width: 768px) {
-  
-  /* 1. Сетка каталога в одну колонку */
-  .catalog-grid { 
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-  }
-
-  /* 2. Сброс анимации задержки и сдвига карточек */
-  .product-card {
-    transition-delay: 0s !important;
-    transform: translateY(30px);
-  }
-
-  /* 3. Уменьшение высоты картинок десертов */
-  .product-card .slider-area { 
-    height: 260px !important; 
-  }
-
-  /* 4. Исправление уходящих карточек во Vue Transition */
-  .catalog-list-leave-active { 
-    position: absolute !important;
-    width: 100% !important; 
-  }
-
-  /* 5. Футер: кнопки встают друг под друга */
-  .links-box { 
-    flex-direction: column; 
-    align-items: center; 
-    gap: 10px; 
-  }
-  
-  /* 6. Прячем картинку с карамелью на телефонах */
-  .image-block { 
-    display: none !important; 
-  }
-  
-  /* 7. СБРАСЫВАЕМ ДЕCКТОПНУЮ СЕТКУ ШАПКИ (Убираем пустоту и зажатость) */
-  .editorial-grid {
-    grid-template-columns: 1fr !important;
-    min-height: auto !important;
-  }
-  
-  /* 8. ОСВОБОЖДАЕМ ШИРИНУ ТЕКСТА (Убираем отступ справа 80px из десктопа) */
-  .text-block {
-    padding: 30px 15px !important; /* Даем тексту дышать на всю ширину экрана */
-    align-items: center !important;
-    text-align: center !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  /* 9. Уменьшаем размер букв, чтобы заголовок не рвался на куски */
-  .main-title { 
-    font-size: 26px !important; 
-    text-align: center !important;
-    line-height: 1.3 !important;
-    width: 100% !important;
-  }
-
-  /* Склеиваем слова обратно в полноценные мобильные строчки */
-  .main-title .word-wrap {
-    display: inline !important;
-  }
-  
-  .main-title .anim-word {
-    display: inline-block !important;
-  }
-
-  /* 10. Центрируем разделитель и манифест */
-  .divider {
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  
-  .manifesto { 
-    margin: 0 auto !important; 
-    text-align: center !important;
-    font-size: 14px !important;
-    line-height: 1.8 !important;
-  }
-
-  .signature {
-    text-align: center !important;
-    margin-top: 25px !important;
-  }
-
-  /* Кнопка наверх */
-  .btn-up {
-    bottom: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    font-size: 14px;
-    background-color: rgba(253, 251, 247, 0.9);
-    backdrop-filter: blur(4px);
-  }
-}
 .main-title, .manifesto, .signature {
   text-align: left !important; /* Принудительно убираем центрирование у каждого текстового блока */
 }
@@ -1158,6 +1060,99 @@ const vScrollReveal = {
   margin-left: 0 !important; /* Удерживаем вашу аккуратную черную полоску строго слева */
   margin-right: auto !important;
 }
+@media (max-width: 768px) {
+  
+  /* Каталог в одну колонку */
+  .catalog-grid { 
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
 
+  .product-card .slider-area { 
+    height: 260px !important; 
+  }
+
+  .links-box { 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 10px; 
+  }
+  
+  /* Прячем картинку на смартфонах */
+  .image-block { 
+    display: none !important; 
+  }
+  
+  /* Перестраиваем сетку шапки в один ряд */
+  .editorial-grid {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+  
+  /* УБИРАЕМ ЗАЖАТОСТЬ ШИРИНЫ (СБРАСЫВАЕМ ДЕСКТОПНЫЕ ПОЛЯ) */
+  .editorial-grid .text-block, 
+  .text-block {
+    padding: 40px 16px !important; /* Даем тексту занять ВСЮ ширину экрана */
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ИСПРАВЛЯЕМ ЗАГОЛОВОК НА ТЕЛЕФОНЕ */
+  .editorial-grid .main-title, 
+  .main-title { 
+    font-size: 28px !important; /* Комфортный размер для смартфона */
+    text-align: center !important;
+    line-height: 1.3 !important;
+    width: 100% !important;
+  }
+
+  /* СКЛЕИВАЕМ СЛОВА НА МОБИЛКЕ, ЧТОБЫ ОНИ НЕ ПРЫГАЛИ ПО ОДНОМУ */
+  .main-title .word-wrap,
+  .editorial-grid .main-title .word-wrap {
+    display: inline !important; /* Убираем блочность, слова теперь текут рекой */
+  }
+  
+  .main-title .anim-word,
+  .editorial-grid .main-title .anim-word {
+    display: inline !important; 
+    transform: none !important;
+    animation: none !important;
+  }
+
+  /* Центрируем разделитель, манифест и подпись */
+  .divider {
+    margin: 0 auto 25px auto !important;
+    align-self: center !important;
+  }
+  
+  .manifesto { 
+    margin: 0 auto 25px auto !important; 
+    text-align: center !important;
+    font-size: 14px !important;
+    line-height: 1.8 !important;
+  }
+
+  .signature {
+    text-align: center !important;
+    margin-top: 25px !important;
+  }
+
+  .catalog-list-leave-active { 
+    position: absolute !important;
+    width: 100% !important; 
+  }
+
+  .btn-up {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    font-size: 14px;
+    background-color: rgba(253, 251, 247, 0.9);
+    backdrop-filter: blur(4px);
+  }
+}
 
 </style>
