@@ -797,63 +797,55 @@ const vScrollReveal = {
   position: absolute;
 }
 /* СТИЛИ АДАПТАЦИИ (ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ) */
+/* СТИЛИ АДАПТАЦИИ (ПОЛНЫЙ ВОЗВРАТ К ВАШЕМУ ИДЕАЛУ) */
 @media (max-width: 768px) {
-  .catalog-grid { grid-template-columns: 1fr; gap: 20px !important; }
-  .links-box { flex-direction: column; align-items: center; gap: 10px; }
+  .catalog-grid { 
+    grid-template-columns: 1fr !important; 
+    gap: 20px !important;
+  }
+  .links-box { 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 10px; 
+  }
   
-  .image-block { display: none !important; }
+  .image-block { 
+    display: none !important; 
+  }
   
   .editorial-grid {
     grid-template-columns: 1fr !important;
     min-height: auto !important;
   }
   
-  /* Сохраняем центрирование родительского блока */
-  .editorial-grid .text-block, .text-block {
-    padding: 40px 20px !important; 
-    align-items: center !important; 
+  .text-block {
+    padding: 40px 20px !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .divider {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  .main-title { 
+    font-size: 32px !important; 
+    text-align: center !important;
+  }
+  
+  .manifesto { 
+    margin: 0 auto !important; 
     text-align: center !important;
   }
 
-  /* ЗАГОЛОВОК НА МОБИЛЬНОМ (Уменьшаем размер, чтобы текст аккуратно разбился на 2 строки) */
-  .editorial-grid .main-title, .main-title {
-    font-size: 26px !important; /* Оптимальный размер для красивого баланса */
+  .signature {
     text-align: center !important;
-    line-height: 1.3 !important;
-  }
-
-  /* Склеиваем слова для правильного мобильного переноса */
-  .editorial-grid .main-title .word-wrap,
-  .main-title .word-wrap {
-    display: inline !important; 
-  }
-
-  /* ЛИНЕЙКА ОСТАЕТСЯ ПО ЦЕНТРУ */
-  .editorial-grid .divider, .divider {
-    margin: 0 auto 25px auto !important;
-    align-self: center !important;
-  }
-
-  /* ЦЕНТРИРОВАННЫЙ МАНИФЕСТ */
-  .editorial-grid .manifesto, .manifesto {
-    text-align: center !important; 
-    font-size: 14px !important; 
-    line-height: 1.8 !important;
-    max-width: 100% !important;
-    margin: 0 auto 25px auto !important;
-  }
-
-  /* ПОДПИСЬ ПО ЦЕНТРУ */
-  .editorial-grid .signature, .signature {
-    text-align: center !important;
-    align-self: center !important;
-    margin-top: 20px !important;
-    font-size: 14px !important;
   }
 
   .catalog-list-leave-active { 
     position: absolute !important;
-    width: 100% !important;
+    width: 100% !important; 
   }
 
   .btn-up {
@@ -866,7 +858,6 @@ const vScrollReveal = {
     backdrop-filter: blur(4px);
   }
 }
-
 
   
 /* БАЗОВОЕ СКРЫТОЕ СОСТОЯНИЕ КАРТОЧКИ */
