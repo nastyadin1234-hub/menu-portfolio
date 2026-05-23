@@ -525,9 +525,7 @@ const vScrollReveal = {
   background-color: #ffffff;
   border-radius: 10px;
   overflow: hidden;
-  
-  /* ИСПРАВЛЕНО: Добавлен аккуратный контур через внутреннюю тень, чтобы картинки его не перекрывали */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01), inset 0 0 0 1px #e3dec9;
+  border: 1px solid rgba(26, 26, 26, 0.08)
   
   opacity: 0;
   transform: translateY(40px);
@@ -815,14 +813,24 @@ const vScrollReveal = {
 /* 7. МОБИЛЬНАЯ АДАПТИВНОСТЬ (ЭКРАНЫ ДО 768px)            */
 /* ======================================================= */
 @media (max-width: 768px) { 
-  /* Каталог в одну колонку */
+  /* Корневой контейнер: убираем боковые отступы, чтобы баннер встал в край экрана */
+  .site-wrapper {
+    padding: 20px 0 !important;
+  }
+
+  /* Каталог строго в ОДНУ колонку (КАК БЫЛО ИЗНАЧАЛЬНО) */
   .catalog-grid { 
     grid-template-columns: 1fr !important; 
     gap: 20px !important;
+    padding: 0 20px !important; /* Боковые отступы возвращаем только для каталога */
   } 
   
-  /* Исходный вид карточек товаров */
+  /* ИСПРАВЛЕНИЕ КАРТОЧЕК: Добавлен деликатный контур, чтобы они выделялись на фоне сайта */
   .product-card {
+    border: 1px solid rgba(26, 26, 26, 0.08) !important; /* Очень мягкий тонкий контур */
+    box-sizing: border-box !important;                    /* Чтобы рамка не ломала размеры */
+    border: 1px solid rgba(26, 26, 26, 0.08)
+    /* Сохраняем ваши исходные свойства анимации */
     transition-delay: 0s !important;
     transform: translateY(30px) !important;
   }
@@ -837,10 +845,17 @@ const vScrollReveal = {
     width: 100% !important;
   }
 
+  /* Отступы для кнопок-переключателей категорий */
+  .action-bars {
+    padding: 0 20px !important;
+    gap: 20px !important;
+  }
+
   .links-box {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    padding: 0 20px !important;
   }
 
   /* Скрываем боковую картинку баннера */
@@ -854,19 +869,19 @@ const vScrollReveal = {
     min-height: auto !important;
   }
 
-  /* ИСПРАВЛЕНИЕ: Растягиваем текстовый блок на всю ширину с минимальными аккуратными отступами по бокам */
+  /* ИСПРАВЛЕНИЕ БАННЕРА: Текст занимает всю ширину экрана */
   .text-block {
-    padding: 40px 24px !important; /* Увеличили боковые отступы, чтобы текст не лип к стеклу телефона */
+    padding: 40px 24px !important; /* Защитные поля, чтобы буквы не липли к краям */
     align-items: center !important;
     text-align: center !important;
     width: 100% !important;
-    max-width: 100% !important;   /* Снимаем любые ограничения ширины */
+    max-width: 100% !important;
     box-sizing: border-box !important;
   }
 
-  /* ИСПРАВЛЕНИЕ: Красивый адаптивный размер заголовка */
+  /* ИСПРАВЛЕНИЕ: Крупный красивый заголовок на всю ширину */
   .main-title {
-    font-size: 32px !important;    /* Сделали крупнее и благороднее, как на скриншоте */
+    font-size: 32px !important;    
     line-height: 1.25 !important;
     text-align: center !important;
     width: 100% !important;
@@ -888,14 +903,14 @@ const vScrollReveal = {
     animation: none !important;
   }
 
-  /* ИСПРАВЛЕНИЕ: Снимаем ограничение ширины с манифеста (было 450px) */
+  /* ИСПРАВЛЕНИЕ: Манифест раскрывается полностью, без ограничений по ширине */
   .manifesto {
-    font-size: 15px !important;    /* Комфортный размер для чтения текста */
+    font-size: 15px !important;    
     line-height: 1.7 !important;
     text-align: center !important;
     margin: 0 auto !important;
     width: 100% !important;
-    max-width: 100% !important;   /* Теперь текст занимает всё доступное пространство */
+    max-width: 100% !important;   
   }
 
   /* Центрируем декоративную полоску и подпись шефа */
@@ -919,5 +934,6 @@ const vScrollReveal = {
     backdrop-filter: blur(4px);
   }
 }
+
 
 </style>
