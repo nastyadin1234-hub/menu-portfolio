@@ -506,7 +506,6 @@ const vScrollReveal = {
 @keyframes revealWord { 
   to { transform: translateY(0); } 
 }
-
 /* ======================================================= */
 /* 4. КАТАЛОГ И КАРТОЧКИ ТОВАРОВ — ДЕСКТОП                 */
 /* ======================================================= */
@@ -524,14 +523,12 @@ const vScrollReveal = {
   justify-content: space-between;
   height: 100%;
   background-color: #ffffff;
-  
-  /* ДОБАВЛЕНО: Тонкий контур (цвет подобран под благородный стиль сайта) */
-  border: 1px solid #e3dec9; 
-  box-sizing: border-box; /* Чтобы рамка не увеличивала физический размер карточки */
-  
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+  
+  /* ИСПРАВЛЕНО: Добавлен аккуратный контур через внутреннюю тень, чтобы картинки его не перекрывали */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01), inset 0 0 0 1px #e3dec9;
+  
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
@@ -550,12 +547,15 @@ const vScrollReveal = {
 /* Эффект парения при наведении */
 .catalog-grid .product-card.visible:hover,
 .product-card.visible:hover { 
-  /* При наведении карточка приподнимается, а рамку можно сделать чуть темнее для акцента */
-  border-color: #d1cbb4 !important;
   transform: translateY(-6px) !important; 
-  box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04) !important; 
+  
+  /* ИСПРАВЛЕНО: Сохраняем контур при наведении */
+  box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04) !important, inset 0 0 0 1px #e3dec9 !important; 
+  
   transition-delay: 0s !important; 
 }
+
+
 
 /* Слайдер картинок внутри карточки */
 .slider-area { 
@@ -815,29 +815,21 @@ const vScrollReveal = {
 /* 7. МОБИЛЬНАЯ АДАПТИВНОСТЬ (ЭКРАНЫ ДО 768px)            */
 /* ======================================================= */
 @media (max-width: 768px) { 
-  /* Каталог в ДВЕ колонки для удобного скролла на телефоне */
+  /* Каталог в одну колонку */
   .catalog-grid { 
-    grid-template-columns: repeat(2, 1fr) !important; 
-    gap: 12px !important; /* Уменьшили зазор, чтобы карточки помещались */
-    padding: 0 10px !important; /* Отступы сетки по бокам экрана */
+    grid-template-columns: 1fr !important; 
+    gap: 20px !important;
   } 
   
-  /* Маленький аккуратный контур для карточек товаров */
+  /* Исходный вид карточек товаров */
   .product-card {
-    border: 1px solid #e3dec9 !important; /* Тонкая рамка (цвет подобран под благородный стиль) */
-    border-radius: 8px !important;        /* Мягкое скругление углов */
-    padding: 8px !important;              /* Внутренний отступ от рамки */
-    background-color: #fff !important;    /* Белый фон карточки */
-    box-sizing: border-box !important;
-    
-    /* Сохраняем ваши исходные свойства анимации */
     transition-delay: 0s !important;
     transform: translateY(30px) !important;
   }
 
-  /* Высота области фото карточки на телефоне (уменьшена под 2 колонки) */
+  /* Высота области фото карточки на телефоне */
   .slider-area {
-    height: 180px !important; /* 260px было много для двух колонок */
+    height: 260px !important;
   }
 
   .catalog-list-leave-active {
@@ -862,25 +854,27 @@ const vScrollReveal = {
     min-height: auto !important;
   }
 
-  /* Безопасные внутренние отступы для текста на мобильном */
+  /* ИСПРАВЛЕНИЕ: Растягиваем текстовый блок на всю ширину с минимальными аккуратными отступами по бокам */
   .text-block {
-    padding: 40px 16px !important;
+    padding: 40px 24px !important; /* Увеличили боковые отступы, чтобы текст не лип к стеклу телефона */
     align-items: center !important;
     text-align: center !important;
     width: 100% !important;
+    max-width: 100% !important;   /* Снимаем любые ограничения ширины */
     box-sizing: border-box !important;
   }
 
-  /* ИСПРАВЛЕНИЕ: Мягкий размер и центрирование заголовка */
+  /* ИСПРАВЛЕНИЕ: Красивый адаптивный размер заголовка */
   .main-title {
-    font-size: 26px !important;
-    line-height: 1.3 !important;
+    font-size: 32px !important;    /* Сделали крупнее и благороднее, как на скриншоте */
+    line-height: 1.25 !important;
     text-align: center !important;
     width: 100% !important;
-    margin: 15px 0 !important;
+    max-width: 100% !important;
+    margin: 15px 0 25px 0 !important;
   }
 
-  /* ИСПРАВЛЕНИЕ: Склеиваем разбитые скриптом анимации буквы обратно в слова */
+  /* Склеиваем разбитые скриптом анимации буквы обратно в слова */
   .main-title .word-wrap,
   .word-wrap {
     display: inline !important;
@@ -894,20 +888,24 @@ const vScrollReveal = {
     animation: none !important;
   }
 
-  /* Центрируем декоративную полоску, манифест и подпись шефа */
-  .divider {
-    margin: 0 auto 25px auto !important;
+  /* ИСПРАВЛЕНИЕ: Снимаем ограничение ширины с манифеста (было 450px) */
+  .manifesto {
+    font-size: 15px !important;    /* Комфортный размер для чтения текста */
+    line-height: 1.7 !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;   /* Теперь текст занимает всё доступное пространство */
   }
 
-  .manifesto {
-    margin: 0 auto !important;
-    text-align: center !important;
-    max-width: 100% !important;
+  /* Центрируем декоративную полоску и подпись шефа */
+  .divider {
+    margin: 0 auto 30px auto !important;
   }
 
   .signature {
     text-align: center !important;
-    margin-top: 25px !important;
+    margin-top: 30px !important;
   }
 
   /* Мобильные габариты для кнопки "Наверх" */
@@ -921,4 +919,5 @@ const vScrollReveal = {
     backdrop-filter: blur(4px);
   }
 }
+
 </style>
