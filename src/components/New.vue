@@ -327,18 +327,20 @@ const createRevealObserver = (el) => {
 }
 const vScrollReveal = {
   mounted(el) {
-    // Небольшая задержка, чтобы анимация скролла 
-    // не конфликтовала с анимацией смены категорий Vue
     setTimeout(() => {
       createRevealObserver(el)
     }, 150)
   },
   unmounted(el) {
     if (el._revealObserver) {
+      if (el instanceof Element) {
+        el._revealObserver.unobserve(el)
+      }
       el._revealObserver.disconnect()
     }
   }
 }
+
 
 </script>
 <style scoped>
