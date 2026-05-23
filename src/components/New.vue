@@ -310,33 +310,44 @@ onMounted(() => { window.addEventListener('scroll', handleScroll) })
 onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
 const telegramUrl = ref('https://t.me/Ndesserts26') 
 const maxUrl = ref('https://max.ru/u/f9LHodD0cOL4iVq41cK4V4jnAVusNP_iDcj2fr8XLmeibZDGYM8iJq-Pa2k') 
+const createRevealObserver = (el) => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        el.classList.add('visible')
+        observer.unobserve(el.target)
+      }
+    })
+  }, { 
+    threshold: 0.05, // Уменьшено до 5%, чтобы на мобильных экранах анимация не залипала
+    rootMargin: "0px 0px -50px 0px" 
+  })
+  observer.observe(el)
+  el._revealObserver = observer // Сохраняем ссылку для последующей очистки
+}
 
 const vScrollReveal = {
   mounted(el) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          el.classList.add('visible')
-          observer.unobserve(el.target)
-        }
-      })
-    }, { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }) // -100px заставит карточку вылезать чуть позже, когда вы её точно увидите
-    observer.observe(el)
+    createRevealObserver(el)
   },
   updated(el) {
-    el.classList.remove('visible') // Сбрасываем видимость при смене категории
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          el.classList.add('visible')
-          observer.unobserve(el.target)
-        }
-      })
-    }, { threshold: 0.1, rootMargin: "0px 0px -100px 0px" })
-    observer.observe(el)
+    // Сбрасываем класс анимации при смене категории товара
+    el.classList.remove('visible') 
+    
+    // Удаляем старый observer, если он существовал
+    if (el._revealObserver) {
+      el._revealObserver.disconnect()
+    }
+    
+    // Инициализируем слежку заново для обновленного контента
+    createRevealObserver(el)
+  },
+  unmounted(el) {
+    if (el._revealObserver) {
+      el._revealObserver.disconnect()
+    }
   }
 }
-
 
 </script>
 <style scoped>
@@ -777,7 +788,7 @@ const vScrollReveal = {
 }
 
   
-/* ОРИГИНАЛЬНАЯ КАРТОЧКА С МЯГКИМ И СИНХРОННЫМ ВЗЛЕТОМ */
+/* БАЗОВОЕ СКРЫТОЕ СОСТОЯНИЕ КАРТОЧКИ */
 .product-card {
   display: flex !important;
   flex-direction: column !important;
@@ -788,111 +799,42 @@ const vScrollReveal = {
   overflow: hidden !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01) !important;
   
-  /* Плавная премиальная анимация появления, как у надписи */
-  animation: revealCard 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
+  /* Исходная позиция для анимации взлета */
+  opacity: 0 !important;
+  transform: translateY(40px) !important;
+  
+  /* Плавный премиальный переход. transition-delay подставится из Vue */
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s ease !important;
+              
+  will-change: opacity, transform; /* Подсказка браузеру для плавной работы */
 }
 
-/* Эффект парения при наведении */
-.product-card:hover {
+/* СОСТОЯНИЕ ПОСЛЕ ПОЯВЛЕНИЯ НА ЭКРАНЕ */
+.product-card.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ЭФФЕКТ ПАРЕНИЯ (Ховер работает только на видимых карточках) */
+.product-card.visible:hover {
   transform: translateY(-6px) !important;
   box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04) !important;
+  /* Обнуляем задержку при ховере, чтобы карточка реагировала на мышь мгновенно */
+  transition-delay: 0s !important; 
 }
 
-/* Анимация взлета */
-@keyframes revealCard {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ФИКСИРОВАННАЯ ЗОНА ДЛЯ ФОТО */
-.product-card .slider-area {
-  width: 100% !important;
-  height: 380px !important;
-  overflow: hidden !important;
-  position: relative !important;
-  background-color: #ffffff !important;
-  border-top-left-radius: 10px !important;
-  border-top-right-radius: 10px !important;
-  display: block !important;
-}
-
-.product-card .card-img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  display: block !important;
-}
-
+/* СБРОС ЗАДЕРЖКИ ДЛЯ МОБИЛЬНЫХ ЭКРАНОВ (В 1 КОЛОНКУ) */
 @media (max-width: 768px) {
-  .product-card .slider-area {
-    height: 260px !important;
+  .product-card {
+    /* На мобильных устройствах каскад по парам не нужен, карточки появляются по очереди скролла */
+    transition-delay: 0s !important;
+    transform: translateY(30px) !important; /* Чуть меньше сдвиг для мобильных экранов */
   }
 }
 
-/* ОФОРМЛЕНИЕ ТЕКСТА */
-.product-card .card-info {
-  display: flex !important;
-  flex-direction: column !important;
-  flex-grow: 1 !important;
-  justify-content: space-between !important;
-  padding: 30px 24px !important;
-}
-
-.product-card .product-title, 
-.product-card h3 {
-  font-family: "Playfair Display", "Didot", "Bodoni MT", serif !important;
-  font-weight: 400 !important;
-  font-size: 20px !important;
-  letter-spacing: 0.04em !important;
-  color: #1a1a1a !important;
-  margin-bottom: 12px !important;
-  text-align: center !important;
-}
-
-.product-card .product-weight,
-.product-card .product-meta {
-  font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
-  font-weight: 300 !important;
-  font-size: 11px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.15em !important;
-  color: #8c8c8c !important;
-  margin-bottom: 16px !important;
-  text-align: center !important;
-}
-
-.product-card .product-desc,
-.product-card p {
-  font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
-  font-weight: 300 !important;
-  font-size: 13px !important;
-  line-height: 1.6 !important;
-  color: #555555 !important;
-  text-align: center !important;
-  margin-bottom: 24px !important;
-}
-
-.product-card .price-tag,
-.product-card .product-price {
-  font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
-  font-weight: 500 !important;
-  font-size: 15px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.1em !important;
-  color: #1a1a1a !important;
-  text-align: center !important;
-  margin-top: auto !important;
-}
-
-/* СЕТКА КАТАЛОГА (СТРОГО 2 КОЛОНКИ / 1 НА МОБИЛЬНЫХ) */
+/* СЕТКА КАТАЛОГА */
 .catalog-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr) !important;
@@ -907,37 +849,72 @@ const vScrollReveal = {
     gap: 20px !important;
   }
 }
-.product-card {
+
+/* ЗОНА ДЛЯ ФОТО И ОФОРМЛЕНИЕ ТЕКСТА (ОСТАЮТСЯ БЕЗ ИЗМЕНЕНИЙ) */
+.product-card .slider-area {
+  width: 100% !important;
+  height: 380px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  background-color: #ffffff !important;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+  display: block !important;
+}
+.product-card .card-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+}
+@media (max-width: 768px) {
+  .product-card .slider-area { height: 260px !important; }
+}
+.product-card .card-info {
   display: flex !important;
   flex-direction: column !important;
+  flex-grow: 1 !important;
   justify-content: space-between !important;
-  height: 100% !important;
-  background-color: #ffffff !important;
-  border-radius: 10px !important;
-  overflow: hidden !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01) !important;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
-
-  /* ЖЕЛЕЗОБЕТОННО СКРЫВАЕМ ПРИ ЗАГРУЗКЕ: */
-  opacity: 0 !important;
-  transform: translateY(60px) !important;
-  transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  padding: 30px 24px !important;
 }
-
-/* КЛАСС КОТОРЫЙ ВКЛЮЧИТ СКРИПТ ПРИ СКРОЛЛЕ: */
-.product-card.visible {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
+.product-card .product-title, .product-card h3 {
+  font-family: "Playfair Display", "Didot", "Bodoni MT", serif !important;
+  font-weight: 400 !important;
+  font-size: 20px !important;
+  letter-spacing: 0.04em !important;
+  color: #1a1a1a !important;
+  margin-bottom: 12px !important;
+  text-align: center !important;
 }
-
-/* Эффект парения работает только для уже появившихся карточек */
-.product-card.visible:hover {
-  transform: translateY(-6px) !important;
-  box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04) !important;
+.product-card .product-weight, .product-card .product-meta {
+  font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.15em !important;
+  color: #8c8c8c !important;
+  margin-bottom: 16px !important;
+  text-align: center !important;
 }
-/* Каждая чётная карточка (правая в ряду) появится на 0.2 секунды позже левой */
-.product-card:nth-child(even) {
-  transition-delay: 0.2s !important;
+.product-card .product-desc, .product-card p {
+  font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+  color: #555555 !important;
+  text-align: center !important;
+  margin-bottom: 24px !important;
+}
+.product-card .price-tag, .product-card .product-price {
+  font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  color: #1a1a1a !important;
+  text-align: center !important;
+  margin-top: auto !important;
 }
 
 
