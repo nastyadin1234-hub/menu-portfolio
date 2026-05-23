@@ -385,7 +385,8 @@ const vScrollReveal = {
   .image-block { width: 100%; height: 100%; overflow: hidden; border-left: 1px solid #1a1a1a; }.link-btn { padding: 10px 30px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 13px; background-color: #1a1a1a; color: white; transition: opacity 0.3s ease; letter-spacing: 1px; text-transform: uppercase; min-width: 140px; text-align: center; }.cover-photo { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.2) contrast(1.05); } 
   .catalog-list-move,.catalog-list-enter-active,.catalog-list-leave-active { transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);}
   .catalog-list-enter-from,.catalog-list-leave-to { opacity: 0; transform: scale(0.98) translateY(15px);}
-  .catalog-list-leave-active { position: absolute;}/* СТИЛИ АДАПТАЦИИ */@media (max-width: 768px) { 
+  .catalog-list-leave-active { position: absolute;}
+  @media (max-width: 768px) { 
     .catalog-grid { grid-template-columns: 1fr; } 
     .links-box { flex-direction: column; align-items: center; gap: 10px; } 
                                                                                                                                                                                                                                                                                                                                          
@@ -400,8 +401,6 @@ const vScrollReveal = {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
-  
-  /* Исходная позиция для красивого взлета при скролле */
   opacity: 0;
   transform: translateY(40px);
   
@@ -455,7 +454,7 @@ const vScrollReveal = {
 }
   .product-card.visible { opacity: 1 !important; transform: translateY(0) !important;}
   .product-card.visible:hover { transform: translateY(-6px) !important; box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04) !important;  transition-delay: 0s !important; }@media (max-width: 768px) { 
-  .product-card { /* На мобильных устройствах каскад по парам не нужен, карточки появляются по очереди скролла */ transition-delay: 0s !important; transform: translateY(30px) !important; }}/
+  .product-card {  transition-delay: 0s !important; transform: translateY(30px) !important; }}
 .product-card .slider-area { width: 100% !important; height: 380px !important; overflow: hidden !important; position: relative !important; background-color: #ffffff !important; border-top-left-radius: 10px !important; border-top-right-radius: 10px !important; display: block !important;}
   .product-card .card-img { width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: center !important; display: block !important;}@media (max-width: 768px) { 
   .product-card .slider-area { height: 260px !important; }}
