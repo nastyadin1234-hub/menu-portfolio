@@ -796,9 +796,9 @@ const vScrollReveal = {
 .catalog-list-leave-active {
   position: absolute;
 }
-/* СТИЛИ АДАПТАЦИИ (ОКОНЧАТЕЛЬНЫЙ ВАРИАНТ) */
+/* СТИЛИ АДАПТАЦИИ (ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ) */
 @media (max-width: 768px) {
-  .catalog-grid { grid-template-columns: 1fr; }
+  .catalog-grid { grid-template-columns: 1fr; gap: 20px !important; }
   .links-box { flex-direction: column; align-items: center; gap: 10px; }
   
   .image-block { display: none !important; }
@@ -808,54 +808,45 @@ const vScrollReveal = {
     min-height: auto !important;
   }
   
-  /* Увеличиваем силу селектора, чтобы перебить дескрипт */
+  /* Сохраняем центрирование родительского блока */
   .editorial-grid .text-block, .text-block {
-    padding: 30px 15px !important; 
-    align-items: flex-start !important; /* Намертво выравниваем блок влево */
-    text-align: left !important;
+    padding: 40px 20px !important; 
+    align-items: center !important; 
+    text-align: center !important;
   }
 
-  /* ИСПРАВЛЕНИЕ ЗАГЛАВИЯ */
+  /* ЗАГОЛОВОК НА МОБИЛЬНОМ (Уменьшаем размер, чтобы текст аккуратно разбился на 2 строки) */
   .editorial-grid .main-title, .main-title {
-    font-size: 32px !important; 
-    text-align: left !important;
-    line-height: 1.25 !important;
-    display: block !important;
+    font-size: 26px !important; /* Оптимальный размер для красивого баланса */
+    text-align: center !important;
+    line-height: 1.3 !important;
   }
 
-  /* Склеиваем слова обратно в строки на мобильном */
+  /* Склеиваем слова для правильного мобильного переноса */
   .editorial-grid .main-title .word-wrap,
   .main-title .word-wrap {
     display: inline !important; 
   }
-  
-  .editorial-grid .main-title .anim-word,
-  .main-title .anim-word {
-    display: inline-block !important;
-    transform: none !important; 
-    animation: none !important;
-  }
 
-  /* СМЕЩАЕМ ЛИНЕЙКУ ВЛЕВО */
+  /* ЛИНЕЙКА ОСТАЕТСЯ ПО ЦЕНТРУ */
   .editorial-grid .divider, .divider {
-    margin: 0 0 20px 0 !important;
-    align-self: flex-start !important;
+    margin: 0 auto 25px auto !important;
+    align-self: center !important;
   }
 
-  /* ВЫРАВНИВАЕМ МАНИФЕСТ ВЛЕВО */
+  /* ЦЕНТРИРОВАННЫЙ МАНИФЕСТ */
   .editorial-grid .manifesto, .manifesto {
-    text-align: left !important; 
+    text-align: center !important; 
     font-size: 14px !important; 
-    line-height: 1.7 !important;
+    line-height: 1.8 !important;
     max-width: 100% !important;
-    margin: 0 0 25px 0 !important;
-    align-self: flex-start !important;
+    margin: 0 auto 25px auto !important;
   }
 
-  /* ВЫРАВНИВАЕМ ПОДПИСЬ ВЛЕВО */
+  /* ПОДПИСЬ ПО ЦЕНТРУ */
   .editorial-grid .signature, .signature {
-    text-align: left !important;
-    align-self: flex-start !important;
+    text-align: center !important;
+    align-self: center !important;
     margin-top: 20px !important;
     font-size: 14px !important;
   }
