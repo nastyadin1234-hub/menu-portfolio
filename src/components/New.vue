@@ -796,8 +796,7 @@ const vScrollReveal = {
 .catalog-list-leave-active {
   position: absolute;
 }
-
-/* СТИЛИ АДАПТАЦИИ */
+/* СТИЛИ АДАПТАЦИИ (ОКОНЧАТЕЛЬНЫЙ ВАРИАНТ) */
 @media (max-width: 768px) {
   .catalog-grid { grid-template-columns: 1fr; }
   .links-box { flex-direction: column; align-items: center; gap: 10px; }
@@ -805,59 +804,62 @@ const vScrollReveal = {
   .image-block { display: none !important; }
   
   .editorial-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     min-height: auto !important;
   }
   
-  .text-block {
+  /* Увеличиваем силу селектора, чтобы перебить дескрипт */
+  .editorial-grid .text-block, .text-block {
     padding: 30px 15px !important; 
-    align-items: flex-start !important; 
+    align-items: flex-start !important; /* Намертво выравниваем блок влево */
     text-align: left !important;
   }
 
-  /* ЗАГОЛОВОК НА МОБИЛЬНОМ */
-  .main-title {
-    font-size: 32px !important; /* Чуть крупнее, чтобы заголовок оставался главным */
+  /* ИСПРАВЛЕНИЕ ЗАГЛАВИЯ */
+  .editorial-grid .main-title, .main-title {
+    font-size: 32px !important; 
     text-align: left !important;
     line-height: 1.25 !important;
     display: block !important;
   }
 
-  /* ТРЮК ДЛЯ МОБИЛЬНОГО ЗАГОЛОВКА: заставляем слова идти обычным текстом */
+  /* Склеиваем слова обратно в строки на мобильном */
+  .editorial-grid .main-title .word-wrap,
   .main-title .word-wrap {
-    display: inline !important; /* Сбрасываем блочность, чтобы текст переносился естественно */
+    display: inline !important; 
   }
   
+  .editorial-grid .main-title .anim-word,
   .main-title .anim-word {
     display: inline-block !important;
-    transform: none !important; /* Отключаем сложную анимацию, если она ломает мобильную верстку */
+    transform: none !important; 
     animation: none !important;
   }
 
-  /* РАЗДЕЛИТЕЛЬ СМЕЩАЕМ ВЛЕВО */
-  .divider {
+  /* СМЕЩАЕМ ЛИНЕЙКУ ВЛЕВО */
+  .editorial-grid .divider, .divider {
     margin: 0 0 20px 0 !important;
     align-self: flex-start !important;
   }
 
-  /* МАНИФЕСТ НА МОБИЛЬНОМ */
-  .manifesto {
-    text-align: left !important; /* Заменили justify на left, чтобы на узких экранах не было огромных дыр между словами */
+  /* ВЫРАВНИВАЕМ МАНИФЕСТ ВЛЕВО */
+  .editorial-grid .manifesto, .manifesto {
+    text-align: left !important; 
     font-size: 14px !important; 
     line-height: 1.7 !important;
     max-width: 100% !important;
     margin: 0 0 25px 0 !important;
+    align-self: flex-start !important;
   }
 
-  /* ПОДПИСЬ НА МОБИЛЬНОМ */
-  .signature {
+  /* ВЫРАВНИВАЕМ ПОДПИСЬ ВЛЕВО */
+  .editorial-grid .signature, .signature {
     text-align: left !important;
     align-self: flex-start !important;
     margin-top: 20px !important;
     font-size: 14px !important;
   }
 
-  /* Корректировка анимации уходящих карточек для одной колонки */
   .catalog-list-leave-active { 
     position: absolute !important;
     width: 100% !important;
