@@ -1008,7 +1008,7 @@ const vScrollReveal = {
   padding-top: 15px !important;
 }
 /* --- КОРРЕКТНАЯ АНИМАЦИЯ ПЕРЕКЛЮЧЕНИЯ В КАТАЛОГЕ VUE --- */
-  }
+  
 /* Настройка плавности и благородной траектории */
 .catalog-list-move,
 .catalog-list-enter-active,
