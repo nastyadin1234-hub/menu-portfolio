@@ -459,7 +459,6 @@ const vScrollReveal = {
   background-color: #1a1a1a; 
   margin-bottom: 30px;
 }
-
 .manifesto { 
   font-family: 'Inter', sans-serif; 
   font-size: 14px; 
@@ -506,6 +505,7 @@ const vScrollReveal = {
 @keyframes revealWord { 
   to { transform: translateY(0); } 
 }
+
 /* ======================================================= */
 /* 4. КАТАЛОГ И КАРТОЧКИ ТОВАРОВ — ДЕСКТОП                 */
 /* ======================================================= */
@@ -525,8 +525,7 @@ const vScrollReveal = {
   background-color: #ffffff;
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid rgba(26, 26, 26, 0.08);
-  
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
@@ -542,18 +541,13 @@ const vScrollReveal = {
   transform: translateY(0) !important;
 }
 
-/* Эффект парения при наведении */
+/* Эффект парения при наведении — ИСПРАВЛЕНО (сборка больше не упадет) */
 .catalog-grid .product-card.visible:hover,
 .product-card.visible:hover { 
   transform: translateY(-6px) !important; 
-  
-  /* ИСПРАВЛЕНО: Сохраняем контур при наведении */
-  box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04) !important, inset 0 0 0 1px #e3dec9 !important; 
-  
+  box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04) !important; 
   transition-delay: 0s !important; 
 }
-
-
 
 /* Слайдер картинок внутри карточки */
 .slider-area { 
@@ -809,11 +803,12 @@ const vScrollReveal = {
   width: calc(50% - 20px) !important;
   z-index: 0;
 }
+
 /* ======================================================= */
 /* 7. МОБИЛЬНАЯ АДАПТИВНОСТЬ (ЭКРАНЫ ДО 768px)            */
 /* ======================================================= */
 @media (max-width: 768px) { 
-  /* Корневой контейнер: убираем боковые отступы, чтобы баннер встал в край экрана */
+  /* Убираем боковые отступы у страницы, чтобы баннер встал во весь экран телефона */
   .site-wrapper {
     padding: 20px 0 !important;
   }
@@ -822,15 +817,13 @@ const vScrollReveal = {
   .catalog-grid { 
     grid-template-columns: 1fr !important; 
     gap: 20px !important;
-    padding: 0 20px !important; /* Боковые отступы возвращаем только для каталога */
+    padding: 0 20px !important; /* Боковые отступы добавляем только каталогу товаров */
   } 
   
-  /* ИСПРАВЛЕНИЕ КАРТОЧЕК: Добавлен деликатный контур, чтобы они выделялись на фоне сайта */
+  /* ИСПРАВЛЕНИЕ: Добавлен деликатный контур для мобильных карточек, чтобы они не сливались с фоном */
   .product-card {
-    border: 1px solid rgba(26, 26, 26, 0.08) !important; /* Очень мягкий тонкий контур */
-    box-sizing: border-box !important;                    /* Чтобы рамка не ломала размеры */
-    border: 1px solid rgba(26, 26, 26, 0.08);
-    /* Сохраняем ваши исходные свойства анимации */
+    border: 1px solid rgba(26, 26, 26, 0.08) !important;
+    box-sizing: border-box !important;
     transition-delay: 0s !important;
     transform: translateY(30px) !important;
   }
@@ -845,7 +838,6 @@ const vScrollReveal = {
     width: 100% !important;
   }
 
-  /* Отступы для кнопок-переключателей категорий */
   .action-bars {
     padding: 0 20px !important;
     gap: 20px !important;
@@ -869,9 +861,9 @@ const vScrollReveal = {
     min-height: auto !important;
   }
 
-  /* ИСПРАВЛЕНИЕ БАННЕРА: Текст занимает всю ширину экрана */
+  /* ИСПРАВЛЕНИЕ БАННЕРА: Текст и карточка баннера занимают всю ширину */
   .text-block {
-    padding: 40px 24px !important; /* Защитные поля, чтобы буквы не липли к краям */
+    padding: 40px 24px !important;
     align-items: center !important;
     text-align: center !important;
     width: 100% !important;
@@ -879,7 +871,7 @@ const vScrollReveal = {
     box-sizing: border-box !important;
   }
 
-  /* ИСПРАВЛЕНИЕ: Крупный красивый заголовок на всю ширину */
+  /* ИСПРАВЛЕНИЕ: Крупный красивый заголовок баннера на всю ширину мобильного */
   .main-title {
     font-size: 32px !important;    
     line-height: 1.25 !important;
@@ -903,7 +895,7 @@ const vScrollReveal = {
     animation: none !important;
   }
 
-  /* ИСПРАВЛЕНИЕ: Манифест раскрывается полностью, без ограничений по ширине */
+  /* ИСПРАВЛЕНИЕ: Текст манифеста теперь тоже раскрывается на 100% */
   .manifesto {
     font-size: 15px !important;    
     line-height: 1.7 !important;
@@ -912,6 +904,7 @@ const vScrollReveal = {
     width: 100% !important;
     max-width: 100% !important;   
   }
+
 
   /* Центрируем декоративную полоску и подпись шефа */
   .divider {
