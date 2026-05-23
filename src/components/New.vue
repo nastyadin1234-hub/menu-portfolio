@@ -810,19 +810,58 @@ const vScrollReveal = {
   }
   
   .text-block {
-    padding: 40px 10px !important;
-    text-align: center;
-    align-items: center;
+    padding: 30px 15px !important; 
+    align-items: flex-start !important; 
+    text-align: left !important;
   }
 
-  .divider {
-    margin-left: auto;
-    margin-right: auto;
+  /* ЗАГОЛОВОК НА МОБИЛЬНОМ */
+  .main-title {
+    font-size: 32px !important; /* Чуть крупнее, чтобы заголовок оставался главным */
+    text-align: left !important;
+    line-height: 1.25 !important;
+    display: block !important;
+  }
+
+  /* ТРЮК ДЛЯ МОБИЛЬНОГО ЗАГОЛОВКА: заставляем слова идти обычным текстом */
+  .main-title .word-wrap {
+    display: inline !important; /* Сбрасываем блочность, чтобы текст переносился естественно */
   }
   
-  .main-title { font-size: 32px; }
-  .manifesto { margin: 0 auto; }
-  .catalog-list-leave-active { position: static; }
+  .main-title .anim-word {
+    display: inline-block !important;
+    transform: none !important; /* Отключаем сложную анимацию, если она ломает мобильную верстку */
+    animation: none !important;
+  }
+
+  /* РАЗДЕЛИТЕЛЬ СМЕЩАЕМ ВЛЕВО */
+  .divider {
+    margin: 0 0 20px 0 !important;
+    align-self: flex-start !important;
+  }
+
+  /* МАНИФЕСТ НА МОБИЛЬНОМ */
+  .manifesto {
+    text-align: left !important; /* Заменили justify на left, чтобы на узких экранах не было огромных дыр между словами */
+    font-size: 14px !important; 
+    line-height: 1.7 !important;
+    max-width: 100% !important;
+    margin: 0 0 25px 0 !important;
+  }
+
+  /* ПОДПИСЬ НА МОБИЛЬНОМ */
+  .signature {
+    text-align: left !important;
+    align-self: flex-start !important;
+    margin-top: 20px !important;
+    font-size: 14px !important;
+  }
+
+  /* Корректировка анимации уходящих карточек для одной колонки */
+  .catalog-list-leave-active { 
+    position: absolute !important;
+    width: 100% !important;
+  }
 
   .btn-up {
     bottom: 20px;
@@ -834,6 +873,7 @@ const vScrollReveal = {
     backdrop-filter: blur(4px);
   }
 }
+
 
   
 /* БАЗОВОЕ СКРЫТОЕ СОСТОЯНИЕ КАРТОЧКИ */
