@@ -714,7 +714,7 @@ const vScrollReveal = {
   transition: opacity 0.3s ease;
   letter-spacing: 1px;
   text-transform: uppercase;
-  min-width: 140px; 
+  min-width: 160px; 
   text-align: center; 
 }
 
