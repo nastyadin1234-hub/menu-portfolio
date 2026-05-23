@@ -345,209 +345,98 @@ const vScrollReveal = {
 </script>
 <style scoped>
 :host, :root, .site-wrapper {
-  background-color: #FDFBF7 !important;
+  background-color: #FDFBF7 !important; 
   color: #1a1a1a !important;
   color-scheme: light !important;
 }
-
-.site-wrapper {
-  width: 100%;
-  min-height: 100vh;
-  padding: 40px 20px;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-}
-
-.main-content-area {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.action-bars {
-  display: flex;
-  justify-content: center;
-  gap: 60px !important;
-  margin-bottom: 60px;
-  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
-}
-
-
-.filter-btn {
-  flex: none;
-  border: none;
-  background: none;
-  padding: 15px 5px;
-  font-size: 16px;
-  cursor: pointer;
-  color: #1a1a1a;
-  font-family: 'Playfair Display', serif;
-  position: relative;
-  bottom: -1px;
-  transition: color 0.3s ease;
-  letter-spacing: 0.5px;
-}
-
-.filter-btn::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #1a1a1a;
-  transform: scaleX(0);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.filter-btn.active::after {
-  transform: scaleX(1);
-}
-
-.filter-btn.active {
-  font-weight: 500;
-  background-color: transparent;
-}
-
-.catalog-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  width: 100%;
-  position: relative;
-}
-
-
-
-.slider-area {
-  position: relative;
-  height: 450px;
-  overflow: hidden; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-}
-
-.product-card:hover .card-img {
-  transform: scale(1.03);
-}
-
-.card-img.img-fade {
-  opacity: 0.2;
-  transform: scale(0.97);
-}
-.card-badge {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  /* Возвращаем благородный чистый белый/светло-серый фон с легкой прозрачностью */
-  background-color: rgba(253, 251, 247, 0.95) !important; 
-  color: #1a1a1a !important; 
-  border: 1px solid #1a1a1a !important; /* Тонкая строгая рамка */
-  border-radius: 2px !important;
-  
-  /* ХИТРОСТЬ ТУТ: добавляем внутренние отступы, чтобы тексту было просторно */
-  padding: 6px 12px !important; 
-  
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: bold;
-  z-index: 1;
-}
-
-
-
-.arrow {
-  position: absolute;
-  background: #FDFBF7;
-  border: 1px solid rgba(26, 26, 26, 0.15);
-  font-size: 14px;
-  width: 36px;
-  height: 36px;
-  top: 50%;
-  transform: translateY(-50%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: #1a1a1a;
-  z-index: 2;
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-.slider-area:hover .arrow {
-  opacity: 1;
-}
-
-.arrow.left { left: 15px; }
-.arrow.right { right: 15px; }
-
-.arrow:hover {
-  background-color: #1a1a1a;
-  color: #FDFBF7;
-  border-color: #1a1a1a;
-}
-  .slider-dots {
-  position: absolute;
-  bottom: 15px;
-  display: flex;
-  gap: 8px;
-  z-index: 2;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.dot.active {
-  background-color: #1a1a1a;
-  transform: scale(1.2);
-}
-
-.card-info { 
-  padding: 25px;
-  text-align: center;
+  .site-wrapper { 
+    width: 100%; 
+    min-height: 100vh; 
+    padding: 40px 20px; 
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+  }
+  .main-content-area { 
+    max-width: 1000px; 
+    margin: 0 auto;
+  }
+  .action-bars { 
+    display: flex; 
+    justify-content: center; 
+    gap: 40px;
+    margin-bottom: 60px; 
+    border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  }
+  .filter-btn { flex: none; border: none; background: none; padding: 15px 5px; font-size: 16px; cursor: pointer; color: #1a1a1a; font-family: 'Playfair Display', serif; position: relative; bottom: -1px; transition: color 0.3s ease; letter-spacing: 0.5px;}
+.filter-btn::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: #1a1a1a; transform: scaleX(0); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);}
+  .filter-btn.active::after { transform: scaleX(1);}
+  .filter-btn.active { font-weight: 500; background-color: transparent;}
+  .catalog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; width: 100%; position: relative;}
+  .slider-area { position: relative; height: 450px; overflow: hidden; display: flex; align-items: center; justify-content: center; width: 100%;}.card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;}.product-card:hover .card-img { transform: scale(1.03);}.card-img.img-fade { opacity: 0.2; transform: scale(0.97);}
+  .card-badge { position: absolute; top: 15px; left: 15px; background-color: rgba(255, 255, 255, 0.9); color: #1a1a1a; padding: 5px 10px; border: 1px solid #1a1a1a; border-radius: 2px; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; z-index: 1;}.arrow { position: absolute; background: #FDFBF7; border: 1px solid rgba(26, 26, 26, 0.15); font-size: 14px; width: 36px; height: 36px; top: 50%; transform: translateY(-50%); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #1a1a1a; z-index: 2; opacity: 0; transition: all 0.3s ease;}.slider-area:hover .arrow { opacity: 1;}.arrow.left { left: 15px; }.arrow.right { right: 15px; }.arrow:hover { background-color: #1a1a1a; color: #FDFBF7; border-color: #1a1a1a;} .slider-dots { position: absolute; bottom: 15px; display: flex; gap: 8px; z-index: 2; left: 50%; transform: translateX(-50%);}.dot { width: 8px; height: 8px; background-color: rgba(255, 255, 255, 0.5); border-radius: 50%; transition: all 0.3s ease;}
+.dot.active { background-color: #1a1a1a; transform: scale(1.2);}
+  .card-info { padding: 25px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
+  .product-title { font-size: 17px; font-family: 'Playfair Display', serif; margin: 0; letter-spacing: 0.5px; min-height: 50px;}
+  .product-weight { font-size: 12px; color: #777; margin-bottom: 5px;}
+  .product-desc { font-size: 13px; line-height: 1.6; color: #444; margin: 0 10px 15px 10px; height: 65px; min-height: 65px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; text-overflow: ellipsis;}
+  .price-tag { font-size: 18px; font-weight: bold; margin: auto 0 0 0; }.footer { text-align: center; padding: 60px 0; border-top: 1px solid rgba(214, 179, 201, 0.2); margin-top: 50px;}.contact-section h3 { font-size: 16px; font-family: 'Playfair Display', serif; margin-bottom: 20px; letter-spacing: 0.5px;}.links-box { display: flex; justify-content: center; gap: 20px; margin-bottom: 30px;}.link-btn { padding: 10px 30px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 13px; background-color: #1a1a1a; color: white; transition: opacity 0.3s ease; letter-spacing: 1px; text-transform: uppercase;}.link-btn:hover { opacity: 0.8; }.copyright { font-size: 12px; opacity: 0.6;}
+.btn-up { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; border-radius: 50%; border: 1px solid rgba(26, 26, 26, 0.2); background-color: #FDFBF7; font-size: 16px; cursor: pointer; color: #1a1a1a; box-shadow: 0 4px 20px rgba(0,0,0,0.02); transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); display: flex; align-items: center; justify-content: center; z-index: 10;}.btn-up:hover { background-color: #1a1a1a; color: #FDFBF7; transform: translateY(-4px); border-color: #1a1a1a;}.editorial-banner { width: 100%; background-color: #FDFBF7; border-bottom: 1px solid #1a1a1a; margin-bottom: 60px;}.editorial-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; min-height: 550px;}.text-block { padding: 60px 80px 60px 0; display: flex; flex-direction: column; justify-content: space-between; } .meta-info { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: bold; letter-spacing: 3px; color: #838091; }.word-wrap { display: inline-block; overflow: hidden; vertical-align: bottom;}.anim-word { display: inline-block; transform: translateY(110%); animation: revealWord 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;}@keyframes revealWord { to { transform: translateY(0); }}.main-title { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 400; line-height: 1.2; color: #1a1a1a; margin: 30px 0;}.divider { width: 60px; height: 1px; background-color: #1a1a1a; margin-bottom: 30px;}.manifesto { font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.9; color: #333333; max-width: 450px;}
+.signature { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; color: #1a1a1a; margin-top: 40px;}
+  .image-block { width: 100%; height: 100%; overflow: hidden; border-left: 1px solid #1a1a1a; }.link-btn { padding: 10px 30px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 13px; background-color: #1a1a1a; color: white; transition: opacity 0.3s ease; letter-spacing: 1px; text-transform: uppercase; min-width: 140px; text-align: center; }.cover-photo { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.2) contrast(1.05); } 
+  .catalog-list-move,.catalog-list-enter-active,.catalog-list-leave-active { transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);}
+  .catalog-list-enter-from,.catalog-list-leave-to { opacity: 0; transform: scale(0.98) translateY(15px);}
+  .catalog-list-leave-active { position: absolute;}/* СТИЛИ АДАПТАЦИИ */@media (max-width: 768px) { 
+    .catalog-grid { grid-template-columns: 1fr; } 
+    .links-box { flex-direction: column; align-items: center; gap: 10px; } 
+                                                                                                                                                                                                                                                                                                                                         
+    .image-block { display: none !important; } 
+                                                                                                                                                                                                                                                                                                                                 .btn-up { bottom: 20px; right: 20px; width: 44px; height: 44px; font-size: 14px; background-color: rgba(253, 251, 247, 0.9); backdrop-filter: blur(4px); }}
+.product-card {
   display: flex;
   flex-direction: column;
-  flex-grow: 1; 
+  justify-content: space-between;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+  
+  /* Исходная позиция для красивого взлета при скролле */
+  opacity: 0;
+  transform: translateY(40px);
+  
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s ease;
+              
+  will-change: opacity, transform;
 }
 
-.product-title { 
-  font-size: 17px;
-  font-family: 'Playfair Display', serif; 
-  margin: 0;
-  letter-spacing: 0.5px;
-  min-height: 50px;
+/* СОСТОЯНИЕ ПОСЛЕ ПОЯВЛЕНИЯ НА ЭКРАНЕ (Повышаем приоритет без !important) */
+.catalog-grid .product-card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.product-weight {
-  font-size: 12px;
-  color: #777;
-  margin-bottom: 5px;
+/* ЭФФЕКТ ПАРЕНИЯ (При наведении мыши) */
+.catalog-grid .product-card.visible:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04);
+  transition-delay: 0s !important; 
 }
 
-.product-desc {
+/* ОГРАНИЧЕНИЕ ТЕКСТА ОПИСАНИЯ ДЛЯ СТАБИЛЬНОСТИ СЕТКИ */
+.product-card .product-desc, .product-card p {
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
+  font-weight: 300;
   font-size: 13px;
   line-height: 1.6;
-  color: #444;
-  margin: 0 10px 15px 10px;
-  height: 65px; 
+  color: #555555;
+  text-align: center;
+  margin-bottom: 24px;
+  
+  /* Идеальное выравнивание текстов разной длины (например, Макарон) */
+  height: auto; 
   min-height: 65px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -556,330 +445,63 @@ const vScrollReveal = {
   text-overflow: ellipsis;
 }
 
-.price-tag {
-  font-size: 18px;
-  font-weight: bold;
-  margin: auto 0 0 0; 
-}
-
-.footer { 
-  text-align: center; 
-  padding: 60px 0; 
-  border-top: 1px solid rgba(214, 179, 201, 0.2);
-  margin-top: 50px;
-}
-
-.contact-section h3 {
-  font-size: 16px;
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 20px;
-  letter-spacing: 0.5px;
-}
-
-.links-box {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-.link-btn {
-  padding: 10px 30px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 13px;
-  background-color: #1a1a1a;
-  color: white;
-  transition: opacity 0.3s ease;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.link-btn:hover { opacity: 0.8; }
-
-.copyright {
-  font-size: 12px;
-  opacity: 0.6;
-}
-
-.btn-up {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px solid rgba(26, 26, 26, 0.2);
-  background-color: #FDFBF7;
-  font-size: 16px;
-  cursor: pointer;
-  color: #1a1a1a;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-}
-.btn-up:hover {
-  background-color: #1a1a1a;
-  color: #FDFBF7;
-  transform: translateY(-4px);
-  border-color: #1a1a1a;
-}
-
-.editorial-banner {
+/* СЕТКА КАТАЛОГА */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
   width: 100%;
-  background-color: #FDFBF7; 
-  border-bottom: 1px solid #1a1a1a; 
-  margin-bottom: 60px;
+  position: relative;
 }
+  .product-card.visible { opacity: 1 !important; transform: translateY(0) !important;}
+  .product-card.visible:hover { transform: translateY(-6px) !important; box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04) !important;  transition-delay: 0s !important; }@media (max-width: 768px) { 
+  .product-card { /* На мобильных устройствах каскад по парам не нужен, карточки появляются по очереди скролла */ transition-delay: 0s !important; transform: translateY(30px) !important; }}/
+.product-card .slider-area { width: 100% !important; height: 380px !important; overflow: hidden !important; position: relative !important; background-color: #ffffff !important; border-top-left-radius: 10px !important; border-top-right-radius: 10px !important; display: block !important;}
+  .product-card .card-img { width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: center !important; display: block !important;}@media (max-width: 768px) { 
+  .product-card .slider-area { height: 260px !important; }}
+  .product-card .card-info { display: flex !important; flex-direction: column !important; flex-grow: 1 !important; justify-content: space-between !important; padding: 30px 24px !important;}
+  .product-card .product-title, .product-card h3 { font-family: "Playfair Display", "Didot", "Bodoni MT", serif !important; font-weight: 400 !important; font-size: 20px !important; letter-spacing: 0.04em !important; color: #1a1a1a !important; margin-bottom: 12px !important; text-align: center !important;}
+  .product-card .product-weight, .product-card .product-meta { font-family: "Montserrat", "Helvetica Neue", sans-serif !important; font-weight: 300 !important; font-size: 11px !important; text-transform: uppercase !important; letter-spacing: 0.15em !important; color: #8c8c8c !important; margin-bottom: 16px !important; text-align: center !important;}
+  .product-card .product-desc, .product-card p { font-family: "Montserrat", "Helvetica Neue", sans-serif !important; font-weight: 300 !important; font-size: 13px !important; line-height: 1.6 !important; color: #555555 !important; text-align: center !important; margin-bottom: 24px !important;}
+  .product-card .price-tag, .product-card .product-price { font-family: "Montserrat", "Helvetica Neue", sans-serif !important; font-weight: 500 !important; font-size: 15px !important; text-transform: uppercase !important; letter-spacing: 0.1em !important; color: #1a1a1a !important; text-align: center !important; margin-top: auto !important;}
 
-/* ======================================================= */
-/* ЖЕСТКИЙ ИСХОДНЫЙ ДЕСКТОП: СЕТКА И КОЛОНКИ               */
-/* ======================================================= */
-.editorial-grid {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important; 
-  width: 100% !important;
-}
+/* --- КОРРЕКТНАЯ АНИМАЦИЯ ПЕРЕКЛЮЧЕНИЯ В КАТАЛОГЕ VUE --- */
 
-.editorial-grid .text-block, 
-.text-block {
-  padding: 60px 40px 60px 0 !important; 
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important; 
-  align-items: center !important; 
-  text-align: center !important; 
-}
-
-.meta-info {
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  font-weight: bold;
-  letter-spacing: 3px;
-  color: #838091; 
-  text-align: center !important;
-  margin-bottom: 10px;
-}
-
-.editorial-grid .main-title {
-  display: block !important; 
-  font-family: 'Playfair Display', serif;
-  font-size: 42px; 
-  font-weight: 400; 
-  line-height: 1.2;
-  color: #1a1a1a;
-  margin: 30px 0 20px 0 !important;
-  text-align: center !important; 
-}
-
-.editorial-grid .divider {
-  width: 60px;
-  height: 1px;
-  background-color: #1a1a1a;
-  margin: 0 auto 30px auto !important; 
-  align-self: center !important;
-}
-
-.editorial-grid .manifesto {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  line-height: 2.1 !important; 
-  color: #333333;
-  max-width: 450px;
-  text-align: center !important;
-  align-self: center !important;
-  margin: 0 auto 40px auto !important;
-}
-
-.editorial-grid .signature {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 15px;
-  color: #1a1a1a;
-  text-align: center !important;
-  align-self: center !important; 
-  margin-top: auto !important; 
-}
-
-.image-block {
-  display: block !important;
-  width: 100% !important;
-}
-
-.word-wrap {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: bottom;
-}
-
-.anim-word {
-  display: inline-block;
-  transform: translateY(110%);
-  animation: revealWord 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* ======================================================= */
-/* КАТАЛОГ — ТВОИ ОРИГИНАЛЬНЫЕ ДЕСКТОПНЫЕ КАРТОЧКИ        */
-/* ======================================================= */
-.product-card .card-info {
-  display: flex !important;
-  flex-direction: column !important;
-  flex-grow: 1 !important;
-  padding: 30px 24px !important;
-}
-
-.product-card .product-title, .product-card h3 {
-  font-family: "Playfair Display", "Didot", "Bodoni MT", serif !important;
-  font-weight: 400 !important;
-  font-size: 20px !important;
-  letter-spacing: 0.04em !important;
-  color: #1a1a1a !important;
-  margin-bottom: 12px !important;
-  text-align: center !important;
-}
-
-.product-card .product-weight, .product-card .product-meta {
-  font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
-  font-weight: 300 !important;
-  font-size: 11px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.15em !important;
-  color: #8c8c8c !important;
-  margin-bottom: 16px !important;
-  text-align: center !important;
-}
-
-.product-card .product-desc, .product-card p {
-  font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
-  font-weight: 300 !important;
-  font-size: 13px !important;
-  line-height: 1.6 !important;
-  color: #555555 !important;
-  text-align: center !important;
-  margin-bottom: 24px !important;
-}
-
-.product-card .price-tag, .product-card .product-price {
-  font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
-  font-weight: 500 !important;
-  font-size: 15px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.1em !important;
-  color: #1a1a1a !important;
-  text-align: center !important;
-  margin-top: auto !important; 
-  padding-top: 15px !important;
-}
-
-/* АНИМАЦИИ */
+/* Настройка плавности и благородной траектории */
 .catalog-list-move,
 .catalog-list-enter-active,
 .catalog-list-leave-active {
   transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
+/* Эстетичное растворение с легким масштабированием */
 .catalog-list-enter-from,
 .catalog-list-leave-to {
   opacity: 0 !important;
   transform: scale(0.97) translateY(15px) !important;
 }
 
+/* Главный трюк: уходящая карточка временно становится абсолютной */
+/* и сохраняет точные размеры колонки, чтобы сетка не схлопывалась */
 .catalog-list-leave-active {
   position: absolute !important;
-  width: calc(50% - 20px) !important;
+  width: calc(50% - 20px) !important; /* Половина сетки минус половина gap (40px/2) */
   z-index: 0;
 }
 
-/* ======================================================= */
-/* АДАПТИВНАЯ СЕТКА ДЛЯ МОБИЛЬНЫХ (СТРОГО ДЛЯ ТЕЛЕФОНОВ)   */
-/* ======================================================= */
+/* Корректировка анимации для мобильных экранов */
 @media (max-width: 768px) {
-  
   .catalog-grid { 
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
-
-  .product-card .slider-area { 
-    height: 260px !important; 
+  .product-card {
+    transition-delay: 0s !important;
+    transform: translateY(30px);
   }
-
-  .links-box { 
-    flex-direction: column; 
-    align-items: center; 
-    gap: 10px; 
-  }
-  
-  .image-block { 
-    display: none !important; 
-  }
-  
-  .editorial-grid {
-    grid-template-columns: 1fr !important;
-    min-height: auto !important;
-  }
-  
-  .editorial-grid .text-block, 
-  .text-block {
-    padding: 40px 16px !important; 
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  .editorial-grid .main-title { 
-    font-size: 24px !important; 
-    line-height: 1.3 !important;
-    margin: 15px 0 !important;
-    width: 100% !important;
-  }
-
-  .main-title .word-wrap,
-  .editorial-grid .main-title .word-wrap {
-    display: inline !important;
-  }
-  
-  .main-title .anim-word,
-  .editorial-grid .main-title .anim-word {
-    display: inline !important; 
-    transform: none !important;
-    animation: none !important;
-  }
-
-  .editorial-grid .divider {
-    margin: 0 auto 25px auto !important;
-    width: 60px !important;
-  }
-  
-  .editorial-grid .manifesto { 
-    margin: 0 auto 25px auto !important; 
-    font-size: 14px !important;
-    line-height: 1.8 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  .editorial-grid .signature {
-    margin-top: 25px !important;
-    width: 100% !important;
-  }
-
   .catalog-list-leave-active { 
     position: absolute !important;
-    width: 100% !important; 
-  }
-
-  .btn-up {
-    bottom: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    font-size: 14px;
-    background-color: rgba(253, 251, 247, 0.9);
-    backdrop-filter: blur(4px);
+    width: 100% !important; /* В одну колонку уходящий элемент занимает всю ширину */
   }
 }
 
