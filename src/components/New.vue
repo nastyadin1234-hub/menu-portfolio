@@ -325,22 +325,13 @@ const createRevealObserver = (el) => {
   observer.observe(el)
   el._revealObserver = observer // Сохраняем ссылку для последующей очистки
 }
-
 const vScrollReveal = {
   mounted(el) {
-    createRevealObserver(el)
-  },
-  updated(el) {
-    // Сбрасываем класс анимации при смене категории товара
-    el.classList.remove('visible') 
-    
-    // Удаляем старый observer, если он существовал
-    if (el._revealObserver) {
-      el._revealObserver.disconnect()
-    }
-    
-    // Инициализируем слежку заново для обновленного контента
-    createRevealObserver(el)
+    // Небольшая задержка, чтобы анимация скролла 
+    // не конфликтовала с анимацией смены категорий Vue
+    setTimeout(() => {
+      createRevealObserver(el)
+    }, 150)
   },
   unmounted(el) {
     if (el._revealObserver) {
@@ -790,58 +781,68 @@ const vScrollReveal = {
   
 /* БАЗОВОЕ СКРЫТОЕ СОСТОЯНИЕ КАРТОЧКИ */
 .product-card {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  height: 100% !important;
-  background-color: #ffffff !important;
-  border-radius: 10px !important;
-  overflow: hidden !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
   
-  /* Исходная позиция для анимации взлета */
-  opacity: 0 !important;
-  transform: translateY(40px) !important;
+  /* Исходная позиция для красивого взлета при скролле */
+  opacity: 0;
+  transform: translateY(40px);
   
-  /* Плавный премиальный переход. transition-delay подставится из Vue */
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
               transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.5s ease !important;
+              box-shadow 0.5s ease;
               
-  will-change: opacity, transform; /* Подсказка браузеру для плавной работы */
+  will-change: opacity, transform;
 }
 
-/* СОСТОЯНИЕ ПОСЛЕ ПОЯВЛЕНИЯ НА ЭКРАНЕ */
-.product-card.visible {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
+/* СОСТОЯНИЕ ПОСЛЕ ПОЯВЛЕНИЯ НА ЭКРАНЕ (Повышаем приоритет без !important) */
+.catalog-grid .product-card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* ЭФФЕКТ ПАРЕНИЯ (Ховер работает только на видимых карточках) */
-.product-card.visible:hover {
-  transform: translateY(-6px) !important;
-  box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04) !important;
-  /* Обнуляем задержку при ховере, чтобы карточка реагировала на мышь мгновенно */
+/* ЭФФЕКТ ПАРЕНИЯ (При наведении мыши) */
+.catalog-grid .product-card.visible:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04);
   transition-delay: 0s !important; 
 }
 
-/* СБРОС ЗАДЕРЖКИ ДЛЯ МОБИЛЬНЫХ ЭКРАНОВ (В 1 КОЛОНКУ) */
-@media (max-width: 768px) {
-  .product-card {
-    /* На мобильных устройствах каскад по парам не нужен, карточки появляются по очереди скролла */
-    transition-delay: 0s !important;
-    transform: translateY(30px) !important; /* Чуть меньше сдвиг для мобильных экранов */
-  }
+/* ОГРАНИЧЕНИЕ ТЕКСТА ОПИСАНИЯ ДЛЯ СТАБИЛЬНОСТИ СЕТКИ */
+.product-card .product-desc, .product-card p {
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #555555;
+  text-align: center;
+  margin-bottom: 24px;
+  
+  /* Идеальное выравнивание текстов разной длины (например, Макарон) */
+  height: auto; 
+  min-height: 65px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* СЕТКА КАТАЛОГА */
 .catalog-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr) !important;
+  grid-template-columns: repeat(2, 1fr);
   gap: 40px;
   width: 100%;
   position: relative;
 }
+
 
 @media (max-width: 768px) {
   .catalog-grid { 
@@ -915,6 +916,45 @@ const vScrollReveal = {
   color: #1a1a1a !important;
   text-align: center !important;
   margin-top: auto !important;
+}
+/* --- КОРРЕКТНАЯ АНИМАЦИЯ ПЕРЕКЛЮЧЕНИЯ В КАТАЛОГЕ VUE --- */
+
+/* Настройка плавности и благородной траектории */
+.catalog-list-move,
+.catalog-list-enter-active,
+.catalog-list-leave-active {
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Эстетичное растворение с легким масштабированием */
+.catalog-list-enter-from,
+.catalog-list-leave-to {
+  opacity: 0 !important;
+  transform: scale(0.97) translateY(15px) !important;
+}
+
+/* Главный трюк: уходящая карточка временно становится абсолютной */
+/* и сохраняет точные размеры колонки, чтобы сетка не схлопывалась */
+.catalog-list-leave-active {
+  position: absolute !important;
+  width: calc(50% - 20px) !important; /* Половина сетки минус половина gap (40px/2) */
+  z-index: 0;
+}
+
+/* Корректировка анимации для мобильных экранов */
+@media (max-width: 768px) {
+  .catalog-grid { 
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .product-card {
+    transition-delay: 0s !important;
+    transform: translateY(30px);
+  }
+  .catalog-list-leave-active { 
+    position: absolute !important;
+    width: 100% !important; /* В одну колонку уходящий элемент занимает всю ширину */
+  }
 }
 
 
