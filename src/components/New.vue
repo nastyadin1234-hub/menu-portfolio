@@ -8,13 +8,13 @@
           <div class="text-block">
             <div class="meta-info"> Noble Desserts </div>
             <h1 class="main-title">
-              <span class="word-wrap" v-for="(word, i) in 'Архитектура безупречного вкуса'.split(' ')" :key="i">
+              <span class="word-wrap" v-for="(word, i) in 'Безупречный подход к созданию чистого вкуса'.split(' ')" :key="i">
                 <span class="anim-word" :style="{ animationDelay: i * 0.05 + 's' }">{{ word }}&nbsp;</span>
               </span>
             </h1>
             <div class="divider"></div>
             <p class="manifesto">
-              Я верю, что идеальный десерт — это не просто сахар и крем. Это тонкая гармония текстур, изящная эстетика линий и честные локальные продукты. Каждое изделие создается вручную с бескомпромиссным вниманием к мимолетным деталям. В мире высокой кондитерской эстетики нет места случайностям — здесь правит чистый вкус.
+              Я верю, что идеальный десерт — это не просто сахар и крем. Это точный расчет пропорций, геометрия слоев и честные локальные продукты. Каждое изделие создается вручную с бескомпромиссным вниманием к деталям. Как в точной механике, здесь нет места случайностям.
             </p>
             <div class="signature">Десерты в исполнении Надежды Динченко</div>
           </div>
@@ -796,57 +796,31 @@ const vScrollReveal = {
 .catalog-list-leave-active {
   position: absolute;
 }
-/* СТИЛИ АДАПТАЦИИ (ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ) */
-/* СТИЛИ АДАПТАЦИИ (ПОЛНЫЙ ВОЗВРАТ К ВАШЕМУ ИДЕАЛУ) */
 @media (max-width: 768px) {
-  .catalog-grid { 
-    grid-template-columns: 1fr !important; 
-    gap: 20px !important;
-  }
-  .links-box { 
-    flex-direction: column; 
-    align-items: center; 
-    gap: 10px; 
-  }
+  .catalog-grid { grid-template-columns: 1fr; }
+  .links-box { flex-direction: column; align-items: center; gap: 10px; }
   
-  .image-block { 
-    display: none !important; 
-  }
+  .image-block { display: none !important; }
   
   .editorial-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
     min-height: auto !important;
   }
   
   .text-block {
-    padding: 40px 20px !important;
-    text-align: center !important;
-    align-items: center !important;
+    padding: 40px 10px !important;
+    text-align: center;
+    align-items: center;
   }
 
   .divider {
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin-left: auto;
+    margin-right: auto;
   }
   
-  .main-title { 
-    font-size: 32px !important; 
-    text-align: center !important;
-  }
-  
-  .manifesto { 
-    margin: 0 auto !important; 
-    text-align: center !important;
-  }
-
-  .signature {
-    text-align: center !important;
-  }
-
-  .catalog-list-leave-active { 
-    position: absolute !important;
-    width: 100% !important; 
-  }
+  .main-title { font-size: 32px; }
+  .manifesto { margin: 0 auto; }
+  .catalog-list-leave-active { position: static; }
 
   .btn-up {
     bottom: 20px;
@@ -858,6 +832,7 @@ const vScrollReveal = {
     backdrop-filter: blur(4px);
   }
 }
+
 
   
 /* БАЗОВОЕ СКРЫТОЕ СОСТОЯНИЕ КАРТОЧКИ */
