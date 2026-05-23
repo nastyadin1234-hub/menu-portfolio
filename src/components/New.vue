@@ -833,9 +833,6 @@ const vScrollReveal = {
   }
 }
 
-
-  
-/* БАЗОВОЕ СКРЫТОЕ СОСТОЯНИЕ КАРТОЧКИ */
 .product-card {
   display: flex;
   flex-direction: column;
@@ -846,31 +843,26 @@ const vScrollReveal = {
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
   border: 1px solid rgba(26, 26, 26, 0.06) !important;
-  /* Исходная позиция для красивого взлета при скролле */
   opacity: 0;
   transform: translateY(40px);
-  
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
               transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.5s ease;
-              
   will-change: opacity, transform;
 }
 
-/* СОСТОЯНИЕ ПОСЛЕ ПОЯВЛЕНИЯ НА ЭКРАНЕ (Повышаем приоритет без !important) */
 .catalog-grid .product-card.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ЭФФЕКТ ПАРЕНИЯ (При наведении мыши) */
 .catalog-grid .product-card.visible:hover {
   transform: translateY(-6px);
   box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04);
   transition-delay: 0s !important; 
 }
 
-/* ОГРАНИЧЕНИЕ ТЕКСТА ОПИСАНИЯ ДЛЯ СТАБИЛЬНОСТИ СЕТКИ */
+/* ОПИСАНИЕ ДЛЯ СТАБИЛЬНОСТИ СЕТКИ */
 .product-card .product-desc, .product-card p {
   font-family: "Montserrat", "Helvetica Neue", sans-serif;
   font-weight: 300;
@@ -879,8 +871,6 @@ const vScrollReveal = {
   color: #555555;
   text-align: center;
   margin-bottom: 24px;
-  
-  /* Идеальное выравнивание текстов разной длины (например, Макарон) */
   height: auto; 
   min-height: 65px;
   display: -webkit-box;
@@ -890,7 +880,7 @@ const vScrollReveal = {
   text-overflow: ellipsis;
 }
 
-/* СЕТКА КАТАЛОГА */
+/* СЕТКА КАТАЛОГА ДЕCКТОП */
 .catalog-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -899,13 +889,59 @@ const vScrollReveal = {
   position: relative;
 }
 
-
-@media (max-width: 768px) {
-  .catalog-grid { 
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-  }
+/* ЗОНА ДЛЯ ФОТО И ОФОРМЛЕНИЕ ТЕКСТА */
+.product-card .slider-area {
+  width: 100% !important;
+  height: 380px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  background-color: #ffffff !important;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+  display: block !important;
 }
+
+.product-card .card-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+}
+
+.product-card .card-info {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important;
+  padding: 30px 24px !important;
+}
+
+.product-card .product-title, .product-card h3 {
+  font-family: "Playfair Display", "Didot", "Bodoni MT", serif !important;
+  font-weight: 400 !important;
+  font-size: 20px !important;
+  letter-spacing: 0.04em !important;
+  color: #1a1a1a !important;
+  margin-bottom: 12px !important;
+  text-align: center !important;
+}
+
+/* СТРУКТУРА ШАПКИ ДЕCКТОП */
+.editorial-grid {
+  display: grid !important;
+  grid-template-columns: 1.2fr 0.8fr !important; 
+  min-height: 550px;
+}
+
+.text-block {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: center !important; 
+  text-align: center !important; 
+  padding: 60px 80px 60px 0;
+}
+
 
 /* ЗОНА ДЛЯ ФОТО И ОФОРМЛЕНИЕ ТЕКСТА (ОСТАЮТСЯ БЕЗ ИЗМЕНЕНИЙ) */
 .product-card .slider-area {
@@ -998,37 +1034,104 @@ const vScrollReveal = {
   z-index: 0;
 }
 
-/* Корректировка анимации для мобильных экранов */
 @media (max-width: 768px) {
+  
+  /* 1. Сетка каталога в одну колонку */
   .catalog-grid { 
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
   }
+
+  /* 2. Сброс анимации задержки и сдвига карточек */
   .product-card {
     transition-delay: 0s !important;
     transform: translateY(30px);
   }
+
+  /* 3. Уменьшение высоты картинок десертов */
+  .product-card .slider-area { 
+    height: 260px !important; 
+  }
+
+  /* 4. Исправление уходящих карточек во Vue Transition */
   .catalog-list-leave-active { 
     position: absolute !important;
-    width: 100% !important; /* В одну колонку уходящий элемент занимает всю ширину */
+    width: 100% !important; 
+  }
+
+  /* 5. Футер: кнопки встают друг под друга */
+  .links-box { 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 10px; 
+  }
+  
+  /* 6. Прячем картинку с карамелью на телефонах */
+  .image-block { 
+    display: none !important; 
+  }
+  
+  /* 7. СБРАСЫВАЕМ ДЕCКТОПНУЮ СЕТКУ ШАПКИ (Убираем пустоту и зажатость) */
+  .editorial-grid {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+  
+  /* 8. ОСВОБОЖДАЕМ ШИРИНУ ТЕКСТА (Убираем отступ справа 80px из десктопа) */
+  .text-block {
+    padding: 30px 15px !important; /* Даем тексту дышать на всю ширину экрана */
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 9. Уменьшаем размер букв, чтобы заголовок не рвался на куски */
+  .main-title { 
+    font-size: 26px !important; 
+    text-align: center !important;
+    line-height: 1.3 !important;
+    width: 100% !important;
+  }
+
+  /* Склеиваем слова обратно в полноценные мобильные строчки */
+  .main-title .word-wrap {
+    display: inline !important;
+  }
+  
+  .main-title .anim-word {
+    display: inline-block !important;
+  }
+
+  /* 10. Центрируем разделитель и манифест */
+  .divider {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  .manifesto { 
+    margin: 0 auto !important; 
+    text-align: center !important;
+    font-size: 14px !important;
+    line-height: 1.8 !important;
+  }
+
+  .signature {
+    text-align: center !important;
+    margin-top: 25px !important;
+  }
+
+  /* Кнопка наверх */
+  .btn-up {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    font-size: 14px;
+    background-color: rgba(253, 251, 247, 0.9);
+    backdrop-filter: blur(4px);
   }
 }
-/* ВОЗВРАЩАЕМ СЕТКУ И ВЫРАВНИВАЕМ БУКВЫ ПО ЛЕВОМУ КРАЮ */
-.editorial-grid {
-  display: grid !important;
-  grid-template-columns: 1.2fr 0.8fr !important; /* Возвращаем картинку на её законное место справа */
-  min-height: 550px;
-}
-
-.text-block {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  align-items: flex-start !important; /* Убираем лесенку, выравниваем блоки по левому краю */
-  text-align: left !important; /* Намертво делаем текст левосторонним */
-  padding: 60px 80px 60px 0;
-}
-
 .main-title, .manifesto, .signature {
   text-align: left !important; /* Принудительно убираем центрирование у каждого текстового блока */
 }
