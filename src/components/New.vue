@@ -1011,7 +1011,7 @@ const vScrollReveal = {
   padding-top: 15px !important;
 }
 /* --- КОРРЕКТНАЯ АНИМАЦИЯ ПЕРЕКЛЮЧЕНИЯ В КАТАЛОГЕ VUE --- */
-
+  }
 /* Настройка плавности и благородной траектории */
 .catalog-list-move,
 .catalog-list-enter-active,
@@ -1055,7 +1055,7 @@ const vScrollReveal = {
     width: 100% !important;
     text-align: center !important;
   }
-}
+
 .divider {
   margin-left: 0 !important; /* Удерживаем вашу аккуратную черную полоску строго слева */
   margin-right: auto !important;
