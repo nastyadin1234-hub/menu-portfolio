@@ -1002,5 +1002,28 @@ const vScrollReveal = {
   }
 }
 
+/* ПРИНУДИТЕЛЬНОЕ ВЫРАВНИВАНИЕ ВСЕХ ТЕКСТОВ В ШАПКЕ */
+.editorial-banner .text-block,
+.editorial-banner .main-title,
+.editorial-banner .manifesto,
+.editorial-banner .signature {
+  text-align: left !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}
+
+/* ИСПРАВЛЕНИЕ ДЛЯ АНИМИРОВАННЫХ СЛОВ ЗАГОЛОВКА */
+.editorial-banner .word-wrap,
+.editorial-banner .anim-word {
+  text-align: left !important;
+  display: inline-block !important;
+  float: none !important;
+}
+
+/* ФИКСИРУЕМ ПОЗИЦИЮ ЛИНИИ */
+.editorial-banner .divider {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
 
 </style>
