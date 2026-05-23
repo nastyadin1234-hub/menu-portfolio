@@ -364,10 +364,11 @@ const vScrollReveal = {
 .action-bars {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 60px !important;
   margin-bottom: 60px;
   border-bottom: 1px solid rgba(26, 26, 26, 0.1);
 }
+
 
 .filter-btn {
   flex: none;
@@ -684,9 +685,10 @@ const vScrollReveal = {
 .manifesto {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  line-height: 1.9; 
-  color: #333333;
-  max-width: 450px;
+  line-height: 2.1 !important;
+  color: #4a4a4a !important; 
+  max-width: 480px !important;
+  letter-spacing: 0.2px !important;
 }
 
 .signature {
@@ -789,7 +791,7 @@ const vScrollReveal = {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
-  
+  border: 1px solid rgba(26, 26, 26, 0.06) !important;
   /* Исходная позиция для красивого взлета при скролле */
   opacity: 0;
   transform: translateY(40px);
@@ -876,9 +878,9 @@ const vScrollReveal = {
   display: flex !important;
   flex-direction: column !important;
   flex-grow: 1 !important;
-  justify-content: space-between !important;
   padding: 30px 24px !important;
 }
+
 .product-card .product-title, .product-card h3 {
   font-family: "Playfair Display", "Didot", "Bodoni MT", serif !important;
   font-weight: 400 !important;
@@ -915,7 +917,8 @@ const vScrollReveal = {
   letter-spacing: 0.1em !important;
   color: #1a1a1a !important;
   text-align: center !important;
-  margin-top: auto !important;
+  margin-top: auto !important; 
+  padding-top: 15px !important;
 }
 /* --- КОРРЕКТНАЯ АНИМАЦИЯ ПЕРЕКЛЮЧЕНИЯ В КАТАЛОГЕ VUE --- */
 
