@@ -1032,7 +1032,25 @@ const vScrollReveal = {
 .main-title, .manifesto, .signature {
   text-align: left !important; /* Принудительно убираем центрирование у каждого текстового блока */
 }
+.editorial-grid .text-block, 
+  .text-block {
+    /* 10px по бокам — это минимум, чтобы буквы не прилипали к краям экрана смартфона */
+    padding: 30px 10px !important; 
+    width: 100% !important;
+    box-sizing: border-box !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
 
+  /* КОРРЕКТИРУЕМ РАЗМЕР ЗАГЛОВКА */
+  .editorial-grid .main-title, 
+  .main-title {
+    font-size: 24px !important; /* Немного уменьшаем размер букв, чтобы слова помещались целиком */
+    line-height: 1.3 !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
 .divider {
   margin-left: 0 !important; /* Удерживаем вашу аккуратную черную полоску строго слева */
   margin-right: auto !important;
