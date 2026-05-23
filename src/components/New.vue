@@ -646,7 +646,6 @@ const vScrollReveal = {
   text-align: center !important; /* Центрирует строчки текста внутри блоков */
 }
 
-/* МЕТА-ИНФОРМАЦИЯ (Noble Desserts над заголовком) */
 .meta-info {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
@@ -657,7 +656,6 @@ const vScrollReveal = {
   margin-bottom: 10px;
 }
 
-/* ГЛАВНЫЙ ЗАГОЛОВОК */
 .editorial-grid .main-title {
   font-family: 'Playfair Display', serif;
   font-size: 42px; 
@@ -665,23 +663,21 @@ const vScrollReveal = {
   line-height: 1.2;
   color: #1a1a1a;
   margin: 30px 0 20px 0 !important;
-  text-align: center !important; /* Возвращаем красивое центрирование */
+  text-align: center !important; 
 }
 
-/* ЛИНЕЙКА-РАЗДЕЛИТЕЛЬ */
 .editorial-grid .divider {
   width: 60px;
   height: 1px;
   background-color: #1a1a1a;
-  margin: 0 auto 30px auto !important; /* Линия встает строго по центру */
+  margin: 0 auto 30px auto !important; 
   align-self: center !important;
 }
 
-/* МАНИФЕСТ КОНДИТЕРА */
 .editorial-grid .manifesto {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  line-height: 2.1 !important; /* Воздушный журнальный шаг строк */
+  line-height: 2.1 !important; 
   color: #333333;
   max-width: 450px;
   text-align: center !important;
@@ -689,17 +685,15 @@ const vScrollReveal = {
   margin: 0 auto 40px auto !important;
 }
 
-/* ФИНАЛЬНАЯ ПОДПИСЬ НАДЕЖДЫ */
 .editorial-grid .signature {
   font-family: 'Playfair Display', serif;
   font-style: italic;
   font-size: 15px;
   color: #1a1a1a;
   text-align: center !important;
-  align-self: center !important; /* Выравниваем по центру */
+  align-self: center !important; 
   margin-top: auto !important; 
 }
-
 
 .word-wrap {
   display: inline-block;
@@ -712,8 +706,11 @@ const vScrollReveal = {
   transform: translateY(110%);
   animation: revealWord 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
 @keyframes revealWord {
-  to { transform: translateY(0); }
+  to { 
+    transform: translateY(0); 
+  }
 }
 
 .main-title {
