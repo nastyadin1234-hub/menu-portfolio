@@ -808,19 +808,13 @@ const vScrollReveal = {
 /* 7. МОБИЛЬНАЯ АДАПТИВНОСТЬ (ЭКРАНЫ ДО 768px)            */
 /* ======================================================= */
 @media (max-width: 768px) { 
-  /* Убираем боковые отступы у страницы, чтобы баннер встал во весь экран телефона */
-  .site-wrapper {
-    padding: 20px 0 !important;
-  }
-
-  /* Каталог строго в ОДНУ колонку (КАК БЫЛО ИЗНАЧАЛЬНО) */
+  /* Каталог в одну колонку */
   .catalog-grid { 
     grid-template-columns: 1fr !important; 
     gap: 20px !important;
-    padding: 0 20px !important; /* Боковые отступы добавляем только каталогу товаров */
   } 
   
-  /* ИСПРАВЛЕНИЕ: Добавлен деликатный контур для мобильных карточек, чтобы они не сливались с фоном */
+  /* ИСПРАВЛЕНИЕ: Маленький контур у карточек товаров, чтобы они не сливались с фоном */
   .product-card {
     border: 1px solid rgba(26, 26, 26, 0.08) !important;
     box-sizing: border-box !important;
@@ -838,16 +832,10 @@ const vScrollReveal = {
     width: 100% !important;
   }
 
-  .action-bars {
-    padding: 0 20px !important;
-    gap: 20px !important;
-  }
-
   .links-box {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    padding: 0 20px !important;
   }
 
   /* Скрываем боковую картинку баннера */
@@ -861,24 +849,31 @@ const vScrollReveal = {
     min-height: auto !important;
   }
 
-  /* ИСПРАВЛЕНИЕ БАННЕРА: Текст и карточка баннера занимают всю ширину */
+    /* ИСПРАВЛЕНИЕ ШИРИНЫ ШАПКИ: Текст раскрывается, но строго в границах экрана */
   .text-block {
-    padding: 40px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;   
+    
+    /* СБРОС ДЕСКТОПНЫХ ОТСТУПОВ: убираем padding-right в 80px, который выталкивал сайт наружу */
+    padding: 40px 16px !important; 
+    margin: 0 !important;          /* Убираем любые внешние сдвиги */
+    
+    box-sizing: border-box !important; /* Гарантирует, что отступы 16px сидят внутри 100% ширины */
     align-items: center !important;
     text-align: center !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
   }
 
-  /* ИСПРАВЛЕНИЕ: Крупный красивый заголовок баннера на всю ширину мобильного */
+
+  /* ИСПРАВЛЕНИЕ ЗАГОЛОВКА: Свободная ширина, чтобы текст не зажимался */
   .main-title {
-    font-size: 32px !important;    
-    line-height: 1.25 !important;
+    font-size: 26px !important;
+    line-height: 1.3 !important;
     text-align: center !important;
     width: 100% !important;
-    max-width: 100% !important;
-    margin: 15px 0 25px 0 !important;
+    max-width: 100% !important;   /* Убираем сужение заголовка */
+    margin: 15px 0 !important;
   }
 
   /* Склеиваем разбитые скриптом анимации буквы обратно в слова */
@@ -895,25 +890,23 @@ const vScrollReveal = {
     animation: none !important;
   }
 
-  /* ИСПРАВЛЕНИЕ: Текст манифеста теперь тоже раскрывается на 100% */
-  .manifesto {
-    font-size: 15px !important;    
-    line-height: 1.7 !important;
-    text-align: center !important;
-    margin: 0 auto !important;
-    width: 100% !important;
-    max-width: 100% !important;   
-  }
-
-
-  /* Центрируем декоративную полоску и подпись шефа */
+  /* Центрируем декоративную полоску */
   .divider {
-    margin: 0 auto 30px auto !important;
+    margin: 0 auto 25px auto !important;
   }
 
+  /* ИСПРАВЛЕНИЕ МАНИФЕСТА: Снимаем жесткий десктопный max-width в 450px */
+  .manifesto {
+    margin: 0 auto !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;   /* Текст теперь занимает всё доступное пространство экрана */
+  }
+
+  /* Подпись шефа */
   .signature {
     text-align: center !important;
-    margin-top: 30px !important;
+    margin-top: 25px !important;
   }
 
   /* Мобильные габариты для кнопки "Наверх" */
