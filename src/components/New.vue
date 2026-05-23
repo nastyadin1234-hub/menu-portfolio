@@ -622,7 +622,6 @@ const vScrollReveal = {
   justify-content: center;
   z-index: 10;
 }
-
 .btn-up:hover {
   background-color: #1a1a1a;
   color: #FDFBF7;
@@ -637,66 +636,59 @@ const vScrollReveal = {
   margin-bottom: 60px;
 }
 
-/* СТИЛИ ДЛЯ КОМПЬЮТЕРОВ (ДЕФОЛТНЫЕ) */
+/* ======================================================= */
+/* СТИЛИ ДЛЯ КОМПЬЮТЕРОВ (УВЕЛИЧЕННЫЕ ШРИФТЫ НА ДЕСКТОПЕ)  */
+/* ======================================================= */
 .editorial-grid .text-block, 
 .text-block {
-  padding: 60px 40px !important; /* Сделали симметричные отступы 40px слева и справа */
+  padding: 80px 60px 80px 0 !important; /* Немного увеличили десктопные отступы под крупные шрифты */
   display: flex !important;
-  flex-direction: column !important;
   justify-content: space-between !important; 
-  align-items: center !important; 
-  text-align: center !important;
-  box-sizing: border-box !important;
-  width: 100% !important;
-  max-width: 100% !important;
 }
 
 .meta-info {
   font-family: 'Inter', sans-serif;
-  font-size: 10px;
+  font-size: 12px; /* Было 10px -> Текст над заголовком стал заметнее */
   font-weight: bold;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   color: #838091; 
   text-align: center !important;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .editorial-grid .main-title {
   font-family: 'Playfair Display', serif;
-  font-size: 42px; 
+  font-size: 52px; /* Было 42px -> Заголовок стал крупным и премиальным */
   font-weight: 400; 
-  line-height: 1.2;
+  line-height: 1.25;
   color: #1a1a1a;
-  margin: 30px 0 20px 0 !important;
+  margin: 35px 0 25px 0 !important;
   text-align: center !important; 
-  white-space: normal !important;
-  word-wrap: break-word !important;
-  max-width: 100% !important;
 }
 
 .editorial-grid .divider {
-  width: 60px;
+  width: 80px; /* Было 60px -> Линия стала чуть длиннее под крупный шрифт */
   height: 1px;
   background-color: #1a1a1a;
-  margin: 0 auto 30px auto !important; 
+  margin: 0 auto 35px auto !important; 
   align-self: center !important;
 }
 
 .editorial-grid .manifesto {
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  line-height: 2.1 !important; 
+  font-size: 16px; /* Было 14px -> Манифест теперь читается гораздо легче */
+  line-height: 2.2 !important; 
   color: #333333;
-  max-width: 450px;
+  max-width: 520px; /* Увеличили ширину блока, чтобы строки не были слишком короткими */
   text-align: center !important;
   align-self: center !important;
-  margin: 0 auto 40px auto !important;
+  margin: 0 auto 45px auto !important;
 }
 
 .editorial-grid .signature {
   font-family: 'Playfair Display', serif;
   font-style: italic;
-  font-size: 15px;
+  font-size: 18px; /* Было 15px -> Подпись автора стала крупнее */
   color: #1a1a1a;
   text-align: center !important;
   align-self: center !important; 
@@ -720,13 +712,13 @@ const vScrollReveal = {
   display: flex !important;
   flex-direction: column !important;
   flex-grow: 1 !important;
-  padding: 30px 24px !important;
+  padding: 35px 28px !important;
 }
 
 .product-card .product-title, .product-card h3 {
   font-family: "Playfair Display", "Didot", "Bodoni MT", serif !important;
   font-weight: 400 !important;
-  font-size: 20px !important;
+  font-size: 22px !important; /* Было 20px */
   letter-spacing: 0.04em !important;
   color: #1a1a1a !important;
   margin-bottom: 12px !important;
@@ -736,7 +728,7 @@ const vScrollReveal = {
 .product-card .product-weight, .product-card .product-meta {
   font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
   font-weight: 300 !important;
-  font-size: 11px !important;
+  font-size: 12px !important; /* Было 11px */
   text-transform: uppercase !important;
   letter-spacing: 0.15em !important;
   color: #8c8c8c !important;
@@ -747,7 +739,7 @@ const vScrollReveal = {
 .product-card .product-desc, .product-card p {
   font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
   font-weight: 300 !important;
-  font-size: 13px !important;
+  font-size: 14px !important; /* Было 13px */
   line-height: 1.6 !important;
   color: #555555 !important;
   text-align: center !important;
@@ -757,7 +749,7 @@ const vScrollReveal = {
 .product-card .price-tag, .product-card .product-price {
   font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
   font-weight: 500 !important;
-  font-size: 15px !important;
+  font-size: 16px !important; /* Было 15px */
   text-transform: uppercase !important;
   letter-spacing: 0.1em !important;
   color: #1a1a1a !important;
@@ -815,10 +807,11 @@ const vScrollReveal = {
     width: 100% !important;
   }
   
-  /* ИСПРАВЛЕНИЕ СДВИГА: Симметричные отступы на мобилках */
   .editorial-grid .text-block, 
   .text-block {
     padding: 40px 16px !important; 
+    display: flex !important;
+    flex-direction: column !important; 
     align-items: center !important;
     text-align: center !important;
     width: 100% !important;
@@ -826,17 +819,18 @@ const vScrollReveal = {
     box-sizing: border-box !important;
   }
 
-  /* ИСПРАВЛЕНИЕ РАЗМЕРА ЗАГЛОВКА */
+  /* НА МОБИЛЬНОМ ОСТАВЛЯЕМ АККУРАТНЫЕ ТЕКУЩИЕ РАЗМЕРЫ */
   .editorial-grid .main-title { 
-    font-size: 24px !important; /* Уменьшили с 42px до 24px, чтобы всё помещалось */
+    font-size: 24px !important; /* Идеально для телефона */
     text-align: center !important;
     line-height: 1.3 !important;
     width: 100% !important;
     max-width: 100% !important;
     margin: 15px 0 !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
   }
 
-  /* Отключаем жесткую анимацию разбиения слов на мобильных, чтобы избежать багов */
   .main-title .word-wrap,
   .editorial-grid .main-title .word-wrap {
     display: inline !important;
@@ -858,7 +852,7 @@ const vScrollReveal = {
   .editorial-grid .manifesto { 
     margin: 0 auto 25px auto !important; 
     text-align: center !important;
-    font-size: 14px !important;
+    font-size: 14px !important; /* Удобно для чтения на телефоне */
     line-height: 1.8 !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -868,7 +862,14 @@ const vScrollReveal = {
     text-align: center !important;
     margin-top: 25px !important;
     width: 100% !important;
+    font-size: 15px !important;
   }
+
+  /* МОБИЛЬНЫЙ КАТАЛОГ — РАЗМЕРЫ ИЗ ТВОЕЙ ИСХОДНОЙ ВЕРСИИ */
+  .product-card .product-title, .product-card h3 { font-size: 20px !important; }
+  .product-card .product-weight, .product-card .product-meta { font-size: 11px !important; }
+  .product-card .product-desc, .product-card p { font-size: 13px !important; }
+  .product-card .price-tag, .product-card .product-price { font-size: 15px !important; }
 
   .catalog-list-leave-active { 
     position: absolute !important;
@@ -885,4 +886,5 @@ const vScrollReveal = {
     backdrop-filter: blur(4px);
   }
 }
+
 </style>
