@@ -637,62 +637,77 @@ const vScrollReveal = {
 }
 
 /* ======================================================= */
-/* СТИЛИ ДЛЯ КОМПЬЮТЕРОВ (УВЕЛИЧЕННЫЕ ШРИФТЫ НА ДЕСКТОПЕ)  */
+/* ЖЕСТКИЙ ИСХОДНЫЙ ДЕСКТОП: СЕТКА И КОЛОНКИ               */
 /* ======================================================= */
+.editorial-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important; 
+  width: 100% !important;
+}
+
 .editorial-grid .text-block, 
 .text-block {
-  padding: 80px 60px 80px 0 !important; /* Немного увеличили десктопные отступы под крупные шрифты */
+  padding: 60px 40px 60px 0 !important; 
   display: flex !important;
+  flex-direction: column !important;
   justify-content: space-between !important; 
+  align-items: center !important; 
+  text-align: center !important; 
 }
 
 .meta-info {
   font-family: 'Inter', sans-serif;
-  font-size: 12px; /* Было 10px -> Текст над заголовком стал заметнее */
+  font-size: 10px;
   font-weight: bold;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   color: #838091; 
   text-align: center !important;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .editorial-grid .main-title {
+  display: block !important; 
   font-family: 'Playfair Display', serif;
-  font-size: 52px; /* Было 42px -> Заголовок стал крупным и премиальным */
+  font-size: 42px; 
   font-weight: 400; 
-  line-height: 1.25;
+  line-height: 1.2;
   color: #1a1a1a;
-  margin: 35px 0 25px 0 !important;
+  margin: 30px 0 20px 0 !important;
   text-align: center !important; 
 }
 
 .editorial-grid .divider {
-  width: 80px; /* Было 60px -> Линия стала чуть длиннее под крупный шрифт */
+  width: 60px;
   height: 1px;
   background-color: #1a1a1a;
-  margin: 0 auto 35px auto !important; 
+  margin: 0 auto 30px auto !important; 
   align-self: center !important;
 }
 
 .editorial-grid .manifesto {
   font-family: 'Inter', sans-serif;
-  font-size: 16px; /* Было 14px -> Манифест теперь читается гораздо легче */
-  line-height: 2.2 !important; 
+  font-size: 14px;
+  line-height: 2.1 !important; 
   color: #333333;
-  max-width: 520px; /* Увеличили ширину блока, чтобы строки не были слишком короткими */
+  max-width: 450px;
   text-align: center !important;
   align-self: center !important;
-  margin: 0 auto 45px auto !important;
+  margin: 0 auto 40px auto !important;
 }
 
 .editorial-grid .signature {
   font-family: 'Playfair Display', serif;
   font-style: italic;
-  font-size: 18px; /* Было 15px -> Подпись автора стала крупнее */
+  font-size: 15px;
   color: #1a1a1a;
   text-align: center !important;
   align-self: center !important; 
   margin-top: auto !important; 
+}
+
+.image-block {
+  display: block !important;
+  width: 100% !important;
 }
 
 .word-wrap {
@@ -707,18 +722,20 @@ const vScrollReveal = {
   animation: revealWord 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* КАТАЛОГ — ДЕСКТОПНЫЕ СТИЛИ */
+/* ======================================================= */
+/* КАТАЛОГ — ТВОИ ОРИГИНАЛЬНЫЕ ДЕСКТОПНЫЕ КАРТОЧКИ        */
+/* ======================================================= */
 .product-card .card-info {
   display: flex !important;
   flex-direction: column !important;
   flex-grow: 1 !important;
-  padding: 35px 28px !important;
+  padding: 30px 24px !important;
 }
 
 .product-card .product-title, .product-card h3 {
   font-family: "Playfair Display", "Didot", "Bodoni MT", serif !important;
   font-weight: 400 !important;
-  font-size: 22px !important; /* Было 20px */
+  font-size: 20px !important;
   letter-spacing: 0.04em !important;
   color: #1a1a1a !important;
   margin-bottom: 12px !important;
@@ -728,7 +745,7 @@ const vScrollReveal = {
 .product-card .product-weight, .product-card .product-meta {
   font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
   font-weight: 300 !important;
-  font-size: 12px !important; /* Было 11px */
+  font-size: 11px !important;
   text-transform: uppercase !important;
   letter-spacing: 0.15em !important;
   color: #8c8c8c !important;
@@ -739,7 +756,7 @@ const vScrollReveal = {
 .product-card .product-desc, .product-card p {
   font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
   font-weight: 300 !important;
-  font-size: 14px !important; /* Было 13px */
+  font-size: 13px !important;
   line-height: 1.6 !important;
   color: #555555 !important;
   text-align: center !important;
@@ -749,7 +766,7 @@ const vScrollReveal = {
 .product-card .price-tag, .product-card .product-price {
   font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
   font-weight: 500 !important;
-  font-size: 16px !important; /* Было 15px */
+  font-size: 15px !important;
   text-transform: uppercase !important;
   letter-spacing: 0.1em !important;
   color: #1a1a1a !important;
@@ -778,7 +795,7 @@ const vScrollReveal = {
 }
 
 /* ======================================================= */
-/* АДАПТИВНАЯ СЕТКА ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ (ДО 768px)     */
+/* АДАПТИВНАЯ СЕТКА ДЛЯ МОБИЛЬНЫХ (СТРОГО ДЛЯ ТЕЛЕФОНОВ)   */
 /* ======================================================= */
 @media (max-width: 768px) {
   
@@ -804,31 +821,20 @@ const vScrollReveal = {
   .editorial-grid {
     grid-template-columns: 1fr !important;
     min-height: auto !important;
-    width: 100% !important;
   }
   
   .editorial-grid .text-block, 
   .text-block {
     padding: 40px 16px !important; 
-    display: flex !important;
-    flex-direction: column !important; 
-    align-items: center !important;
-    text-align: center !important;
     width: 100% !important;
-    max-width: 100% !important;
     box-sizing: border-box !important;
   }
 
-  /* НА МОБИЛЬНОМ ОСТАВЛЯЕМ АККУРАТНЫЕ ТЕКУЩИЕ РАЗМЕРЫ */
   .editorial-grid .main-title { 
-    font-size: 24px !important; /* Идеально для телефона */
-    text-align: center !important;
+    font-size: 24px !important; 
     line-height: 1.3 !important;
-    width: 100% !important;
-    max-width: 100% !important;
     margin: 15px 0 !important;
-    white-space: normal !important;
-    word-wrap: break-word !important;
+    width: 100% !important;
   }
 
   .main-title .word-wrap,
@@ -845,31 +851,21 @@ const vScrollReveal = {
 
   .editorial-grid .divider {
     margin: 0 auto 25px auto !important;
-    align-self: center !important;
     width: 60px !important;
   }
   
   .editorial-grid .manifesto { 
     margin: 0 auto 25px auto !important; 
-    text-align: center !important;
-    font-size: 14px !important; /* Удобно для чтения на телефоне */
+    font-size: 14px !important;
     line-height: 1.8 !important;
     width: 100% !important;
     max-width: 100% !important;
   }
 
   .editorial-grid .signature {
-    text-align: center !important;
     margin-top: 25px !important;
     width: 100% !important;
-    font-size: 15px !important;
   }
-
-  /* МОБИЛЬНЫЙ КАТАЛОГ — РАЗМЕРЫ ИЗ ТВОЕЙ ИСХОДНОЙ ВЕРСИИ */
-  .product-card .product-title, .product-card h3 { font-size: 20px !important; }
-  .product-card .product-weight, .product-card .product-meta { font-size: 11px !important; }
-  .product-card .product-desc, .product-card p { font-size: 13px !important; }
-  .product-card .price-tag, .product-card .product-price { font-size: 15px !important; }
 
   .catalog-list-leave-active { 
     position: absolute !important;
@@ -886,5 +882,6 @@ const vScrollReveal = {
     backdrop-filter: blur(4px);
   }
 }
+
 
 </style>
