@@ -14,7 +14,7 @@
             </h1>
             <div class="divider"></div>
             <p class="manifesto">
-              Я верю, что идеальный десерт — это не просто сахар и крем. Это точный расчет пропорций, геометрия слоев и честные локальные продукты. Каждое изделие создается вручную с бескомпромиссным вниманием к деталям. Как в точной механике, здесь нет места случайностям.
+              Я верю, что идеальный десерт это не просто сахар и крем. Это точный расчет пропорций, геометрия слоев и честные локальные продукты. Каждое изделие создается вручную с бескомпромиссным вниманием к деталям. Как в точной механике, здесь нет места случайностям.
             </p>
             <div class="signature">Десерты в исполнении Надежды Динченко</div>
           </div>
@@ -636,14 +636,19 @@ const vScrollReveal = {
   border-bottom: 1px solid #1a1a1a; 
   margin-bottom: 60px;
 }
+
+/* СТИЛИ ДЛЯ КОМПЬЮТЕРОВ (ДЕФОЛТНЫЕ) */
 .editorial-grid .text-block, 
 .text-block {
-  padding: 60px 40px 60px 0 !important; 
+  padding: 60px 40px !important; /* Сделали симметричные отступы 40px слева и справа */
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important; 
-  align-items: center !important; /* Мягко центрирует элементы по горизонтали */
-  text-align: center !important; /* Центрирует строчки текста внутри блоков */
+  align-items: center !important; 
+  text-align: center !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 .meta-info {
@@ -664,6 +669,9 @@ const vScrollReveal = {
   color: #1a1a1a;
   margin: 30px 0 20px 0 !important;
   text-align: center !important; 
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  max-width: 100% !important;
 }
 
 .editorial-grid .divider {
@@ -707,205 +715,7 @@ const vScrollReveal = {
   animation: revealWord 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes revealWord {
-  to { 
-    transform: translateY(0); 
-  }
-}
-
-.main-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 42px; 
-  font-weight: 400; 
-  line-height: 1.2;
-  color: #1a1a1a;
-  margin: 30px 0;
-  text-align: center !important; /* Вернули уютное центрирование заголовка */
-}
-
-.divider {
-  width: 60px;
-  height: 1px;
-  background-color: #1a1a1a;
-  margin: 0 auto 30px auto !important; /* Линейка встает строго по центру */
-  align-self: center !important; 
-}
-
-.manifesto {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  line-height: 2.1 !important; /* Сделали строчки чуть воздушнее, как в журнале */
-  color: #333333;
-  max-width: 450px;
-  text-align: center !important; /* Текст манифеста теперь центрирован */
-  margin: 0 auto 40px auto !important; /* Сам блок манифеста выровнен по центру */
-}
-
-.signature {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 15px;
-  color: #1a1a1a;
-  margin-top: 40px;
-  text-align: center !important; /* Убрали левое выравнивание подписи */
-  align-self: center !important; /* Подпись встает строго по центру */
-}
-
-.image-block {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-left: 1px solid #1a1a1a; 
-}
-.link-btn {
-  padding: 10px 30px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 13px;
-  background-color: #1a1a1a;
-  color: white;
-  transition: opacity 0.3s ease;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  min-width: 160px; 
-  text-align: center; 
-}
-
-.cover-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  filter: grayscale(0.2) contrast(1.05); 
-}
-  .catalog-list-move,
-.catalog-list-enter-active,
-.catalog-list-leave-active {
-  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.catalog-list-enter-from,
-.catalog-list-leave-to {
-  opacity: 0;
-  transform: scale(0.98) translateY(15px);
-}
-
-.catalog-list-leave-active {
-  position: absolute;
-}
-@media (max-width: 768px) {
-  .catalog-grid { grid-template-columns: 1fr; }
-  .links-box { flex-direction: column; align-items: center; gap: 10px; }
-  
-  .image-block { display: none !important; }
-  
-  .editorial-grid {
-    grid-template-columns: 1fr;
-    min-height: auto !important;
-  }
-  
-  .text-block {
-    padding: 40px 10px !important;
-    text-align: center;
-    align-items: center;
-  }
-
-  .divider {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .main-title { font-size: 32px; }
-  .manifesto { margin: 0 auto; }
-  .catalog-list-leave-active { position: static; }
-
-  .btn-up {
-    bottom: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    font-size: 14px;
-    background-color: rgba(253, 251, 247, 0.9);
-    backdrop-filter: blur(4px);
-  }
-}
-
-.product-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  background-color: #ffffff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
-  border: 1px solid rgba(26, 26, 26, 0.06) !important;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.5s ease;
-  will-change: opacity, transform;
-}
-
-.catalog-grid .product-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.catalog-grid .product-card.visible:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(26, 26, 26, 0.04);
-  transition-delay: 0s !important; 
-}
-
-/* ОПИСАНИЕ ДЛЯ СТАБИЛЬНОСТИ СЕТКИ */
-.product-card .product-desc, .product-card p {
-  font-family: "Montserrat", "Helvetica Neue", sans-serif;
-  font-weight: 300;
-  font-size: 13px;
-  line-height: 1.6;
-  color: #555555;
-  text-align: center;
-  margin-bottom: 24px;
-  height: auto; 
-  min-height: 65px;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* СЕТКА КАТАЛОГА ДЕCКТОП */
-.catalog-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  width: 100%;
-  position: relative;
-}
-
-/* ЗОНА ДЛЯ ФОТО И ОФОРМЛЕНИЕ ТЕКСТА */
-.product-card .slider-area {
-  width: 100% !important;
-  height: 380px !important;
-  overflow: hidden !important;
-  position: relative !important;
-  background-color: #ffffff !important;
-  border-top-left-radius: 10px !important;
-  border-top-right-radius: 10px !important;
-  display: block !important;
-}
-
-.product-card .card-img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  display: block !important;
-}
-
+/* КАТАЛОГ — ДЕСКТОПНЫЕ СТИЛИ */
 .product-card .card-info {
   display: flex !important;
   flex-direction: column !important;
@@ -923,60 +733,6 @@ const vScrollReveal = {
   text-align: center !important;
 }
 
-/* СТРУКТУРА ШАПКИ ДЕCКТОП */
-.editorial-grid {
-  display: grid !important;
-  grid-template-columns: 1.2fr 0.8fr !important; 
-  min-height: 550px;
-}
-
-.text-block {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  align-items: center !important; 
-  text-align: center !important; 
-  padding: 60px 80px 60px 0;
-}
-
-
-/* ЗОНА ДЛЯ ФОТО И ОФОРМЛЕНИЕ ТЕКСТА (ОСТАЮТСЯ БЕЗ ИЗМЕНЕНИЙ) */
-.product-card .slider-area {
-  width: 100% !important;
-  height: 380px !important;
-  overflow: hidden !important;
-  position: relative !important;
-  background-color: #ffffff !important;
-  border-top-left-radius: 10px !important;
-  border-top-right-radius: 10px !important;
-  display: block !important;
-}
-.product-card .card-img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  display: block !important;
-}
-@media (max-width: 768px) {
-  .product-card .slider-area { height: 260px !important; }
-}
-.product-card .card-info {
-  display: flex !important;
-  flex-direction: column !important;
-  flex-grow: 1 !important;
-  padding: 30px 24px !important;
-}
-
-.product-card .product-title, .product-card h3 {
-  font-family: "Playfair Display", "Didot", "Bodoni MT", serif !important;
-  font-weight: 400 !important;
-  font-size: 20px !important;
-  letter-spacing: 0.04em !important;
-  color: #1a1a1a !important;
-  margin-bottom: 12px !important;
-  text-align: center !important;
-}
 .product-card .product-weight, .product-card .product-meta {
   font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
   font-weight: 300 !important;
@@ -987,6 +743,7 @@ const vScrollReveal = {
   margin-bottom: 16px !important;
   text-align: center !important;
 }
+
 .product-card .product-desc, .product-card p {
   font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
   font-weight: 300 !important;
@@ -996,6 +753,7 @@ const vScrollReveal = {
   text-align: center !important;
   margin-bottom: 24px !important;
 }
+
 .product-card .price-tag, .product-card .product-price {
   font-family: "Montserrat", "Helvetica Neue", sans-serif !important;
   font-weight: 500 !important;
@@ -1007,59 +765,31 @@ const vScrollReveal = {
   margin-top: auto !important; 
   padding-top: 15px !important;
 }
-/* --- КОРРЕКТНАЯ АНИМАЦИЯ ПЕРЕКЛЮЧЕНИЯ В КАТАЛОГЕ VUE --- */
-  
-/* Настройка плавности и благородной траектории */
+
+/* АНИМАЦИИ */
 .catalog-list-move,
 .catalog-list-enter-active,
 .catalog-list-leave-active {
   transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
-/* Эстетичное растворение с легким масштабированием */
 .catalog-list-enter-from,
 .catalog-list-leave-to {
   opacity: 0 !important;
   transform: scale(0.97) translateY(15px) !important;
 }
 
-/* Главный трюк: уходящая карточка временно становится абсолютной */
-/* и сохраняет точные размеры колонки, чтобы сетка не схлопывалась */
 .catalog-list-leave-active {
   position: absolute !important;
-  width: calc(50% - 20px) !important; /* Половина сетки минус половина gap (40px/2) */
+  width: calc(50% - 20px) !important;
   z-index: 0;
 }
 
-.main-title, .manifesto, .signature {
-  text-align: left !important; /* Принудительно убираем центрирование у каждого текстового блока */
-}
-.editorial-grid .text-block, 
-  .text-block {
-    /* 10px по бокам — это минимум, чтобы буквы не прилипали к краям экрана смартфона */
-    padding: 30px 10px !important; 
-    width: 100% !important;
-    box-sizing: border-box !important;
-    align-items: center !important;
-    text-align: center !important;
-  }
-
-  /* КОРРЕКТИРУЕМ РАЗМЕР ЗАГЛОВКА */
-  .editorial-grid .main-title, 
-  .main-title {
-    font-size: 24px !important; /* Немного уменьшаем размер букв, чтобы слова помещались целиком */
-    line-height: 1.3 !important;
-    width: 100% !important;
-    text-align: center !important;
-  }
-
-.divider {
-  margin-left: 0 !important; /* Удерживаем вашу аккуратную черную полоску строго слева */
-  margin-right: auto !important;
-}
+/* ======================================================= */
+/* АДАПТИВНАЯ СЕТКА ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ (ДО 768px)     */
+/* ======================================================= */
 @media (max-width: 768px) {
   
-  /* Каталог в одну колонку */
   .catalog-grid { 
     grid-template-columns: 1fr !important;
     gap: 20px !important;
@@ -1075,40 +805,41 @@ const vScrollReveal = {
     gap: 10px; 
   }
   
-  /* Прячем картинку на смартфонах */
   .image-block { 
     display: none !important; 
   }
   
-  /* Перестраиваем сетку шапки в один ряд */
   .editorial-grid {
     grid-template-columns: 1fr !important;
     min-height: auto !important;
+    width: 100% !important;
   }
   
-  /* УБИРАЕМ ЗАЖАТОСТЬ ШИРИНЫ (СБРАСЫВАЕМ ДЕСКТОПНЫЕ ПОЛЯ) */
+  /* ИСПРАВЛЕНИЕ СДВИГА: Симметричные отступы на мобилках */
   .editorial-grid .text-block, 
   .text-block {
-    padding: 40px 16px !important; /* Даем тексту занять ВСЮ ширину экрана */
+    padding: 40px 16px !important; 
     align-items: center !important;
     text-align: center !important;
     width: 100% !important;
+    max-width: 100% !important;
     box-sizing: border-box !important;
   }
 
-  /* ИСПРАВЛЯЕМ ЗАГОЛОВОК НА ТЕЛЕФОНЕ */
-  .editorial-grid .main-title, 
-  .main-title { 
-    font-size: 28px !important; /* Комфортный размер для смартфона */
+  /* ИСПРАВЛЕНИЕ РАЗМЕРА ЗАГЛОВКА */
+  .editorial-grid .main-title { 
+    font-size: 24px !important; /* Уменьшили с 42px до 24px, чтобы всё помещалось */
     text-align: center !important;
     line-height: 1.3 !important;
     width: 100% !important;
+    max-width: 100% !important;
+    margin: 15px 0 !important;
   }
 
-  /* СКЛЕИВАЕМ СЛОВА НА МОБИЛКЕ, ЧТОБЫ ОНИ НЕ ПРЫГАЛИ ПО ОДНОМУ */
+  /* Отключаем жесткую анимацию разбиения слов на мобильных, чтобы избежать багов */
   .main-title .word-wrap,
   .editorial-grid .main-title .word-wrap {
-    display: inline !important; /* Убираем блочность, слова теперь текут рекой */
+    display: inline !important;
   }
   
   .main-title .anim-word,
@@ -1118,22 +849,25 @@ const vScrollReveal = {
     animation: none !important;
   }
 
-  /* Центрируем разделитель, манифест и подпись */
-  .divider {
+  .editorial-grid .divider {
     margin: 0 auto 25px auto !important;
     align-self: center !important;
+    width: 60px !important;
   }
   
-  .manifesto { 
+  .editorial-grid .manifesto { 
     margin: 0 auto 25px auto !important; 
     text-align: center !important;
     font-size: 14px !important;
     line-height: 1.8 !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
-  .signature {
+  .editorial-grid .signature {
     text-align: center !important;
     margin-top: 25px !important;
+    width: 100% !important;
   }
 
   .catalog-list-leave-active { 
@@ -1151,5 +885,4 @@ const vScrollReveal = {
     backdrop-filter: blur(4px);
   }
 }
-
 </style>
