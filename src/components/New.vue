@@ -443,22 +443,23 @@ const vScrollReveal = {
   opacity: 0.2;
   transform: scale(0.97);
 }
-
 .card-badge {
   position: absolute;
   top: 15px;
   left: 15px;
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #1a1a1a;
-  padding: 5px 10px;
-  border: 1px solid #1a1a1a;
-  border-radius: 2px;
+  background-color: transparent !important; /* Убираем тяжелый серый/белый фон */
+  color: #1a1a1a !important; /* Строгий черный цвет текста */
+  padding: 0 0 3px 0 !important; /* Полностью убираем рамки вокруг */
+  border: none !important; 
+  border-bottom: 1px solid #1a1a1a !important; /* Оставляем только тонкую элегантную линию снизу */
+  border-radius: 0 !important;
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: bold;
   z-index: 1;
 }
+
 
 .arrow {
   position: absolute;
@@ -632,10 +633,44 @@ const vScrollReveal = {
   margin-bottom: 60px;
 }
 
-.editorial-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr; 
-  min-height: 550px;
+/* РОДИТЕЛЬСКИЙ БЛОК ТЕКСТА В ШАПКЕ */
+.editorial-grid .text-block {
+  padding: 60px 80px 60px 0; 
+  display: flex !important;
+  flex-direction: column !important;
+  /* Принудительно выравниваем все блоки строго по левому краю */
+  align-items: flex-start !important; 
+  text-align: left !important;
+}
+
+/* ЗАГОЛОВОК */
+.editorial-grid .main-title {
+  text-align: left !important;
+  margin: 30px 0 20px 0 !important;
+}
+
+/* ЛИНЕЙКА-РАЗДЕЛИТЕЛЬ */
+.editorial-grid .divider {
+  align-self: flex-start !important; /* Удерживает линию слева */
+  margin: 0 0 30px 0 !important;
+}
+
+/* МАНИФЕСТ */
+.editorial-grid .manifesto {
+  text-align: left !important;
+  align-self: flex-start !important;
+  margin: 0 0 40px 0 !important;
+}
+
+/* ФИНАЛЬНАЯ ПОДПИСЬ (Убираем случайное центрирование) */
+.editorial-grid .signature {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: #1a1a1a;
+  text-align: left !important;
+  align-self: flex-start !important; /* Намертво прижимает подпись к левой оси */
+  margin-top: auto !important; /* Оставляет её в самом низу блока */
 }
 
 .text-block {
