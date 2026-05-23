@@ -525,7 +525,7 @@ const vScrollReveal = {
   background-color: #ffffff;
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid rgba(26, 26, 26, 0.08)
+  border: 1px solid rgba(26, 26, 26, 0.08);
   
   opacity: 0;
   transform: translateY(40px);
@@ -829,7 +829,7 @@ const vScrollReveal = {
   .product-card {
     border: 1px solid rgba(26, 26, 26, 0.08) !important; /* Очень мягкий тонкий контур */
     box-sizing: border-box !important;                    /* Чтобы рамка не ломала размеры */
-    border: 1px solid rgba(26, 26, 26, 0.08)
+    border: 1px solid rgba(26, 26, 26, 0.08);
     /* Сохраняем ваши исходные свойства анимации */
     transition-delay: 0s !important;
     transform: translateY(30px) !important;
