@@ -675,10 +675,13 @@ const vScrollReveal = {
 
 .text-block {
   padding: 60px 80px 60px 0; 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; 
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important; 
+  align-items: flex-start !important; /* Выравнивает блоки по левому краю */
+  text-align: left !important; /* Переводит выравнивание текста влево */
 }
+
   .meta-info {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
@@ -702,7 +705,6 @@ const vScrollReveal = {
 @keyframes revealWord {
   to { transform: translateY(0); }
 }
-
 .main-title {
   font-family: 'Playfair Display', serif;
   font-size: 42px; 
@@ -710,6 +712,7 @@ const vScrollReveal = {
   line-height: 1.2;
   color: #1a1a1a;
   margin: 30px 0;
+  text-align: left !important; /* Убираем центрирование заголовка */
 }
 
 .divider {
@@ -717,15 +720,15 @@ const vScrollReveal = {
   height: 1px;
   background-color: #1a1a1a;
   margin-bottom: 30px;
+  align-self: flex-start !important; /* Удерживает линию строго слева */
 }
-
 .manifesto {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  line-height: 2.1 !important;
-  color: #4a4a4a !important; 
-  max-width: 480px !important;
-  letter-spacing: 0.2px !important;
+  line-height: 1.9; 
+  color: #333333;
+  max-width: 450px;
+  text-align: left !important; /* Убираем центрирование манифеста */
 }
 
 .signature {
@@ -734,6 +737,8 @@ const vScrollReveal = {
   font-size: 15px;
   color: #1a1a1a;
   margin-top: 40px;
+  text-align: left !important; /* Убираем центрирование подписи */
+  align-self: flex-start !important;
 }
 
 .image-block {
