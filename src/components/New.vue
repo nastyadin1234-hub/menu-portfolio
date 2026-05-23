@@ -1001,29 +1001,30 @@ const vScrollReveal = {
     width: 100% !important; /* В одну колонку уходящий элемент занимает всю ширину */
   }
 }
-
-/* ПРИНУДИТЕЛЬНОЕ ВЫРАВНИВАНИЕ ВСЕХ ТЕКСТОВ В ШАПКЕ */
-.editorial-banner .text-block,
-.editorial-banner .main-title,
-.editorial-banner .manifesto,
-.editorial-banner .signature {
-  text-align: left !important;
-  align-items: flex-start !important;
-  justify-content: flex-start !important;
+/* ВОЗВРАЩАЕМ СЕТКУ И ВЫРАВНИВАЕМ БУКВЫ ПО ЛЕВОМУ КРАЮ */
+.editorial-grid {
+  display: grid !important;
+  grid-template-columns: 1.2fr 0.8fr !important; /* Возвращаем картинку на её законное место справа */
+  min-height: 550px;
 }
 
-/* ИСПРАВЛЕНИЕ ДЛЯ АНИМИРОВАННЫХ СЛОВ ЗАГОЛОВКА */
-.editorial-banner .word-wrap,
-.editorial-banner .anim-word {
-  text-align: left !important;
-  display: inline-block !important;
-  float: none !important;
+.text-block {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important; /* Убираем лесенку, выравниваем блоки по левому краю */
+  text-align: left !important; /* Намертво делаем текст левосторонним */
+  padding: 60px 80px 60px 0;
 }
 
-/* ФИКСИРУЕМ ПОЗИЦИЮ ЛИНИИ */
-.editorial-banner .divider {
-  margin-left: 0 !important;
+.main-title, .manifesto, .signature {
+  text-align: left !important; /* Принудительно убираем центрирование у каждого текстового блока */
+}
+
+.divider {
+  margin-left: 0 !important; /* Удерживаем вашу аккуратную черную полоску строго слева */
   margin-right: auto !important;
 }
+
 
 </style>
