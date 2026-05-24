@@ -374,7 +374,6 @@ const vScrollReveal = {
   justify-content: center; 
   gap: 40px;
   margin-bottom: 60px; 
-  border: 2px solid rgba(26, 26, 26, 0.15) !important; 
 }
 
 .filter-btn { 
