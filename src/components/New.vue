@@ -114,6 +114,8 @@ import { ref, onMounted, onUnmounted, watch, nextTick, computed } from 'vue'
 
 import bannerImg from '../assets/banner.jpg'
 import eclairsImg from '../assets/eclairs.webp'
+  IMG_20260524_212817.webp
+import eclairscutImg from '../../IMG_20260524_212817.webp'
 import milfierImg from '../assets/IMG_20260503_153550.webp'
 import cakeImg from '../assets/IMG_20260503_211046.webp'
 import tartImg from '../assets/IMG153828.webp'
@@ -180,7 +182,7 @@ const allProducts = ref([
     title: 'Эклеры «New York Cheesecake»', 
     price: 'По запросу', 
     category: 'desserts', 
-    images: [eclairsImg], 
+    images: [eclairsImg, eclairscutImg], 
     currentImgIndex: 0,
     badge: 'Спецпредложение',
     weight: 'набор из 3 шт.',
