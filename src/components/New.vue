@@ -374,7 +374,7 @@ const vScrollReveal = {
   justify-content: center; 
   gap: 40px;
   margin-bottom: 60px; 
-  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  border: 2px solid rgba(26, 26, 26, 0.15) !important; 
 }
 
 .filter-btn { 
@@ -598,7 +598,7 @@ const vScrollReveal = {
 .arrow { 
   position: absolute; 
   background: #FDFBF7; 
-  border: 1px solid rgba(26, 26, 26, 0.15); 
+  border: 2px solid rgba(26, 26, 26, 0.15) !important; 
   font-size: 14px; 
   width: 36px; 
   height: 36px; 
