@@ -132,10 +132,13 @@ import zyzhikImg from '../assets/IMG_20260504_154103.webp'
 import zyzhikcutImg from '../assets/Screenshot 2026-05-12 190038.jpg'
 import bombaImg from '../assets/IMG_20260504_153904.webp'
 import schtollenImg from '../assets/IMG_20260504_154230.webp'
-import macaroncutImg from '../assets/IMG_20260519_110510.webp'
-import zaherImg from '../../IMG_20260509_120359 (1) 1.webp'
-import macaronImg from '../../IMG_20260519_1105121.webp'
+  
 
+
+import zaherImg from '../../IMG_20260509_120359 (1) 1.webp'
+import macaronImg from '../../13.webp'
+import macaroncutImg from '../../11.webp'
+import macaroncutImg2 from '../../12.webp'
 const currentCategory = ref('desserts')
 const animCardId = ref(null)
 const showScrollBtn = ref(false)
@@ -156,7 +159,7 @@ const allProducts = ref([
     title: 'Карамельные Макарон', 
     price: 'По запросу', 
     category: 'desserts', 
-    images: [macaronImg, macaroncutImg], 
+    images: [macaronImg, macaroncutImg, macaroncutImg2], 
     currentImgIndex: 0,
     badge: 'Новинка',
     weight: 'набор из 5 шт.',
