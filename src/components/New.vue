@@ -803,18 +803,113 @@ const vScrollReveal = {
   width: calc(50% - 20px) !important;
   z-index: 0;
 }
-
 /* ======================================================= */
 /* 7. МОБИЛЬНАЯ АДАПТИВНОСТЬ (ЭКРАНЫ ДО 768px)            */
 /* ======================================================= */
 @media (max-width: 768px) { 
+
+  /* ЖЕСТКИЙ КОНТУР ПРОТИВ ВЫЛЕТА ЗА ЭКРАН */
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Баннер и сетка */
+  .editorial-banner { 
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 40px !important;
+    overflow: hidden !important;
+  }
+
+  .editorial-grid { 
+    grid-template-columns: 1fr !important; 
+    min-height: auto !important;
+    width: 100% !important;
+  }
+
+  /* Скрываем боковую картинку баннера */
+  .image-block {
+    display: none !important;
+  }
+
+  /* ТЕКСТОВЫЙ БЛОК: Сброс десктопных отступов и центрирование */
+  .text-block { 
+    display: flex !important; 
+    flex-direction: column !important; 
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important; 
+    max-width: 100% !important;   
+    padding: 40px 24px !important; /* Внутренние безопасные отступы по бокам */
+    margin: 0 !important;
+    box-sizing: border-box !important; 
+  }
+
+  /* ИСПРАВЛЕНИЕ ЗАГОЛОВКА: Ограничение ширины для идеального переноса в 2 строки */
+  .main-title { 
+    font-size: 26px !important; 
+    line-height: 1.35 !important; 
+    color: #1a1a1a !important; 
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 320px !important;   /* Заставляет фразу переноситься ровно как на макете */
+    margin: 0 auto !important;     /* Обнуляем маржины, отступ регулируется линией */
+  }
+
+  /* Склеиваем разбитые скриптом анимации буквы обратно в стабильные блоки */
+  .main-title .word-wrap,
+  .word-wrap {
+    display: inline-block !important;
+    overflow: visible !important;
+    white-space: nowrap !important; /* Запрещает словам ломаться внутри себя */
+  }
+
+  .main-title .anim-word,
+  .anim-word {
+    display: inline-block !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  /* ИСПРАВЛЕНИЕ ДЕКОРАТИВНОЙ ЛИНИИ: Добавляем воздух сверху и снизу */
+  .divider { 
+    width: 60px !important; 
+    height: 1px !important; 
+    background-color: #1a1a1a !important; 
+    /* 25px сверху (отодвигает от текста) и 30px снизу (отодвигает от манифеста) */
+    margin: 25px auto 30px auto !important; 
+  }
+
+  /* ИСПРАВЛЕНИЕ ТЕКСТА МАНИФЕСТА: Контраст и читаемость */
+  .manifesto { 
+    font-size: 14px !important; 
+    line-height: 1.85 !important;  /* Делает текст более воздушным */
+    color: #1a1a1a !important;     /* Насыщенный черный цвет вместо блеклого серого */
+    max-width: 100% !important;   
+    width: 100% !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+  }
+
+  /* Подпись шефа */
+  .signature { 
+    font-size: 15px !important;
+    color: #1a1a1a !important; 
+    text-align: center !important;
+    margin-top: 30px !important;
+  }
+
+  /* --- ОСТАЛЬНЫЕ ЭЛЕМЕНТЫ СТРАНИЦЫ (БЕЗ ИЗМЕНЕНИЙ) --- */
+  
   /* Каталог в одну колонку */
   .catalog-grid { 
     grid-template-columns: 1fr !important; 
     gap: 20px !important;
   } 
   
-  /* ИСПРАВЛЕНИЕ: Маленький контур у карточек товаров, чтобы они не сливались с фоном */
+  /* Контур у карточек товаров */
   .product-card {
     border: 1px solid rgba(26, 26, 26, 0.08) !important;
     box-sizing: border-box !important;
@@ -836,77 +931,6 @@ const vScrollReveal = {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-  }
-
-  /* Скрываем боковую картинку баннера */
-  .image-block {
-    display: none !important;
-  }
-
-  /* Разворачиваем баннер в один столбец */
-  .editorial-grid {
-    grid-template-columns: 1fr !important;
-    min-height: auto !important;
-  }
-
-    /* ИСПРАВЛЕНИЕ ШИРИНЫ ШАПКИ: Текст раскрывается, но строго в границах экрана */
-  .text-block {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    max-width: 100% !important;   
-    
-    /* СБРОС ДЕСКТОПНЫХ ОТСТУПОВ: убираем padding-right в 80px, который выталкивал сайт наружу */
-    padding: 40px 16px !important; 
-    margin: 0 !important;          /* Убираем любые внешние сдвиги */
-    
-    box-sizing: border-box !important; /* Гарантирует, что отступы 16px сидят внутри 100% ширины */
-    align-items: center !important;
-    text-align: center !important;
-  }
-
-
-  /* ИСПРАВЛЕНИЕ ЗАГОЛОВКА: Свободная ширина, чтобы текст не зажимался */
-  .main-title {
-    font-size: 26px !important;
-    line-height: 1.3 !important;
-    text-align: center !important;
-    width: 100% !important;
-    max-width: 100% !important;   /* Убираем сужение заголовка */
-    margin: 15px 0 !important;
-  }
-
-  /* Склеиваем разбитые скриптом анимации буквы обратно в слова */
-  .main-title .word-wrap,
-  .word-wrap {
-    display: inline !important;
-    overflow: visible !important;
-  }
-
-  .main-title .anim-word,
-  .anim-word {
-    display: inline !important;
-    transform: none !important;
-    animation: none !important;
-  }
-
-  /* Центрируем декоративную полоску */
-  .divider {
-    margin: 0 auto 25px auto !important;
-  }
-
-  /* ИСПРАВЛЕНИЕ МАНИФЕСТА: Снимаем жесткий десктопный max-width в 450px */
-  .manifesto {
-    margin: 0 auto !important;
-    text-align: center !important;
-    width: 100% !important;
-    max-width: 100% !important;   /* Текст теперь занимает всё доступное пространство экрана */
-  }
-
-  /* Подпись шефа */
-  .signature {
-    text-align: center !important;
-    margin-top: 25px !important;
   }
 
   /* Мобильные габариты для кнопки "Наверх" */
