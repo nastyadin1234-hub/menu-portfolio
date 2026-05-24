@@ -525,7 +525,7 @@ const vScrollReveal = {
   background-color: #ffffff;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+  border: 2px solid rgba(26, 26, 26, 0.12) !important; 
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
@@ -598,7 +598,6 @@ const vScrollReveal = {
 .arrow { 
   position: absolute; 
   background: #FDFBF7; 
-  border: 2px solid rgba(26, 26, 26, 0.15) !important; 
   font-size: 14px; 
   width: 36px; 
   height: 36px; 
@@ -911,7 +910,8 @@ const vScrollReveal = {
   
   /* Контур у карточек товаров */
   .product-card {
-    border: 1px solid rgba(26, 26, 26, 0.08) !important;
+    border: 2px solid rgba(26, 26, 26, 0.08) !important;
+
     box-sizing: border-box !important;
     transition-delay: 0s !important;
     transform: translateY(30px) !important;
