@@ -790,7 +790,7 @@ const vScrollReveal = {
 .catalog-list-move,
 .catalog-list-enter-active,
 .catalog-list-leave-active { 
-  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.35s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .catalog-list-enter-from,
