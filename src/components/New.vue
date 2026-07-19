@@ -1,5 +1,5 @@
 <template>
-  <div class="site-wrapper">
+  <div class="site-wrapper"> 
     <div class="main-content-area">
 
       <!-- ГЛАВНЫЙ ЖУРНАЛЬНЫЙ БАННЕР -->
