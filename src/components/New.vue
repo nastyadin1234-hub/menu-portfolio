@@ -139,6 +139,9 @@ import schtollenImg from '../assets/IMG_20260504_154230.webp'
 import zaherImg from '../../IMG_20260509_120359 (1) 1.webp'
 import macaronImg from '../../14.webp'
 import macaroncutImg from '../../11.webp'
+
+import pink_limonad from '../../pink_limonad1.jpg'
+import pink_limonadcutImg from '../../pink_limonad.jpg'
   
 import korzinkaImg from '../../korzinka1.png'
 import korzinkacutImg from '../../korzinka2.png'
@@ -146,8 +149,17 @@ const currentCategory = ref('desserts')
 const animCardId = ref(null)
 const showScrollBtn = ref(false)
 const allProducts = ref([
-  { 
-    id: 1, 
+  {id: 1, 
+    title: 'Торт «Pink Lemonade»', 
+    price: 'По запросу', 
+    category: 'desserts', 
+    images: [pink_limonad, pink_limonadcutImg], 
+    currentImgIndex: 0,
+    badge: 'Новинка',
+    weight: 'от 1 кг',
+    desc: 'Что-то невероятное'
+  },{ 
+    id: 2, 
     title: 'Тарталетка «Мадам Макадам»', 
     price: 'По запросу', 
     category: 'desserts', 
@@ -157,7 +169,7 @@ const allProducts = ref([
     weight: '8 см диаметр',
     desc: 'Песочное тесто с карамелью и орехом Макадамия, попкорн, карамельный мусс'
   },{ 
-    id: 2, 
+    id: 3, 
     title: 'Французский «Мильфей»', 
     price: 'По запросу', 
     category: 'desserts', 
@@ -168,7 +180,7 @@ const allProducts = ref([
     desc: 'Хрустящие коржи из слоеного теста, сливочный крем «Diplomat»'
   },
   { 
-    id: 3, 
+    id: 4, 
     title: 'Карамельные Макарон', 
     price: 'По запросу', 
     category: 'desserts', 
@@ -178,7 +190,7 @@ const allProducts = ref([
     desc: 'Выполнен на итальянской меренге, ганаш из карамельного шоколада со сливками, мягкая соленая карамель'
   },
   { 
-    id: 4, 
+    id: 5, 
     title: 'Грушевая «Шарлотт»', 
     price: 'По запросу', 
     category: 'desserts', 
@@ -189,7 +201,7 @@ const allProducts = ref([
     desc: 'Бисквит Савоярди, карамелизованные груши, крем «Bavarois»'
   },
   { 
-    id: 5, 
+    id: 6, 
     title: 'Эклеры «New York Cheesecake»', 
     price: 'По запросу', 
     category: 'desserts', 
@@ -200,7 +212,7 @@ const allProducts = ref([
     desc: 'Безглютеновое тесто, творожно-сливочный крем, клубничное желе'
   },
   { 
-    id: 6, 
+    id: 7, 
     title: 'Муссовый торт «Sachertorte»', 
     price: 'По запросу', 
     category: 'desserts', 
@@ -210,7 +222,7 @@ const allProducts = ref([
     desc: 'Шоколадный бисквит, прослойка из абрикосового и мандаринового конфитюра в сочетании с «бобами тонка», шоколадный мусс'
   },
   { 
-    id: 7, 
+    id: 8, 
     title: 'Тарталетка с ягодами', 
     price: 'По запросу', 
     category: 'desserts', 
@@ -220,7 +232,7 @@ const allProducts = ref([
     desc: 'Песочное тесто, ванильный ганаш, ягодное желе, свежие ягоды'
   },
   { 
-    id: 8, 
+    id: 9, 
     title: 'Имбирные пряники', 
     price: 'По запросу', 
     category: 'bakery', 
@@ -230,7 +242,7 @@ const allProducts = ref([
     desc: 'Ароматное медовое тесто с имбирем и корицей, ручная художественная роспись сахарной глазурью'
   },
   { 
-    id: 9, 
+    id: 10, 
     title: 'Печатный пряник с начинкой', 
     price: 'По запросу', 
     category: 'bakery', 
@@ -240,7 +252,7 @@ const allProducts = ref([
     desc: 'Традиционное медовое тесто с пряностями, густая начинка из протертой домашней смородины и яблок'
   },
   { 
-    id: 10, 
+    id: 11, 
     title: 'Брауни «Irish Stout»', 
     price: 'По запросу', 
     category: 'desserts', 
@@ -250,7 +262,7 @@ const allProducts = ref([
     desc: 'Брауни на пиве Stout с грецким орехом, ванильный ганаш, карамель'  
   },
   { 
-    id: 11, 
+    id: 12, 
     title: 'Ванильные профитроли с шоколадным ганашем', 
     price: 'По запросу', 
     category: 'desserts', 
@@ -260,7 +272,7 @@ const allProducts = ref([
     desc: 'Сливочный крем с натуральной ванилью и насыщенный шоколадный ганаш'
   },
   { 
-    id: 12, 
+    id: 13, 
     title: 'Классический «Черный лес»', 
     price: 'По запросу', 
     category: 'desserts', 
@@ -270,7 +282,7 @@ const allProducts = ref([
     desc: 'Шоколадный бисквит, сливочный и шоколадный ганаш, вишневое желе'
   },
   { 
-    id: 13, 
+    id: 14, 
     title: 'Рождественский штоллен', 
     price: 'По запросу', 
     category: 'bakery', 
@@ -280,7 +292,7 @@ const allProducts = ref([
     desc: 'Творожное тесто, цукаты на роме Barceló, масло Нуазетт'
   },
   { 
-    id: 14, 
+    id: 15, 
     title: 'Черный лес «Modern»', 
     price: 'По запросу', 
     category: 'desserts', 
