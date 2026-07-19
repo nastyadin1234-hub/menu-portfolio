@@ -165,7 +165,6 @@ const allProducts = ref([
     category: 'desserts', 
     images: [korzinkaImg, korzinkacutImg], 
     currentImgIndex: 0,
-    badge: 'Новинка',
     weight: '8 см диаметр',
     desc: 'Песочное тесто с карамелью и орехом Макадамия, попкорн, карамельный мусс'
   },{ 
